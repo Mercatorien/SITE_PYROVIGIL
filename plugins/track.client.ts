@@ -3,6 +3,10 @@
 export default defineNuxtPlugin((nuxtApp) => {
   const router = useRouter()
 
+  // Prévisualisation statique (GitHub Pages) : pas de backend → on n'appelle pas /api/track
+  // (évite les 405 en console). Le tracking reste actif sur le déploiement VPS.
+  if (typeof location !== 'undefined' && location.hostname.endsWith('github.io')) return
+
   function sid(): string {
     let s = sessionStorage.getItem('pv_sid')
     if (!s) { s = Math.random().toString(36).slice(2) + Date.now().toString(36); sessionStorage.setItem('pv_sid', s) }

@@ -50,14 +50,12 @@ function makeHatch(size = 8, color = '#CC0000') {
 }
 
 onMounted(async () => {
-  console.log('[minimap] 1/ mount, urls =', PARCELLES_URL)
   // Import dynamique (v5 : export par défaut = objet maplibregl).
   // MapLibre reste hors du bundle serveur et du bundle principal.
   const maplibregl = (await import('maplibre-gl')).default
   const MlMap = maplibregl.Map
   await import('maplibre-gl/dist/maplibre-gl.css')
-  console.log('[minimap] 2/ maplibre importé')
-  if (!el.value) { console.warn('[minimap] pas de conteneur'); return }
+  if (!el.value) return
 
   map = new MlMap({
     container: el.value,
@@ -103,18 +101,13 @@ onMounted(async () => {
   }
   rafId = requestAnimationFrame(spinFrame)
 
-  console.log('[minimap] 3/ carte créée')
-  if (typeof window !== 'undefined') window.__minimap = map
-  map.on('error', (e) => { if (e && e.error) console.warn('[minimap] maplibre:', e.error.message || e.error) })
-
   map.on('load', async () => {
-    console.log('[minimap] 4/ LOAD déclenché — ajout des couches')
     // Motif hachuré des OLD de routes — ISOLÉ : son échec ne doit pas bloquer les couches
     let hatchOk = false
     try {
       if (!map.hasImage('hatch-old-route')) map.addImage('hatch-old-route', makeHatch(), { pixelRatio: 1 })
       hatchOk = true
-    } catch (e) { console.warn('[minimap] addImage hachures:', e) }
+    } catch (e) { /* hachures indisponibles : les OLD de routes s'afficheront sans motif */ }
 
     // Chargement des données géographiques
     let parcelles, batiments, old, routes
@@ -125,11 +118,10 @@ onMounted(async () => {
         fetch(OLD_URL).then(r => r.json()),
         fetch(ROUTES_URL).then(r => r.json()),
       ])
-    } catch (e) { console.warn('[minimap] fetch geojson ÉCHEC:', e); return }
-    console.log('[minimap] 5/ geojson OK', { parc: parcelles?.features?.length, old: old?.features?.length, rte: routes?.features?.length, bat: batiments?.features?.length })
+    } catch (e) { return }
 
     // Ajout des sources et couches — chacune isolée pour ne jamais tout perdre
-    const add = (fn, label) => { try { fn() } catch (e) { console.warn('[minimap] ' + label + ':', e) } }
+    const add = (fn) => { try { fn() } catch (e) { /* couche ignorée en cas d'erreur */ } }
     const GEN = ['!=', ['get', 'id_parc'], 'route']
     const ROUTE = ['==', ['get', 'id_parc'], 'route']
 
@@ -152,17 +144,6 @@ onMounted(async () => {
       paint: { 'line-color': '#232323', 'line-width': 2, 'line-opacity': 0.9 } }), 'routes-line')
     add(() => map.addLayer({ id: 'batiments-line', type: 'line', source: 'batiments',
       paint: { 'line-color': '#F5CF27', 'line-width': 1.6 } }), 'batiments-line')
-
-    console.log('[minimap] 6/ couches:', map.getStyle().layers.map(l => l.id).join(', '))
-    const diag = () => {
-      const qr = (id) => { try { return map.queryRenderedFeatures({ layers: [id] }).length } catch { return 'x' } }
-      const qs = (id) => { try { return map.querySourceFeatures(id).length } catch { return 'x' } }
-      const sl = (id) => { try { return map.isSourceLoaded(id) } catch { return 'x' } }
-      console.log('[minimap] 7/ @5s — rendu(old-fill/parc/bat)=' + qr('old-fill') + '/' + qr('parcelles-line') + '/' + qr('batiments-line') +
-        ' | tuilé source(old/parc/bat)=' + qs('old') + '/' + qs('parcelles') + '/' + qs('batiments') +
-        ' | srcLoaded(old/parc)=' + sl('old') + '/' + sl('parcelles'))
-    }
-    setTimeout(diag, 5000)
   })
 })
 
