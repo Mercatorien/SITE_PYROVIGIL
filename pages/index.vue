@@ -87,17 +87,11 @@
           Quatre publics, une même exigence de protection
         </h2>
         <div class="mt-14 grid sm:grid-cols-2 gap-px bg-white/10 border border-white/10">
-          <div v-for="(a, i) in publics" :key="a.cat" v-reveal="(i % 2) * 90" class="bg-brand-dark flex flex-col">
-            <!-- Visuel (thématique à intégrer) -->
-            <div class="aspect-[16/9] bg-white/5 border-b border-white/10 flex items-center justify-center px-4 text-center font-mono text-[11px] text-white/35">
-              /* {{ a.img || 'visuel à définir' }} */
-            </div>
-            <div class="p-7 flex flex-col flex-1">
-              <span class="font-mono text-[11px] uppercase tracking-wider text-brand-orange-bright">{{ a.cat }}</span>
-              <h3 class="mt-2 font-display font-bold text-xl text-white">{{ a.sub }}</h3>
-              <p class="mt-3 text-sm text-white/60 leading-relaxed flex-1">{{ a.desc }}</p>
-              <p class="mt-6 font-mono text-[11px] uppercase tracking-wider text-white/45">{{ a.tags }}</p>
-            </div>
+          <div v-for="(a, i) in publics" :key="a.cat" v-reveal="(i % 2) * 90" class="bg-brand-dark flex flex-col p-7">
+            <span class="font-mono text-[11px] uppercase tracking-wider text-brand-orange-bright">{{ a.cat }}</span>
+            <h3 class="mt-2 font-display font-bold text-xl text-white">{{ a.sub }}</h3>
+            <p class="mt-3 text-sm text-white/60 leading-relaxed flex-1">{{ a.desc }}</p>
+            <p class="mt-6 font-mono text-[11px] uppercase tracking-wider text-white/45">{{ a.tags }}</p>
           </div>
         </div>
       </div>
