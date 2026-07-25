@@ -11,12 +11,6 @@
   #app { position:fixed; inset:0; }
   canvas { display:block; }
   .ui { position:absolute; font-family:'IBM Plex Mono', ui-monospace, monospace; color:#fff; }
-  /* Légende classification */
-  #legend { left:12px; bottom:12px; background:var(--panel); backdrop-filter:blur(6px);
-    border:1px solid rgba(255,255,255,.12); border-radius:10px; padding:10px 12px; }
-  #legend h4 { font-size:10px; letter-spacing:.08em; text-transform:uppercase; opacity:.6; margin-bottom:7px; font-weight:600; }
-  .row { display:flex; align-items:center; gap:8px; font-size:11px; line-height:1.9; }
-  .sw { width:11px; height:11px; border-radius:2px; flex:none; }
   /* Bouton ortho */
   #ortho { right:12px; top:12px; background:var(--panel); backdrop-filter:blur(6px);
     border:1px solid rgba(255,255,255,.14); border-radius:999px; color:#fff; cursor:pointer;
@@ -27,18 +21,22 @@
   /* Hint */
   #hint { left:50%; bottom:14px; transform:translateX(-50%); background:var(--panel); backdrop-filter:blur(6px);
     border-radius:999px; padding:7px 13px; font-size:11px; display:flex; align-items:center; gap:7px;
-    pointer-events:none; transition:opacity .5s; }
+    pointer-events:none; transition:opacity .5s; animation:hint-float 2.6s ease-in-out infinite; }
+  @keyframes hint-float {
+    0%,100% { transform:translateX(-50%) translateY(0); }
+    50%     { transform:translateX(-50%) translateY(-4px); }
+  }
+  @media (prefers-reduced-motion: reduce) { #hint { animation:none; } }
   #loading { inset:0; display:flex; align-items:center; justify-content:center; font-size:12px; letter-spacing:.05em; opacity:.7; }
 </style>
 </head>
 <body>
 <div id="app"></div>
 <div id="loading" class="ui">Chargement du nuage de points…</div>
-<div id="legend" class="ui" style="display:none"><h4>Classification LiDAR</h4><div id="legend-rows"></div></div>
 <button id="ortho" class="ui" style="display:none"><span class="dot"></span>Fond ortho IGN</button>
 <div id="hint" class="ui" style="display:none">
   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9l-3 3 3 3M9 5l3-3 3 3M15 19l-3 3-3-3M19 9l3 3-3 3M2 12h20M12 2v20"/></svg>
-  Faites glisser pour explorer
+  Explorez la carte
 </div>
 
 <script type="importmap">
@@ -116,25 +114,12 @@ async function load() {
   const mat = new THREE.PointsMaterial({ size: 0.9, sizeAttenuation: true, vertexColors: true })
   scene.add(new THREE.Points(geo, mat))
 
-  buildLegend(m.classes)
   document.getElementById('loading').style.display = 'none'
-  document.getElementById('legend').style.display = ''
   document.getElementById('ortho').style.display = ''
   const hint = document.getElementById('hint')
   hint.style.display = ''
   ;['pointerdown','wheel','touchstart'].forEach(ev =>
     renderer.domElement.addEventListener(ev, () => { hint.style.opacity = '0' }, { once:true, passive:true }))
-}
-
-function buildLegend(hist) {
-  const rows = document.getElementById('legend-rows')
-  Object.keys(hist).map(Number).sort((a,b)=>a-b).forEach(k => {
-    const info = CLASS[k] || DEF
-    const el = document.createElement('div')
-    el.className = 'row'
-    el.innerHTML = `<span class="sw" style="background:${info.c}"></span>${info.label}`
-    rows.appendChild(el)
-  })
 }
 
 // ── Fond ortho IGN (plan texturé au sol) ──
