@@ -50,11 +50,13 @@ function makeHatch(size = 8, color = '#CC0000') {
 }
 
 onMounted(async () => {
+  console.log('[minimap] 1/ mount, urls =', PARCELLES_URL)
   // Import dynamique (exports nommés — maplibre-gl v5 n'a pas d'export default).
   // MapLibre reste hors du bundle serveur et du bundle principal.
   const { Map: MlMap } = await import('maplibre-gl')
   await import('maplibre-gl/dist/maplibre-gl.css')
-  if (!el.value) return
+  console.log('[minimap] 2/ maplibre importé')
+  if (!el.value) { console.warn('[minimap] pas de conteneur'); return }
 
   map = new MlMap({
     container: el.value,
@@ -100,9 +102,11 @@ onMounted(async () => {
   }
   rafId = requestAnimationFrame(spinFrame)
 
+  console.log('[minimap] 3/ carte créée')
   map.on('error', (e) => { if (e && e.error) console.warn('[minimap] maplibre:', e.error.message || e.error) })
 
   map.on('load', async () => {
+    console.log('[minimap] 4/ LOAD déclenché — ajout des couches')
     // Motif hachuré des OLD de routes — ISOLÉ : son échec ne doit pas bloquer les couches
     let hatchOk = false
     try {
