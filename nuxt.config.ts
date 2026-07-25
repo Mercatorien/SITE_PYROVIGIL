@@ -12,7 +12,6 @@ export default defineNuxtConfig({
   // (requête maplibre-gl-worker.mjs pendante → carte jamais chargée). On l'exclut.
   vite: {
     optimizeDeps: { exclude: ['maplibre-gl'] },
-    worker: { format: 'es' },
   },
 
   modules: ['@nuxtjs/tailwindcss', '@nuxtjs/google-fonts'],

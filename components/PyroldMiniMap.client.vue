@@ -100,63 +100,51 @@ onMounted(async () => {
   }
   rafId = requestAnimationFrame(spinFrame)
 
-  map.on('load', async () => {
-    try {
-      if (!map.hasImage('hatch-old-route')) {
-        map.addImage('hatch-old-route', makeHatch(), { pixelRatio: 1 })
-      }
+  map.on('error', (e) => { if (e && e.error) console.warn('[minimap] maplibre:', e.error.message || e.error) })
 
-      const [parcelles, batiments, old, routes] = await Promise.all([
+  map.on('load', async () => {
+    // Motif hachuré des OLD de routes — ISOLÉ : son échec ne doit pas bloquer les couches
+    let hatchOk = false
+    try {
+      if (!map.hasImage('hatch-old-route')) map.addImage('hatch-old-route', makeHatch(), { pixelRatio: 1 })
+      hatchOk = true
+    } catch (e) { console.warn('[minimap] addImage hachures:', e) }
+
+    // Chargement des données géographiques
+    let parcelles, batiments, old, routes
+    try {
+      ;[parcelles, batiments, old, routes] = await Promise.all([
         fetch(PARCELLES_URL).then(r => r.json()),
         fetch(BATIMENTS_URL).then(r => r.json()),
         fetch(OLD_URL).then(r => r.json()),
         fetch(ROUTES_URL).then(r => r.json()),
       ])
+    } catch (e) { console.warn('[minimap] fetch geojson:', e); return }
 
-      map.addSource('old', { type: 'geojson', data: old })
-      map.addSource('parcelles', { type: 'geojson', data: parcelles })
-      map.addSource('routes', { type: 'geojson', data: routes })
-      map.addSource('batiments', { type: 'geojson', data: batiments })
+    // Ajout des sources et couches — chacune isolée pour ne jamais tout perdre
+    const add = (fn, label) => { try { fn() } catch (e) { console.warn('[minimap] ' + label + ':', e) } }
+    const GEN = ['!=', ['get', 'id_parc'], 'route']
+    const ROUTE = ['==', ['get', 'id_parc'], 'route']
 
-      const GEN = ['!=', ['get', 'id_parc'], 'route']
-      const ROUTE = ['==', ['get', 'id_parc'], 'route']
+    add(() => map.addSource('old', { type: 'geojson', data: old }), 'src old')
+    add(() => map.addSource('parcelles', { type: 'geojson', data: parcelles }), 'src parcelles')
+    add(() => map.addSource('routes', { type: 'geojson', data: routes }), 'src routes')
+    add(() => map.addSource('batiments', { type: 'geojson', data: batiments }), 'src batiments')
 
-      // OLD des parcelles génératrices : remplissage catégoriel par id_parc
-      map.addLayer({
-        id: 'old-fill', type: 'fill', source: 'old', filter: GEN,
-        paint: { 'fill-color': ['get', '_color'], 'fill-opacity': 0.45 },
-      })
-      map.addLayer({
-        id: 'old-line', type: 'line', source: 'old', filter: GEN,
-        paint: { 'line-color': ['get', '_color'], 'line-width': 1, 'line-opacity': 0.85 },
-      })
-      // OLD des routes : hachures rouges 45° + contour rouge
-      map.addLayer({
-        id: 'old-route-fill', type: 'fill', source: 'old', filter: ROUTE,
-        paint: { 'fill-pattern': 'hatch-old-route', 'fill-opacity': 0.9 },
-      })
-      map.addLayer({
-        id: 'old-route-line', type: 'line', source: 'old', filter: ROUTE,
-        paint: { 'line-color': '#CC0000', 'line-width': 0.9, 'line-opacity': 0.9 },
-      })
-      // Parcelles : contour fin sombre
-      map.addLayer({
-        id: 'parcelles-line', type: 'line', source: 'parcelles',
-        paint: { 'line-color': '#232323', 'line-width': 0.8, 'line-opacity': 0.55 },
-      })
-      // Routes : lignes noires
-      map.addLayer({
-        id: 'routes-line', type: 'line', source: 'routes',
-        paint: { 'line-color': '#232323', 'line-width': 2, 'line-opacity': 0.9 },
-      })
-      // Installations soumises à débroussaillement : contour jaune, sans remplissage
-      map.addLayer({
-        id: 'batiments-line', type: 'line', source: 'batiments',
-        paint: { 'line-color': '#F5CF27', 'line-width': 1.6 },
-      })
-    } catch (e) {
-      // silencieux : la carte reste utilisable avec l'ortho seule
-    }
+    add(() => map.addLayer({ id: 'old-fill', type: 'fill', source: 'old', filter: GEN,
+      paint: { 'fill-color': ['get', '_color'], 'fill-opacity': 0.45 } }), 'old-fill')
+    add(() => map.addLayer({ id: 'old-line', type: 'line', source: 'old', filter: GEN,
+      paint: { 'line-color': ['get', '_color'], 'line-width': 1, 'line-opacity': 0.85 } }), 'old-line')
+    if (hatchOk) add(() => map.addLayer({ id: 'old-route-fill', type: 'fill', source: 'old', filter: ROUTE,
+      paint: { 'fill-pattern': 'hatch-old-route', 'fill-opacity': 0.9 } }), 'old-route-fill')
+    add(() => map.addLayer({ id: 'old-route-line', type: 'line', source: 'old', filter: ROUTE,
+      paint: { 'line-color': '#CC0000', 'line-width': 0.9, 'line-opacity': 0.9 } }), 'old-route-line')
+    add(() => map.addLayer({ id: 'parcelles-line', type: 'line', source: 'parcelles',
+      paint: { 'line-color': '#232323', 'line-width': 0.8, 'line-opacity': 0.55 } }), 'parcelles-line')
+    add(() => map.addLayer({ id: 'routes-line', type: 'line', source: 'routes',
+      paint: { 'line-color': '#232323', 'line-width': 2, 'line-opacity': 0.9 } }), 'routes-line')
+    add(() => map.addLayer({ id: 'batiments-line', type: 'line', source: 'batiments',
+      paint: { 'line-color': '#F5CF27', 'line-width': 1.6 } }), 'batiments-line')
   })
 })
 
