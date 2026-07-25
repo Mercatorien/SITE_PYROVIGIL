@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Barre de défilement verticale : orange discrète ─────────────────────── */
+html {
+  scrollbar-width: thin;                 /* Firefox */
+  scrollbar-color: #E8651A transparent;
+}
+::-webkit-scrollbar { width: 9px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(232, 101, 26, 0.65);
+  border-radius: 9px;
+}
+::-webkit-scrollbar-thumb:hover { background: #E8651A; }
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply font-body text-brand-ink bg-white antialiased; }
+  h1, h2, h3, h4 { @apply font-display; }
+  ::selection { background: #E8651A; color: #fff; }
+}
+
+@layer components {
+  .container-x { @apply max-w-container mx-auto px-6 sm:px-10; }
+
+  /* Boutons — angles nets, style éditorial */
+  .btn {
+    @apply inline-flex items-center gap-2 rounded-md px-5 py-3 font-display font-semibold text-sm transition;
+  }
+  .btn-primary { @apply bg-brand-orange text-white hover:bg-brand-orange-deep; }
+  .btn-ghost   { @apply border border-brand-dark/20 text-brand-dark hover:border-brand-orange hover:text-brand-orange; }
+  .btn-dark    { @apply bg-brand-dark text-white hover:bg-[#0f1c29]; }
+
+  /* Lien texte éditorial avec flèche */
+  .link-arrow {
+    @apply inline-flex items-center gap-1.5 font-display font-semibold text-brand-orange;
+  }
+  .link-arrow svg { @apply transition-transform; }
+  .link-arrow:hover svg { @apply translate-x-1; }
+
+  /* Surtitre + index de section */
+  .eyebrow {
+    @apply font-mono text-xs font-semibold uppercase tracking-[0.16em] text-brand-orange;
+  }
+  .idx { @apply font-mono text-sm font-semibold text-brand-orange; }
+
+  .section { @apply py-20 sm:py-28; }
+  .h-section {
+    @apply font-display font-extrabold text-3xl sm:text-[2.6rem] leading-[1.1] text-brand-dark tracking-tight;
+  }
+
+  /* Filet fin structurant */
+  .rule { @apply border-t border-brand-dark/10; }
+
+  /* Contenu long éditorial (pages légales / prose) */
+  .prose-py { @apply max-w-2xl text-brand-mid leading-relaxed; }
+  .prose-py h2 { @apply font-display font-bold text-xl text-brand-dark mt-10 mb-3; }
+  .prose-py h3 { @apply font-display font-semibold text-base text-brand-dark mt-6 mb-2; }
+  .prose-py p { @apply mb-4; }
+  .prose-py ul { @apply mb-4 pl-5 list-disc space-y-1.5; }
+  .prose-py a { @apply text-brand-orange underline underline-offset-2; }
+}
+
+/* ── Animation d'entrée du hero ──────────────────────────────────────────────
+   État final par défaut : en « animations réduites » (ou sans CSS animé), tout
+   est visible immédiatement. Les animations sont en CSS pur → aucune dépendance
+   au JS, et aucun décalage de mise en page. */
+.word-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: .14em;   /* laisse passer les jambages (g, p, q) */
+  margin-bottom: -.14em;
+  margin-right: .26em;     /* remplace l'espace entre les mots */
+}
+.word { display: inline-block; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .word    { animation: wordUp .8s cubic-bezier(.22, 1, .36, 1) both; }
+  .fade-up { animation: fadeUp .75s cubic-bezier(.22, 1, .36, 1) both; }
+}
+@keyframes wordUp { from { transform: translateY(110%) } to { transform: none } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px) } to { opacity: 1; transform: none } }
+
+/* ── Apparition au scroll (v-reveal) ─────────────────────────────────────── */
+.reveal { transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+.reveal-ready .reveal { opacity: 0; transform: translateY(20px); }
+.reveal-ready .reveal.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal-ready .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
