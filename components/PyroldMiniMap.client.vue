@@ -103,6 +103,7 @@ onMounted(async () => {
   rafId = requestAnimationFrame(spinFrame)
 
   console.log('[minimap] 3/ carte créée')
+  if (typeof window !== 'undefined') window.__minimap = map
   map.on('error', (e) => { if (e && e.error) console.warn('[minimap] maplibre:', e.error.message || e.error) })
 
   map.on('load', async () => {
@@ -152,16 +153,15 @@ onMounted(async () => {
       paint: { 'line-color': '#F5CF27', 'line-width': 1.6 } }), 'batiments-line')
 
     console.log('[minimap] 6/ couches:', map.getStyle().layers.map(l => l.id).join(', '))
-    setTimeout(() => {
-      try {
-        const c = map.getCenter()
-        console.log('[minimap] 7/ rendu — old-fill=' + map.queryRenderedFeatures({ layers: ['old-fill'] }).length +
-          ' parcelles=' + map.queryRenderedFeatures({ layers: ['parcelles-line'] }).length +
-          ' | z=' + map.getZoom().toFixed(1) + ' pitch=' + map.getPitch().toFixed(0) + ' bearing=' + map.getBearing().toFixed(0) +
-          ' center=' + c.lng.toFixed(4) + ',' + c.lat.toFixed(4) +
-          ' | old source loaded=' + !!map.getSource('old'))
-      } catch (e) { console.warn('[minimap] rendu check:', e) }
-    }, 1800)
+    const diag = () => {
+      const qr = (id) => { try { return map.queryRenderedFeatures({ layers: [id] }).length } catch { return 'x' } }
+      const qs = (id) => { try { return map.querySourceFeatures(id).length } catch { return 'x' } }
+      const sl = (id) => { try { return map.isSourceLoaded(id) } catch { return 'x' } }
+      console.log('[minimap] 7/ @5s — rendu(old-fill/parc/bat)=' + qr('old-fill') + '/' + qr('parcelles-line') + '/' + qr('batiments-line') +
+        ' | tuilé source(old/parc/bat)=' + qs('old') + '/' + qs('parcelles') + '/' + qs('batiments') +
+        ' | srcLoaded(old/parc)=' + sl('old') + '/' + sl('parcelles'))
+    }
+    setTimeout(diag, 5000)
   })
 })
 
