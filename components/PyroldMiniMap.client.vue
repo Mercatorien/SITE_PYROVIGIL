@@ -51,9 +51,10 @@ function makeHatch(size = 8, color = '#CC0000') {
 
 onMounted(async () => {
   console.log('[minimap] 1/ mount, urls =', PARCELLES_URL)
-  // Import dynamique (exports nommés — maplibre-gl v5 n'a pas d'export default).
+  // Import dynamique (v5 : export par défaut = objet maplibregl).
   // MapLibre reste hors du bundle serveur et du bundle principal.
-  const { Map: MlMap } = await import('maplibre-gl')
+  const maplibregl = (await import('maplibre-gl')).default
+  const MlMap = maplibregl.Map
   await import('maplibre-gl/dist/maplibre-gl.css')
   console.log('[minimap] 2/ maplibre importé')
   if (!el.value) { console.warn('[minimap] pas de conteneur'); return }
