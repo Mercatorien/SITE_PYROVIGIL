@@ -123,7 +123,8 @@ onMounted(async () => {
         fetch(OLD_URL).then(r => r.json()),
         fetch(ROUTES_URL).then(r => r.json()),
       ])
-    } catch (e) { console.warn('[minimap] fetch geojson:', e); return }
+    } catch (e) { console.warn('[minimap] fetch geojson ÉCHEC:', e); return }
+    console.log('[minimap] 5/ geojson OK', { parc: parcelles?.features?.length, old: old?.features?.length, rte: routes?.features?.length, bat: batiments?.features?.length })
 
     // Ajout des sources et couches — chacune isolée pour ne jamais tout perdre
     const add = (fn, label) => { try { fn() } catch (e) { console.warn('[minimap] ' + label + ':', e) } }
@@ -149,6 +150,18 @@ onMounted(async () => {
       paint: { 'line-color': '#232323', 'line-width': 2, 'line-opacity': 0.9 } }), 'routes-line')
     add(() => map.addLayer({ id: 'batiments-line', type: 'line', source: 'batiments',
       paint: { 'line-color': '#F5CF27', 'line-width': 1.6 } }), 'batiments-line')
+
+    console.log('[minimap] 6/ couches:', map.getStyle().layers.map(l => l.id).join(', '))
+    setTimeout(() => {
+      try {
+        const c = map.getCenter()
+        console.log('[minimap] 7/ rendu — old-fill=' + map.queryRenderedFeatures({ layers: ['old-fill'] }).length +
+          ' parcelles=' + map.queryRenderedFeatures({ layers: ['parcelles-line'] }).length +
+          ' | z=' + map.getZoom().toFixed(1) + ' pitch=' + map.getPitch().toFixed(0) + ' bearing=' + map.getBearing().toFixed(0) +
+          ' center=' + c.lng.toFixed(4) + ',' + c.lat.toFixed(4) +
+          ' | old source loaded=' + !!map.getSource('old'))
+      } catch (e) { console.warn('[minimap] rendu check:', e) }
+    }, 1800)
   })
 })
 
