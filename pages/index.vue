@@ -145,7 +145,7 @@
           <!-- 02 · Cartographie de l'aléa (image existante) -->
           <div v-reveal="70" class="bg-white p-7 flex flex-col">
             <div class="aspect-square overflow-hidden rounded-md border border-brand-dark/10 bg-brand-cream mb-6">
-              <img :src="asset('/img/alea-carte.webp')" alt="Carte de l'aléa feu de forêt à fine échelle"
+              <img :src="asset('/img/old-cuers.webp')" alt="Cartographie de l'aléa — commune de Cuers"
                 loading="lazy" decoding="async" class="w-full h-full object-cover" />
             </div>
             <span class="idx">02</span>
@@ -156,10 +156,8 @@
           <!-- 03 · Analyse LiDAR : visualiseur interactif (iframe) -->
           <div v-reveal="140" class="bg-white p-7 flex flex-col">
             <div class="aspect-square overflow-hidden rounded-md border border-brand-dark/10 bg-brand-dark mb-6">
-              <!-- TODO iframe visualiseur LiDAR (Potree) une fois le fichier fourni -->
-              <div class="w-full h-full flex items-center justify-center px-4 text-center font-mono text-[11px] text-white/40">
-                /* visualiseur LiDAR interactif (iframe) à intégrer */
-              </div>
+              <iframe :src="asset('/lidar/index.html')" class="w-full h-full block border-0" loading="lazy"
+                title="Visualiseur LiDAR — nuage de points classé (Cuers)"></iframe>
             </div>
             <span class="idx">03</span>
             <h3 class="mt-3 font-display font-bold text-xl text-brand-dark">Analyse LiDAR</h3>

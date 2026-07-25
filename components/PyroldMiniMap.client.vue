@@ -31,6 +31,7 @@ const ROUTES_URL = asset('/data/cuers-demo/routes.geojson')
 const el = ref(null)
 const showHint = ref(true)
 let map = null
+let rafId = null
 
 // Motif hachuré 45° (pour les OLD générées par les routes) — rendu en canvas
 function makeHatch(size = 8, color = '#CC0000') {
@@ -61,6 +62,7 @@ onMounted(async () => {
     zoom: 16,
     minZoom: 14,
     maxZoom: 19,
+    pitch: 38,
     maxBounds: BOUNDS,
     attributionControl: false,
     style: {
@@ -80,8 +82,23 @@ onMounted(async () => {
     },
   })
 
-  // L'indice disparaît à la première manipulation (pan ou zoom)
-  map.once('movestart', () => { showHint.value = false })
+  // Rotation automatique lente autour du centre ; pause pendant que l'utilisateur agit,
+  // reprise après un court délai d'inactivité. L'indice disparaît au premier geste.
+  let spin = true
+  let resumeT = null
+  const onUser = () => {
+    spin = false
+    showHint.value = false
+    clearTimeout(resumeT)
+    resumeT = setTimeout(() => { spin = true }, 4000)
+  }
+  ;['mousedown', 'touchstart', 'wheel', 'dragstart'].forEach(ev => map.on(ev, onUser))
+  const spinFrame = () => {
+    if (!map) return
+    if (spin) map.setBearing(map.getBearing() + 0.09)
+    rafId = requestAnimationFrame(spinFrame)
+  }
+  rafId = requestAnimationFrame(spinFrame)
 
   map.on('load', async () => {
     try {
@@ -143,7 +160,7 @@ onMounted(async () => {
   })
 })
 
-onBeforeUnmount(() => { map?.remove(); map = null })
+onBeforeUnmount(() => { if (rafId) cancelAnimationFrame(rafId); map?.remove(); map = null })
 </script>
 
 <style scoped>
