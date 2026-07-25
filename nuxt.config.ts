@@ -12,6 +12,13 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  // La console d'admin charge ses données en direct (API + Postgres) : elle ne doit
+  // pas être pré-rendue au build (sinon [500] au générateur, faute de base). On la
+  // sert en client-only → coquille SPA statique qui s'hydrate côté navigateur.
+  routeRules: {
+    '/pyro-admin': { ssr: false },
+  },
+
   // Polices auto-hébergées au build (pas d'appel Google au runtime → perf + RGPD)
   googleFonts: {
     families: {
