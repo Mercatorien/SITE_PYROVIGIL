@@ -79,53 +79,10 @@
       </div>
     </section>
 
-    <!-- ══ À QUI L'ON S'ADRESSE ══ -->
-    <section class="section bg-brand-dark text-white">
-      <div class="container-x">
-        <p class="eyebrow mb-3 !text-brand-orange-bright">— À qui l'on s'adresse</p>
-        <h2 class="font-display font-extrabold text-3xl sm:text-[2.6rem] leading-[1.1] tracking-tight max-w-2xl">
-          Quatre publics, une même exigence de protection
-        </h2>
-        <div class="mt-14 grid sm:grid-cols-2 gap-px bg-white/10 border border-white/10">
-          <div v-for="(a, i) in publics" :key="a.cat" v-reveal="(i % 2) * 90" class="bg-brand-dark flex flex-col p-7">
-            <span class="font-mono text-[11px] uppercase tracking-wider text-brand-orange-bright">{{ a.cat }}</span>
-            <h3 class="mt-2 font-display font-bold text-xl text-white">{{ a.sub }}</h3>
-            <p class="mt-3 text-sm text-white/60 leading-relaxed flex-1">{{ a.desc }}</p>
-            <p class="mt-6 font-mono text-[11px] uppercase tracking-wider text-white/45">{{ a.tags }}</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ══ QUATRE BRIQUES (la suite d'outils) ══ -->
+    <!-- ══ NOS PRESTATIONS ══ -->
     <section class="section">
       <div class="container-x">
-        <div v-reveal class="mb-12 sm:mb-14 max-w-2xl">
-          <p class="eyebrow mb-3">— Notre suite d'outils</p>
-          <h2 class="h-section">Quatre briques pour la prévention du risque feu</h2>
-          <p class="mt-5 text-brand-mid leading-relaxed">
-            Chaque outil alimente les autres : le moteur génère les OLD, la donnée LiDAR nourrit l'aléa, celui-ci hiérarchise le débroussaillement — et PyrOLD restitue et pilote l'ensemble.
-          </p>
-        </div>
-        <div class="grid sm:grid-cols-2 gap-px bg-brand-dark/10 border border-brand-dark/10">
-          <NuxtLink v-for="(b, i) in briques" :key="b.title" :to="b.to" v-reveal="i * 70"
-            class="group bg-white p-8 hover:bg-brand-cream/60 transition">
-            <div class="aspect-[16/9] overflow-hidden rounded-md border border-brand-dark/10 mb-6 bg-brand-cream">
-              <img :src="asset(b.img)" :alt="b.alt" loading="lazy" decoding="async"
-                class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500" />
-            </div>
-            <span class="idx">{{ String(i + 1).padStart(2, '0') }}</span>
-            <h3 class="mt-3 font-display font-bold text-xl text-brand-dark group-hover:text-brand-orange transition">{{ b.title }}</h3>
-            <p class="mt-3 text-brand-mid leading-relaxed">{{ b.desc }}</p>
-          </NuxtLink>
-        </div>
-      </div>
-    </section>
-
-    <!-- ══ PRESTATIONS (index numéroté) ══ -->
-    <section class="section">
-      <div class="container-x">
-        <div class="flex items-end justify-between gap-6 mb-12">
+        <div class="flex items-end justify-between gap-6 mb-10">
           <div>
             <p class="eyebrow mb-3">— Nos prestations</p>
             <h2 class="h-section max-w-2xl">De la donnée cadastrale au suivi terrain</h2>
@@ -134,6 +91,11 @@
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="2" d="M5 12h14m0 0l-6-6m6 6l-6 6"/></svg>
           </NuxtLink>
         </div>
+
+        <!-- # à compléter avec Patrick -->
+        <p class="mb-8 inline-block font-mono text-[11px] uppercase tracking-wider text-brand-orange border border-dashed border-brand-orange/40 bg-brand-orange/5 px-3 py-2">
+          # Contenu des prestations à compléter avec Patrick
+        </p>
 
         <NuxtLink v-for="(p, i) in prestations" :key="p.title" to="/prestations" v-reveal="i * 70"
           class="group grid md:grid-cols-12 gap-4 md:gap-8 items-baseline py-7 border-t border-brand-dark/10 hover:bg-brand-cream/60 transition -mx-6 px-6">
@@ -145,6 +107,58 @@
           </span>
         </NuxtLink>
         <div class="border-t border-brand-dark/10"></div>
+      </div>
+    </section>
+
+    <!-- ══ NOTRE SUITE D'OUTILS (vitrine) ══ -->
+    <section class="section bg-brand-cream border-y border-brand-dark/10">
+      <div class="container-x">
+        <div v-reveal class="mb-12 sm:mb-14 max-w-2xl">
+          <p class="eyebrow mb-3">— Notre suite d'outils</p>
+          <h2 class="h-section">Voir la donnée, pas seulement la lire</h2>
+          <p class="mt-5 text-brand-mid leading-relaxed">
+            Nos outils s'alimentent mutuellement : le moteur génère les OLD, la donnée LiDAR nourrit l'aléa, et PyrOLD restitue et pilote l'ensemble — de la parcelle au terrain.
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-brand-dark/10 border border-brand-dark/10">
+          <!-- 01 · PyrOLD : mini-carto live (ortho + parcelles + installations OLD) -->
+          <div v-reveal class="bg-white p-7 flex flex-col">
+            <div class="aspect-square overflow-hidden rounded-md border border-brand-dark/10 bg-brand-cream mb-6">
+              <!-- TODO mini-carto MapLibre : ortho IGN + parcelles + installations OLD (symbologie PyrOLD) -->
+              <div class="w-full h-full flex items-center justify-center px-4 text-center font-mono text-[11px] text-brand-border">
+                /* mini-carto PyrOLD — ortho + parcelles + installations OLD */
+              </div>
+            </div>
+            <span class="idx">01</span>
+            <h3 class="mt-3 font-display font-bold text-xl text-brand-dark">PyrOLD.fr</h3>
+            <p class="mt-3 text-brand-mid leading-relaxed">Cartographie et pilotage des OLD — du territoire communal à la parcelle.</p>
+          </div>
+
+          <!-- 02 · Cartographie de l'aléa (image existante) -->
+          <div v-reveal="70" class="bg-white p-7 flex flex-col">
+            <div class="aspect-square overflow-hidden rounded-md border border-brand-dark/10 bg-brand-cream mb-6">
+              <img :src="asset('/img/alea-carte.webp')" alt="Carte de l'aléa feu de forêt à fine échelle"
+                loading="lazy" decoding="async" class="w-full h-full object-cover" />
+            </div>
+            <span class="idx">02</span>
+            <h3 class="mt-3 font-display font-bold text-xl text-brand-dark">Cartographie de l'aléa</h3>
+            <p class="mt-3 text-brand-mid leading-relaxed">Donnée fine à 50 m, méthode transparente, complémentaire de la donnée préfectorale.</p>
+          </div>
+
+          <!-- 03 · Analyse LiDAR : visualiseur interactif (iframe) -->
+          <div v-reveal="140" class="bg-white p-7 flex flex-col">
+            <div class="aspect-square overflow-hidden rounded-md border border-brand-dark/10 bg-brand-dark mb-6">
+              <!-- TODO iframe visualiseur LiDAR (Potree) une fois le fichier fourni -->
+              <div class="w-full h-full flex items-center justify-center px-4 text-center font-mono text-[11px] text-white/40">
+                /* visualiseur LiDAR interactif (iframe) à intégrer */
+              </div>
+            </div>
+            <span class="idx">03</span>
+            <h3 class="mt-3 font-display font-bold text-xl text-brand-dark">Analyse LiDAR</h3>
+            <p class="mt-3 text-brand-mid leading-relaxed">Biomasse par strate, structure verticale de la végétation et segmentation des arbres.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -183,48 +197,56 @@
       </div>
     </section>
 
-    <!-- ══ RÉFÉRENCES : ZONE + TÉMOIGNAGE ══ -->
-    <section class="section bg-brand-cream border-y border-brand-dark/10">
-      <div class="container-x grid lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
-        <div v-reveal>
-          <p class="eyebrow mb-3">— Zone d'intervention</p>
-          <h2 class="h-section">Présents sur 52 départements</h2>
-          <p class="mt-5 text-brand-mid leading-relaxed max-w-md">Nos études couvrent l'ensemble des territoires soumis aux Obligations Légales de Débroussaillement, avec une réglementation déjà intégrée pour la plupart des communes.</p>
-          <div class="mt-8 aspect-[4/3] rounded-lg border border-brand-dark/10 bg-white flex items-center justify-center text-brand-border font-mono text-xs">
-            /* carte des réalisations à intégrer */
+    <!-- ══ À QUI L'ON S'ADRESSE ══ -->
+    <section class="section bg-brand-dark text-white">
+      <div class="container-x">
+        <p class="eyebrow mb-3 !text-brand-orange-bright">— À qui l'on s'adresse</p>
+        <h2 class="font-display font-extrabold text-3xl sm:text-[2.6rem] leading-[1.1] tracking-tight max-w-2xl">
+          Quatre publics, une même exigence de protection
+        </h2>
+        <div class="mt-14 grid sm:grid-cols-2 gap-px bg-white/10 border border-white/10">
+          <div v-for="(a, i) in publics" :key="a.cat" v-reveal="(i % 2) * 90" class="bg-brand-dark flex flex-col p-7">
+            <span class="font-mono text-[11px] uppercase tracking-wider text-brand-orange-bright">{{ a.cat }}</span>
+            <h3 class="mt-2 font-display font-bold text-xl text-white">{{ a.sub }}</h3>
+            <p class="mt-3 text-sm text-white/60 leading-relaxed flex-1">{{ a.desc }}</p>
+            <p class="mt-6 font-mono text-[11px] uppercase tracking-wider text-white/45">{{ a.tags }}</p>
           </div>
         </div>
-        <figure class="flex flex-col justify-center" v-reveal="80">
-          <svg class="w-10 h-10 text-brand-orange mb-6" fill="currentColor" viewBox="0 0 24 24"><path d="M7.17 6A5.17 5.17 0 0 0 2 11.17V18h6.83v-6.83H5.5A2.67 2.67 0 0 1 8.17 8.5V6zm11 0A5.17 5.17 0 0 0 13 11.17V18h6.83v-6.83H16.5a2.67 2.67 0 0 1 2.67-2.67V6z"/></svg>
-          <blockquote class="font-display font-semibold text-2xl sm:text-3xl leading-snug text-brand-dark">
-            « PLACEHOLDER — témoignage d'une commune cliente, à intégrer. »
-          </blockquote>
-          <figcaption class="mt-6 text-sm text-brand-mid">Maire de [commune] — [département]</figcaption>
-          <div class="mt-10 pt-8 border-t border-brand-dark/10 grid grid-cols-3 sm:grid-cols-4 gap-4">
-            <div v-for="i in 4" :key="i" class="h-12 bg-white border border-brand-dark/10 flex items-center justify-center font-mono text-[10px] text-brand-border">logo</div>
-          </div>
-        </figure>
       </div>
     </section>
 
-    <!-- ══ CONTEXTE ══ -->
-    <section class="section">
-      <div class="container-x grid lg:grid-cols-12 gap-10">
-        <div class="lg:col-span-4" v-reveal>
-          <p class="eyebrow mb-3">— Pourquoi maintenant</p>
-          <h2 class="h-section">Un enjeu de sécurité et de responsabilité</h2>
-        </div>
-        <div class="lg:col-span-8 lg:pl-8" v-reveal="80">
-          <p class="text-xl sm:text-2xl leading-relaxed text-brand-dark font-display font-medium">
-            Le débroussaillement sauve des vies, des biens et des paysages. Pour la commune, c'est une obligation et une responsabilité au titre du Code forestier.
-          </p>
-          <p class="mt-6 text-brand-mid leading-relaxed max-w-2xl">
-            PyroVigil vous aide à cartographier, contrôler et prouver le pilotage de vos OLD, en toute conformité — de la donnée cadastrale à la procédure préfectorale.
-          </p>
-          <NuxtLink to="/prestations" class="link-arrow mt-8">Nos prestations
+    <!-- ══ NOS RÉFÉRENCES ══ -->
+    <section class="section bg-brand-cream border-y border-brand-dark/10">
+      <div class="container-x">
+        <div class="flex items-end justify-between gap-6 mb-12">
+          <div>
+            <p class="eyebrow mb-3">— Ils nous font confiance</p>
+            <h2 class="h-section max-w-2xl">Références &amp; réalisations</h2>
+          </div>
+          <NuxtLink to="/references" class="link-arrow hidden sm:inline-flex whitespace-nowrap">Toutes nos références
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="2" d="M5 12h14m0 0l-6-6m6 6l-6 6"/></svg>
           </NuxtLink>
         </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-brand-dark/10 border border-brand-dark/10">
+          <article v-for="(r, i) in references" :key="r.title" v-reveal="(i % 3) * 70" class="bg-white p-7 flex flex-col">
+            <div class="flex h-1.5 mb-6 overflow-hidden rounded-full">
+              <span v-for="c in r.palette" :key="c" class="flex-1" :style="{ background: c }"></span>
+            </div>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="font-mono text-[10px] uppercase tracking-wider px-2 py-1 bg-brand-orange/10 text-brand-orange-deep">{{ r.dom }}</span>
+              <span class="font-mono text-[10px] uppercase tracking-wider px-2 py-1 bg-brand-dark/5 text-brand-mid">{{ r.ter }}</span>
+            </div>
+            <h3 class="font-display font-bold text-lg text-brand-dark leading-snug">{{ r.title }}</h3>
+            <p class="mt-3 text-sm text-brand-mid leading-relaxed flex-1">{{ r.desc }}</p>
+            <div class="mt-5 pt-4 border-t border-brand-dark/10 flex items-center justify-between font-mono text-[11px] text-brand-border">
+              <span>{{ r.type }}</span><span>{{ r.year }}</span>
+            </div>
+          </article>
+        </div>
+        <p class="mt-8 font-mono text-[11px] text-brand-border max-w-2xl leading-relaxed">
+          Les dossiers de particuliers sont présentés de façon anonymisée. Références détaillées et contacts vérifiables sur demande.
+        </p>
       </div>
     </section>
 
@@ -272,19 +294,33 @@ const stats = [
   { value: 'Qualiopi', label: 'organisme de formation certifié', label2: true },
 ]
 
-// Les quatre briques de la suite d'outils (chacune alimente les autres)
-const briques = [
-  { title: 'PyrOLD.fr', desc: 'Plateforme web de visualisation, gestion et suivi des OLD — du territoire communal à la parcelle, jusqu\'au terrain.', to: '/pyrold', img: '/img/pyrold-carte.webp', alt: 'Interface PyrOLD : carte des OLD communales' },
-  { title: 'Moteur de génération d\'OLD', desc: 'Calcul reproductible et homogène, conforme au Code forestier et aux arrêtés préfectoraux.', to: '/prestations', img: '/img/pyrold-parcelle.webp', alt: 'Analyse des OLD d\'une parcelle génératrice' },
-  { title: 'Cartographie de l\'aléa', desc: 'Donnée fine à 50 m, méthode transparente, complémentaire de la donnée préfectorale.', to: '/prestations', img: '/img/alea-carte.webp', alt: 'Carte de l\'aléa feu de forêt à fine échelle' },
-  { title: 'Analyse LiDAR', desc: 'Biomasse par strate, structure verticale de la végétation et segmentation des arbres.', to: '/prestations', img: '/img/lidar-biomasse.webp', alt: 'Volume de biomasse par strate issu du LiDAR' },
-]
-
 const prestations = [
   { title: 'Cartographie & calcul des OLD', desc: 'Zonage réglementaire précis parcelle par parcelle, calcul des équidistances, exports exploitables.' },
   { title: 'Études DFCI & risque incendie', desc: 'Diagnostics de défendabilité, appui PPRIF, aménagement des interfaces habitat-forêt.' },
   { title: 'Accompagnement des collectivités', desc: 'Contrôles, courriers et mises en demeure, procédure préfectorale historisée.' },
   { title: 'Formations — certifiées Qualiopi', desc: 'Montée en compétence de vos équipes sur les OLD et la DFCI, finançable.' },
+]
+
+// Références (réalisations) — reprises de la maquette v21 ; palette = motif discret de la carte
+const references = [
+  { dom: 'Défendabilité', ter: 'Var', type: 'Collectivité', year: '2025–2026', palette: ['#F5EFEC', '#FCC2A6', '#E36C08'],
+    title: 'Étude de défendabilité — Commune de Grimaud',
+    desc: '97 zones analysées, 55,6 km de voies expertisées, plus de 8 200 logements évalués : cartographie complète de la défendabilité communale et priorisation des mises aux normes.' },
+  { dom: 'Marché public', ter: '6 départements', type: 'État — infrastructures', year: '2026', palette: ['#EBF2F5', '#ABC0D5', '#375F91'],
+    title: 'Diagnostic OLD — DIR Atlantique',
+    desc: 'Diagnostic des obligations légales de débroussaillement sur environ 630 km de réseau routier national, couvrant six départements du grand Sud-Ouest.' },
+  { dom: 'Étude OLD', ter: 'Bouches-du-Rhône', type: 'Grand domaine', year: '2025', palette: ['#EDF6ED', '#AFC0AF', '#376436'],
+    title: 'Dossier OLD — AFUL de Pont Royal, Mallemort',
+    desc: "Étude complète des obligations de débroussaillement d'un domaine résidentiel et de loisirs de 183 hectares : zonage, superpositions, plans parcellaires et correspondances." },
+  { dom: 'Outil numérique', ter: 'Var', type: 'Sécurité civile', year: '2026', palette: ['#EBF2F5', '#ABC0D5', '#375F91'],
+    title: 'CartOrange — Application des CCFF du Var',
+    desc: 'Application de patrouille mise gratuitement à disposition des Comités Communaux Feux de Forêts du Var pour la saison 2026, avec guide opérationnel dédié.' },
+  { dom: 'Étude OLD', ter: 'Var', type: 'Collectivités', year: '2025–2026', palette: ['#EDF6ED', '#AFC0AF', '#376436'],
+    title: 'Plans communaux OLD — Artigues & Cuers',
+    desc: "Études réglementaires et plans de zonage des obligations légales de débroussaillement à l'échelle communale, avec cartographie parcellaire interactive." },
+  { dom: 'Défendabilité', ter: 'Var', type: 'Particuliers', year: '2025–2026', palette: ['#F5EFEC', '#FCC2A6', '#E36C08'],
+    title: 'Défenses de permis de construire',
+    desc: "Notes techniques et analyses contradictoires (défendabilité, PPRIF, accès DECI) à l'appui de dossiers de permis de construire de particuliers en zone exposée." },
 ]
 
 const publics = [
