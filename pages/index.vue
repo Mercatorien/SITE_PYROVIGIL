@@ -111,7 +111,7 @@
           <NuxtLink v-for="(b, i) in briques" :key="b.title" :to="b.to" v-reveal="i * 70"
             class="group bg-white p-8 hover:bg-brand-cream/60 transition">
             <div class="aspect-[16/9] overflow-hidden rounded-md border border-brand-dark/10 mb-6 bg-brand-cream">
-              <img :src="b.img" :alt="b.alt" loading="lazy" decoding="async"
+              <img :src="asset(b.img)" :alt="b.alt" loading="lazy" decoding="async"
                 class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500" />
             </div>
             <span class="idx">{{ String(i + 1).padStart(2, '0') }}</span>
@@ -177,7 +177,7 @@
             <span class="w-2.5 h-2.5 rounded-full bg-white/25"></span>
             <span class="ml-3 font-mono text-[10px] text-white/40">pyrold.fr</span>
           </div>
-          <img src="/img/pyrold-dashboard.webp" alt="PyrOLD — tableau de bord de pilotage du débroussaillement"
+          <img :src="asset('/img/pyrold-dashboard.webp')" alt="PyrOLD — tableau de bord de pilotage du débroussaillement"
             loading="lazy" decoding="async" class="w-full block bg-white" />
         </div>
       </div>

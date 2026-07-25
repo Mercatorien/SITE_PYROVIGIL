@@ -2,7 +2,7 @@
   <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-brand-dark/10">
     <div class="container-x flex items-center gap-6 h-20 lg:h-24">
       <NuxtLink to="/" class="flex items-center flex-none" aria-label="Accueil PyroVigil">
-        <img src="/logo-pyrovigil.png" alt="PyroVigil — Forest Fire Protect" class="h-14 lg:h-[72px] w-auto" />
+        <img :src="asset('/logo-pyrovigil.png')" alt="PyroVigil — Forest Fire Protect" class="h-14 lg:h-[72px] w-auto" />
       </NuxtLink>
 
       <!-- Bloc droit : menu, filet, puis contacts tout à droite -->

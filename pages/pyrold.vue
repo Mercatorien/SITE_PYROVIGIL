@@ -14,7 +14,7 @@
             <span class="w-2.5 h-2.5 rounded-full bg-white/25"></span>
             <span class="ml-3 font-mono text-[10px] text-white/40">pyrold.fr</span>
           </div>
-          <img src="/img/pyrold-carte.webp" alt="PyrOLD — carte des OLD communales avec couches métier"
+          <img :src="asset('/img/pyrold-carte.webp')" alt="PyrOLD — carte des OLD communales avec couches métier"
             loading="lazy" decoding="async" class="w-full block" />
         </div>
         <div class="text-center mt-8" v-reveal>
@@ -79,7 +79,7 @@
         <div class="grid sm:grid-cols-2 gap-px bg-white/10 border border-white/10">
           <article v-for="(m, i) in modules" :key="m.title" v-reveal="i * 70" class="bg-brand-dark p-7">
             <div class="aspect-[16/9] overflow-hidden rounded-md border border-white/10 mb-6 bg-white/5">
-              <img :src="m.img" :alt="m.alt" loading="lazy" decoding="async" class="w-full h-full object-cover" />
+              <img :src="asset(m.img)" :alt="m.alt" loading="lazy" decoding="async" class="w-full h-full object-cover" />
             </div>
             <span class="font-mono text-sm text-brand-orange-bright">{{ String(i + 1).padStart(2, '0') }}</span>
             <h3 class="mt-3 font-display font-bold text-lg">{{ m.title }}</h3>
@@ -111,7 +111,7 @@
           </div>
         </div>
         <div v-reveal="120" class="flex justify-center">
-          <img src="/img/pyrold-mobile.webp" alt="PyrOLD sur mobile : consultation des OLD et relevés géolocalisés sur le terrain"
+          <img :src="asset('/img/pyrold-mobile.webp')" alt="PyrOLD sur mobile : consultation des OLD et relevés géolocalisés sur le terrain"
             loading="lazy" decoding="async"
             class="max-h-[520px] w-auto rounded-2xl border border-brand-dark/10 shadow-2xl" />
         </div>

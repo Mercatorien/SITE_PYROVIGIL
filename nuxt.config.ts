@@ -44,7 +44,7 @@ export default defineNuxtConfig({
         { name: 'description', content: 'PyroVigil, bureau d\'études spécialisé en protection contre les feux de forêt : cartographie et gestion des Obligations Légales de Débroussaillement (OLD), études DFCI, formations certifiées Qualiopi, et l\'outil PyrOLD.' },
         { name: 'theme-color', content: '#E8651A' },
       ],
-      link: [{ rel: 'icon', href: '/favicon.ico' }],
+      // favicon défini dans app.vue via asset() pour respecter le baseURL
     },
   },
 })

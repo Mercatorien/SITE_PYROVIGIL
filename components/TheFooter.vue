@@ -3,7 +3,7 @@
     <div class="container-x py-14 grid gap-10 md:grid-cols-4">
       <!-- Marque -->
       <div class="md:col-span-1">
-        <img src="/logo-pyrovigil.png" alt="PyroVigil" class="h-10 w-auto bg-white rounded-lg p-1.5" />
+        <img :src="asset('/logo-pyrovigil.png')" alt="PyroVigil" class="h-10 w-auto bg-white rounded-lg p-1.5" />
         <p class="mt-4 text-sm leading-relaxed text-white/60">
           Bureau d'études spécialisé en protection contre les feux de forêt et Obligations Légales de Débroussaillement.
         </p>
