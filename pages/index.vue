@@ -289,11 +289,11 @@ const prestations = [
 
 const publics = [
   {
-    cat: 'Particuliers',
-    sub: 'Propriétaires & porteurs de projet',
-    desc: "L'OLD protège les personnes, les biens — et la valeur de votre patrimoine : un bien en zonage rouge d'un PPRIF peut perdre une part très importante de sa valeur et se voir interdire extension ou reconstruction, sauf à satisfaire à sa défendabilité réglementaire.",
-    tags: 'Étude OLD · diagnostic avant achat',
-    img: "Boisement en lisière d'habitations",
+    cat: 'Collectivités',
+    sub: 'Communes, EPCI & services',
+    desc: "Pilotez OLD, PIDAF, PAC, PPRIF, RDDECI et défendabilité à l'échelle de votre territoire. Anticipez la mise aux normes des voies d'accès et formez vos équipes techniques, urbanisme et police municipale.",
+    tags: 'Plan communal OLD · formation',
+    img: 'Garrigue provençale',
   },
   {
     cat: 'Professionnels',
@@ -303,18 +303,18 @@ const publics = [
     img: "Panache de fumée d'un feu de forêt",
   },
   {
-    cat: 'Collectivités',
-    sub: 'Communes, EPCI & services',
-    desc: "Pilotez OLD, PIDAF, PAC, PPRIF, RDDECI et défendabilité à l'échelle de votre territoire. Anticipez la mise aux normes des voies d'accès et formez vos équipes techniques, urbanisme et police municipale.",
-    tags: 'Plan communal OLD · formation',
-    img: 'Garrigue provençale',
-  },
-  {
     cat: 'Jardins & espaces verts',
     sub: 'Paysagistes, élagueurs, ETF',
     desc: "Formez-vous aux OLD (Qualiopi, e-learning ou présentiel), certifiez-vous ProCertif et rejoignez le Réseau PYROVIGIL : annuaire client, appui technique et juridique permanent, contrat d'apporteur d'affaires.",
     tags: 'Formations métier · réseau',
     img: '',
+  },
+  {
+    cat: 'Particuliers',
+    sub: 'Propriétaires & porteurs de projet',
+    desc: "L'OLD protège les personnes, les biens — et la valeur de votre patrimoine : un bien en zonage rouge d'un PPRIF peut perdre une part très importante de sa valeur et se voir interdire extension ou reconstruction, sauf à satisfaire à sa défendabilité réglementaire.",
+    tags: 'Étude OLD · diagnostic avant achat',
+    img: "Boisement en lisière d'habitations",
   },
 ]
 
