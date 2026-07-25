@@ -8,6 +8,13 @@ export default defineNuxtConfig({
   // http://localhost:3000 (résolu en 127.0.0.1) reste inaccessible → page blanche.
   devServer: { host: '0.0.0.0', port: 3000 },
 
+  // MapLibre GL : son web worker se bloque avec le pré-bundling Vite en dev
+  // (requête maplibre-gl-worker.mjs pendante → carte jamais chargée). On l'exclut.
+  vite: {
+    optimizeDeps: { exclude: ['maplibre-gl'] },
+    worker: { format: 'es' },
+  },
+
   modules: ['@nuxtjs/tailwindcss', '@nuxtjs/google-fonts'],
 
   css: ['~/assets/css/main.css'],

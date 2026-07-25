@@ -125,13 +125,20 @@
           <!-- 01 · PyrOLD : mini-carto live (ortho + parcelles + installations OLD) -->
           <div v-reveal class="bg-white p-7 flex flex-col">
             <div class="aspect-square overflow-hidden rounded-md border border-brand-dark/10 bg-brand-cream mb-6">
-              <!-- TODO mini-carto MapLibre : ortho IGN + parcelles + installations OLD (symbologie PyrOLD) -->
-              <div class="w-full h-full flex items-center justify-center px-4 text-center font-mono text-[11px] text-brand-border">
-                /* mini-carto PyrOLD — ortho + parcelles + installations OLD */
-              </div>
+              <ClientOnly>
+                <PyroldMiniMap />
+                <template #fallback>
+                  <div class="w-full h-full flex items-center justify-center font-mono text-[11px] text-brand-border">carte…</div>
+                </template>
+              </ClientOnly>
             </div>
             <span class="idx">01</span>
-            <h3 class="mt-3 font-display font-bold text-xl text-brand-dark">PyrOLD.fr</h3>
+            <h3 class="mt-3 font-display font-bold text-xl text-brand-dark">
+              <a href="https://pyrold.fr/" target="_blank" rel="noopener"
+                class="inline-flex items-center gap-1.5 hover:text-brand-orange transition group/link">PyrOLD.fr
+                <svg class="w-4 h-4 opacity-40 group-hover/link:opacity-100 group-hover/link:translate-x-0.5 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="2" d="M7 17L17 7M17 7H9m8 0v8"/></svg>
+              </a>
+            </h3>
             <p class="mt-3 text-brand-mid leading-relaxed">Cartographie et pilotage des OLD — du territoire communal à la parcelle.</p>
           </div>
 
@@ -156,7 +163,7 @@
             </div>
             <span class="idx">03</span>
             <h3 class="mt-3 font-display font-bold text-xl text-brand-dark">Analyse LiDAR</h3>
-            <p class="mt-3 text-brand-mid leading-relaxed">Biomasse par strate, structure verticale de la végétation et segmentation des arbres.</p>
+            <p class="mt-3 text-brand-mid leading-relaxed">Biomasse par strate, structure verticale de la végétation et segmentation des houppiers des arbres.</p>
           </div>
         </div>
       </div>
@@ -239,6 +246,7 @@
             </div>
             <h3 class="font-display font-bold text-lg text-brand-dark leading-snug">{{ r.title }}</h3>
             <p class="mt-3 text-sm text-brand-mid leading-relaxed flex-1">{{ r.desc }}</p>
+            <p v-if="r.note" class="mt-3 inline-block font-mono text-[10px] uppercase tracking-wider text-brand-orange border border-dashed border-brand-orange/40 bg-brand-orange/5 px-2 py-1">{{ r.note }}</p>
             <div class="mt-5 pt-4 border-t border-brand-dark/10 flex items-center justify-between font-mono text-[11px] text-brand-border">
               <span>{{ r.type }}</span><span>{{ r.year }}</span>
             </div>
@@ -314,7 +322,8 @@ const references = [
     desc: "Étude complète des obligations de débroussaillement d'un domaine résidentiel et de loisirs de 183 hectares : zonage, superpositions, plans parcellaires et correspondances." },
   { dom: 'Outil numérique', ter: 'Var', type: 'Sécurité civile', year: '2026', palette: ['#EBF2F5', '#ABC0D5', '#375F91'],
     title: 'CartOrange — Application des CCFF du Var',
-    desc: 'Application de patrouille mise gratuitement à disposition des Comités Communaux Feux de Forêts du Var pour la saison 2026, avec guide opérationnel dédié.' },
+    desc: 'Application de patrouille mise gratuitement à disposition des Comités Communaux Feux de Forêts du Var pour la saison 2026, avec guide opérationnel dédié.',
+    note: '# rajouter le lien du site' },
   { dom: 'Étude OLD', ter: 'Var', type: 'Collectivités', year: '2025–2026', palette: ['#EDF6ED', '#AFC0AF', '#376436'],
     title: 'Plans communaux OLD — Artigues & Cuers',
     desc: "Études réglementaires et plans de zonage des obligations légales de débroussaillement à l'échelle communale, avec cartographie parcellaire interactive." },
