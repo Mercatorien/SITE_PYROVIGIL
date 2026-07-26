@@ -63,60 +63,8 @@
       </div>
     </section>
 
-    <!-- La réponse : les modules -->
-    <section class="section bg-brand-dark text-white">
-      <div class="container-x">
-        <div v-reveal class="mb-14 max-w-3xl">
-          <p class="eyebrow mb-3 !text-brand-orange-bright">— Notre réponse</p>
-          <h2 class="font-display font-extrabold text-3xl sm:text-[2.6rem] leading-[1.1] tracking-tight">
-            Un calcul reproductible, paramétrable selon chaque arrêté préfectoral
-          </h2>
-          <p class="mt-5 text-white/70 leading-relaxed">
-            PyrOLD.fr calcule et cartographie les OLD de façon homogène et rejouable, paramétrée selon les arrêtés préfectoraux en vigueur — puis vous donne les outils pour agir.
-          </p>
-        </div>
-
-        <div class="grid sm:grid-cols-2 gap-px bg-white/10 border border-white/10">
-          <article v-for="(m, i) in modules" :key="m.title" v-reveal="i * 70" class="bg-brand-dark p-7">
-            <div class="aspect-[16/9] overflow-hidden rounded-md border border-white/10 mb-6 bg-white/5">
-              <img :src="asset(m.img)" :alt="m.alt" loading="lazy" decoding="async" class="w-full h-full object-cover" />
-            </div>
-            <span class="font-mono text-sm text-brand-orange-bright">{{ String(i + 1).padStart(2, '0') }}</span>
-            <h3 class="mt-3 font-display font-bold text-lg">{{ m.title }}</h3>
-            <p class="mt-2 text-sm text-white/60 leading-relaxed">{{ m.desc }}</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Mode citoyen + terrain -->
-    <section class="section">
-      <div class="container-x grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <div v-reveal>
-          <p class="eyebrow mb-3">— Mode citoyen &amp; terrain</p>
-          <h2 class="h-section">De la mairie au terrain, et jusqu'à l'administré</h2>
-          <div class="mt-8 space-y-6">
-            <div class="border-t border-brand-dark/10 pt-4">
-              <p class="font-mono text-[11px] uppercase tracking-wider text-brand-orange">Mode citoyen</p>
-              <p class="mt-2 text-brand-dark leading-relaxed">
-                La commune met <span class="font-semibold">gratuitement</span> à disposition de ses administrés le zonage réglementaire qui les concerne : chacun consulte sa parcelle et imprime son plan.
-              </p>
-            </div>
-            <div class="border-t border-brand-dark/10 pt-4">
-              <p class="font-mono text-[11px] uppercase tracking-wider text-brand-orange">Ordinateur &amp; mobile</p>
-              <p class="mt-2 text-brand-dark leading-relaxed">
-                Une application accessible sur ordinateur comme sur mobile, avec <span class="font-semibold">géolocalisation</span> pour le suivi de terrain, sans ressaisie.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div v-reveal="120" class="flex justify-center">
-          <img :src="asset('/img/pyrold-mobile.webp')" alt="PyrOLD sur mobile : consultation des OLD et relevés géolocalisés sur le terrain"
-            loading="lazy" decoding="async"
-            class="max-h-[520px] w-auto rounded-2xl border border-brand-dark/10 shadow-2xl" />
-        </div>
-      </div>
-    </section>
+    <!-- La réponse : présentation interactive des modules -->
+    <PyroldModules />
 
     <!-- Sécurité -->
     <section class="section bg-brand-cream border-y border-brand-dark/10">
@@ -167,13 +115,6 @@ const obstacles = [
   { title: 'Un cadre général', desc: 'Le Code forestier pose le cadre, mais ne descend pas au niveau opérationnel.' },
   { title: '48 arrêtés différents', desc: 'Chaque préfecture fixe ses propres modalités — distances, zones concernées, cas particuliers — sur les 52 départements couverts.' },
   { title: 'Un croisement de données', desc: 'Le calcul implique de croiser cadastre, bâti, réseaux, PLU, PPRIF… à l\'échelle de milliers de parcelles.' },
-]
-
-const modules = [
-  { title: 'Cartographie des OLD communales', desc: 'Enjeux ponctuels et linéaires : ce qui incombe réellement à la commune.', img: '/img/pyrold-carte.webp', alt: 'Carte des OLD communales' },
-  { title: 'Suivi du débroussaillement', desc: 'Statut horodaté par parcelle chez les administrés, commentaires et preuves d\'action.', img: '/img/pyrold-parcelle.webp', alt: 'Analyse et suivi d\'une parcelle génératrice' },
-  { title: 'Courriers sur fonds d\'autrui', desc: 'Génération et suivi des courriers : information, demande d\'accès (LRAR), saisine du préfet.', img: '/img/pyrold-courrier.webp', alt: 'Module de gestion des courriers' },
-  { title: 'Plan de priorisation', desc: 'Croisement aléa × OLD : traiter d\'abord les secteurs où le risque est maximal.', img: '/img/alea-priorisation.webp', alt: 'Croisement aléa et OLD pour la priorisation' },
 ]
 
 const security = [
