@@ -8,7 +8,7 @@
         <span class="w-2.5 h-2.5 rounded-full bg-white/25"></span>
         <span class="ml-3 font-mono text-[10px] text-white/40">pyrold.fr</span>
       </div>
-      <div class="relative aspect-[16/10] bg-brand-cream">
+      <div class="relative aspect-[1536/783] bg-brand-cream">
         <img v-for="(s, i) in slides" :key="s.src" :src="asset(s.src)" :alt="s.alt"
           loading="lazy" decoding="async"
           class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
@@ -20,10 +20,10 @@
       </div>
     </div>
 
-    <!-- Mockup mobile incrusté (mode citoyen) -->
-    <div class="absolute -bottom-6 -right-3 sm:-right-5 w-24 sm:w-28 rounded-[1.4rem] border-[5px] border-brand-dark bg-brand-dark shadow-2xl">
+    <!-- Mockup mobile incrusté (le cadre du téléphone est déjà dans l'image) -->
+    <div class="absolute -bottom-8 -right-1 sm:-right-3 w-28 sm:w-32 drop-shadow-2xl pointer-events-none">
       <img :src="asset(mobile)" alt="PyrOLD sur mobile — mode citoyen"
-        loading="lazy" decoding="async" class="w-full rounded-[1rem] block" />
+        loading="lazy" decoding="async" class="w-full block" />
     </div>
 
     <!-- Contrôles : puces -->
@@ -39,14 +39,15 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
-// Vues du produit — REMPLACER par les captures fraîches de Cuers (16:10, ~1600px de large).
+// Vues du produit (captures Cuers démo) — ordre défini par l'utilisateur.
 const slides = [
-  { src: '/img/pyrold-carte.webp', label: 'Cartographie des OLD communales', alt: 'PyrOLD — carte des OLD communales' },
-  { src: '/img/pyrold-parcelle.webp', label: 'Analyse d’une parcelle génératrice', alt: 'PyrOLD — analyse d’une parcelle' },
-  { src: '/img/pyrold-courrier.webp', label: 'Génération et suivi des courriers', alt: 'PyrOLD — module courriers' },
-  { src: '/img/pyrold-dashboard.webp', label: 'Tableau de bord de pilotage', alt: 'PyrOLD — tableau de bord' },
+  { src: '/img/pyrold-showcase-1.webp', label: 'Cartographie des OLD & suivi de terrain', alt: 'PyrOLD — carte des OLD communales de Cuers' },
+  { src: '/img/pyrold-showcase-2.webp', label: 'Fiche parcelle : obligations & surfaces', alt: 'PyrOLD — fiche d’une parcelle génératrice' },
+  { src: '/img/pyrold-showcase-3.webp', label: 'Répartition & suivi du débroussaillement', alt: 'PyrOLD — répartition des surfaces et suivi du débroussaillement' },
+  { src: '/img/pyrold-showcase-4.webp', label: 'Tableau de bord communal', alt: 'PyrOLD — tableau de bord et statistiques communales' },
+  { src: '/img/pyrold-showcase-5.webp', label: 'Suivi des courriers (LRAR, préfet)', alt: 'PyrOLD — suivi et génération des courriers' },
 ]
-const mobile = '/img/pyrold-mobile.webp'
+const mobile = '/img/pyrold-showcase-mobile.webp'
 
 const current = ref(0)
 const paused = ref(false)
