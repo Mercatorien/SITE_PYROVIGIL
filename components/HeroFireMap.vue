@@ -2,7 +2,7 @@
   <!-- Illustration : courbes de niveau fictives + cône de propagation du feu.
        Au chargement : le relief se trace, l'éclosion apparaît, puis le feu se propage. -->
   <!-- viewBox recadré : agrandissement ×1.2 (420 → 350) et contenu décalé vers la droite -->
-  <svg viewBox="40 14 350 350" class="w-full h-full" role="img" aria-labelledby="heroFireTitle">
+  <svg viewBox="25 14 350 350" class="w-full h-full" role="img" aria-labelledby="heroFireTitle">
     <title id="heroFireTitle">Schéma d'un cône de propagation d'incendie sur un relief</title>
     <defs>
       <linearGradient id="coneGrad" gradientUnits="userSpaceOnUse" x1="120" y1="320" x2="288" y2="120">
