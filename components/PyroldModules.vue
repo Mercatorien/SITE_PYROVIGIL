@@ -157,14 +157,14 @@
           <figure class="flex flex-col items-center">
             <svg viewBox="0 0 120 120" class="w-40 h-40 -rotate-90">
               <circle cx="60" cy="60" r="52" fill="none" stroke="#ffffff" stroke-opacity="0.1" stroke-width="14" />
-              <circle cx="60" cy="60" r="52" fill="none" stroke="#2E9E3A" stroke-width="14" :stroke-dasharray="`${0.56 * circ} ${circ}`" />
-              <circle cx="60" cy="60" r="52" fill="none" stroke="#E8651A" stroke-width="14" :stroke-dasharray="`${0.22 * circ} ${circ}`" :stroke-dashoffset="`${-0.56 * circ}`" />
-              <circle cx="60" cy="60" r="52" fill="none" stroke="#8a94a3" stroke-width="14" :stroke-dasharray="`${0.22 * circ} ${circ}`" :stroke-dashoffset="`${-0.78 * circ}`" />
+              <circle cx="60" cy="60" r="52" fill="none" stroke="#2E9E3A" stroke-width="14" :stroke-dasharray="`${0.70 * circ} ${circ}`" />
+              <circle cx="60" cy="60" r="52" fill="none" stroke="#E8651A" stroke-width="14" :stroke-dasharray="`${0.15 * circ} ${circ}`" :stroke-dashoffset="`${-0.70 * circ}`" />
+              <circle cx="60" cy="60" r="52" fill="none" stroke="#8a94a3" stroke-width="14" :stroke-dasharray="`${0.15 * circ} ${circ}`" :stroke-dashoffset="`${-0.85 * circ}`" />
             </svg>
             <figcaption class="mt-5 space-y-1.5 font-mono text-[11px]">
-              <p class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-sm" style="background:#2E9E3A"></span>Réalisé — 56 %</p>
-              <p class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-sm" style="background:#E8651A"></span>En cours — 22 %</p>
-              <p class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-sm" style="background:#8a94a3"></span>À faire — 22 %</p>
+              <p class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-sm" style="background:#2E9E3A"></span>Réalisé — 70 %</p>
+              <p class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-sm" style="background:#E8651A"></span>En cours — 15 %</p>
+              <p class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-sm" style="background:#8a94a3"></span>À faire — 15 %</p>
             </figcaption>
           </figure>
         </div>
