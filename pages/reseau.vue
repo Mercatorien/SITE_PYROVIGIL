@@ -18,7 +18,7 @@
             </div>
           </div>
         </div>
-        <div v-reveal="120" class="aspect-[4/3] rounded-lg border border-brand-dark/10 bg-brand-cream flex items-center justify-center font-mono text-xs text-brand-border">/* carte de couverture à intégrer */</div>
+        <div v-reveal="120" class="aspect-[4/3] rounded-lg border border-brand-dark/10 bg-brand-cream flex items-center justify-center font-mono text-xs text-brand-mid">/* carte de couverture à intégrer */</div>
       </div>
     </section>
 

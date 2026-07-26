@@ -17,7 +17,7 @@
             </span>
           </a>
         </div>
-        <p class="font-mono text-[10px] text-brand-border mt-3">/* ressources et articles à compléter */</p>
+        <p class="font-mono text-[10px] text-brand-mid mt-3">/* ressources et articles à compléter */</p>
       </div>
     </section>
 

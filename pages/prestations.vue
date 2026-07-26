@@ -20,7 +20,7 @@
             </dl>
           </div>
           <div v-reveal="120" :class="i % 2 ? 'lg:order-1' : ''"
-            class="aspect-[4/3] rounded-lg border border-brand-dark/10 bg-brand-cream flex items-center justify-center font-mono text-xs text-brand-border">
+            class="aspect-[4/3] rounded-lg border border-brand-dark/10 bg-brand-cream flex items-center justify-center font-mono text-xs text-brand-mid">
             /* {{ d.visual }} */
           </div>
         </div>

@@ -18,7 +18,7 @@
               <p class="mt-1.5 text-brand-mid leading-relaxed">{{ k.label }}</p>
             </div>
           </div>
-          <p class="font-mono text-[11px] text-brand-border mb-8">Source : Observatoire des forêts françaises, BDIFF</p>
+          <p class="font-mono text-[11px] text-brand-mid mb-8">Source : Observatoire des forêts françaises, BDIFF</p>
 
           <p class="text-brand-mid leading-relaxed max-w-2xl">
             Face à ce constat, les Obligations Légales de Débroussaillement sont un levier de prévention majeur. Depuis la <span class="text-brand-dark font-semibold">loi du 10 juillet 2023</span>, leur contrôle relève de la compétence du maire : informer, contrôler, mettre en demeure. Un défaut de contrôle peut engager sa <span class="text-brand-dark font-semibold">responsabilité juridique</span> en cas de sinistre.

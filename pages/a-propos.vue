@@ -26,13 +26,13 @@
         <SectionHeader eyebrow="L'équipe" title="Des experts complémentaires" intro="PLACEHOLDER — présentation à compléter à partir des CV." />
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-brand-dark/10 border border-brand-dark/10">
           <article v-for="(m, i) in team" :key="m.name" v-reveal="i * 70" class="bg-white p-7">
-            <div class="aspect-square rounded-lg bg-brand-cream border border-brand-dark/10 mb-5 flex items-center justify-center font-mono text-[10px] text-brand-border">/* photo */</div>
+            <div class="aspect-square rounded-lg bg-brand-cream border border-brand-dark/10 mb-5 flex items-center justify-center font-mono text-[10px] text-brand-mid">/* photo */</div>
             <h3 class="font-display font-bold text-brand-dark">{{ m.name }}</h3>
             <p class="font-mono text-[11px] uppercase tracking-wider text-brand-orange mt-1">{{ m.role }}</p>
             <p class="mt-3 text-sm text-brand-mid leading-relaxed">{{ m.bio }}</p>
           </article>
         </div>
-        <p class="font-mono text-[10px] text-brand-border mt-3">/* noms, rôles et bios à compléter depuis les CV */</p>
+        <p class="font-mono text-[10px] text-brand-mid mt-3">/* noms, rôles et bios à compléter depuis les CV */</p>
       </div>
     </section>
 

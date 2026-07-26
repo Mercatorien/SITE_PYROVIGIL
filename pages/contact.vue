@@ -72,7 +72,7 @@
               <p class="mt-1 text-brand-mid text-sm">52 départements soumis aux OLD.</p>
             </div>
           </div>
-          <div class="mt-8 aspect-[4/3] rounded-lg border border-brand-dark/10 bg-brand-cream flex items-center justify-center font-mono text-xs text-brand-border">/* carte / accès à intégrer */</div>
+          <div class="mt-8 aspect-[4/3] rounded-lg border border-brand-dark/10 bg-brand-cream flex items-center justify-center font-mono text-xs text-brand-mid">/* carte / accès à intégrer */</div>
         </aside>
       </div>
     </section>

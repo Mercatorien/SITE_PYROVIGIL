@@ -47,7 +47,7 @@
             </div>
           </article>
         </div>
-        <p class="font-mono text-[10px] text-brand-border mt-3">/* chiffres à confirmer */</p>
+        <p class="font-mono text-[10px] text-brand-mid mt-3">/* chiffres à confirmer */</p>
       </div>
     </section>
 

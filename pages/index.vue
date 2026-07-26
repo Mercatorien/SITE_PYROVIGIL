@@ -60,7 +60,7 @@
             Le réchauffement climatique augmente la sévérité et le nombre des feux, et allonge les périodes de risque.
           </p>
           <p class="mt-6 text-brand-mid leading-relaxed">
-            À l'horizon 2050, la surface des forêts métropolitaines exposée à un risque incendie élevé pourrait progresser de près de <span class="text-brand-dark font-semibold">50 %</span> <span class="font-mono text-[11px] text-brand-border">(Météo-France)</span>, avec une multiplication de feux « hors-normes » face auxquels le modèle français de lutte est jugé insuffisant, notamment au regard des enjeux humains, environnementaux et économiques.
+            À l'horizon 2050, la surface des forêts métropolitaines exposée à un risque incendie élevé pourrait progresser de près de <span class="text-brand-dark font-semibold">50 %</span> <span class="font-mono text-[11px] text-brand-mid">(Météo-France)</span>, avec une multiplication de feux « hors-normes » face auxquels le modèle français de lutte est jugé insuffisant, notamment au regard des enjeux humains, environnementaux et économiques.
           </p>
           <p class="mt-6 text-brand-mid leading-relaxed">
             <span class="text-brand-dark font-semibold">PyroVigil</span> est un bureau d'études spécialisé dans la résilience et la protection des personnes, des biens et des écosystèmes face aux feux de forêt. Composée de spécialistes issus de l'<span class="text-brand-dark font-semibold">ONF</span> et de la <span class="text-brand-dark font-semibold">DFCI</span>, notre équipe conseille et accompagne propriétaires et gestionnaires dans l'analyse du risque et la mise en sécurité, dans le respect des nombreuses réglementations en vigueur.
@@ -128,7 +128,7 @@
               <ClientOnly>
                 <PyroldMiniMap />
                 <template #fallback>
-                  <div class="w-full h-full flex items-center justify-center font-mono text-[11px] text-brand-border">carte…</div>
+                  <div class="w-full h-full flex items-center justify-center font-mono text-[11px] text-brand-mid">carte…</div>
                 </template>
               </ClientOnly>
             </div>
@@ -238,12 +238,12 @@
             <h3 class="font-display font-bold text-lg text-brand-dark leading-snug">{{ r.title }}</h3>
             <p class="mt-3 text-sm text-brand-mid leading-relaxed flex-1">{{ r.desc }}</p>
             <p v-if="r.note" class="mt-3 inline-block font-mono text-[10px] uppercase tracking-wider text-brand-orange border border-dashed border-brand-orange/40 bg-brand-orange/5 px-2 py-1">{{ r.note }}</p>
-            <div class="mt-5 pt-4 border-t border-brand-dark/10 flex items-center justify-between font-mono text-[11px] text-brand-border">
+            <div class="mt-5 pt-4 border-t border-brand-dark/10 flex items-center justify-between font-mono text-[11px] text-brand-mid">
               <span>{{ r.type }}</span><span>{{ r.year }}</span>
             </div>
           </article>
         </div>
-        <p class="mt-8 font-mono text-[11px] text-brand-border max-w-2xl leading-relaxed">
+        <p class="mt-8 font-mono text-[11px] text-brand-mid max-w-2xl leading-relaxed">
           Les dossiers de particuliers sont présentés de façon anonymisée. Références détaillées et contacts vérifiables sur demande.
         </p>
       </div>

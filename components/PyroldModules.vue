@@ -63,42 +63,14 @@
             <li v-for="b in parcelle.besoin" :key="b" class="flex gap-2 text-brand-dark leading-relaxed"><span class="text-brand-forest-deep">→</span>{{ b }}</li>
           </ul></div>
         </div>
-        <!-- Schéma : plusieurs génératrices, équidistance 50 m, parcelles tierces impactées -->
-        <div class="parc-schema" v-reveal>
-          <svg viewBox="0 0 480 360" class="w-full">
-            <!-- Zones OLD (équidistances) : les recouvrements s'assombrissent -->
-            <g>
-              <circle v-for="(g, i) in generatrices" :key="'d' + i" :cx="g.cx" :cy="g.cy" r="72"
-                fill="#E8651A" fill-opacity="0.15" />
-            </g>
-            <!-- Trame parcellaire -->
-            <g fill="none" stroke="#232323" stroke-width="1.3" stroke-linejoin="round">
-              <polygon v-for="(p, i) in parcels" :key="i" :points="p.d" />
-            </g>
-            <!-- Anneaux d'équidistance + maisons des génératrices -->
-            <g v-for="(g, i) in generatrices" :key="'g' + i">
-              <circle :cx="g.cx" :cy="g.cy" r="72" fill="none" stroke="#c44a00" stroke-width="1.7"
-                stroke-dasharray="5 4" pathLength="1" class="old-ring" :style="{ animationDelay: 0.2 + i * 0.25 + 's' }" />
-              <g :transform="`translate(${g.cx},${g.cy})`" class="gen-house" :style="{ animationDelay: 0.5 + i * 0.25 + 's' }">
-                <path d="M -10,4 L -10,-3 L 0,-12 L 10,-3 L 10,4 Z" fill="#c44a00" fill-opacity="0.85" />
-              </g>
-            </g>
-          </svg>
-          <!-- Légende -->
-          <div class="mt-6 flex flex-wrap gap-x-6 gap-y-2.5 font-mono text-[11px] text-brand-mid">
-            <span class="flex items-center gap-2">
-              <svg width="14" height="14" viewBox="-11 -13 22 22"><path d="M -10,4 L -10,-3 L 0,-12 L 10,-3 L 10,4 Z" fill="#c44a00"/></svg>
-              Parcelle génératrice
-            </span>
-            <span class="flex items-center gap-2">
-              <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#c44a00" stroke-width="1.6" stroke-dasharray="3 2"/></svg>
-              OLD — équidistance 50 m
-            </span>
-            <span class="flex items-center gap-2">
-              <span class="w-3.5 h-3.5 rounded-sm" style="background:rgba(232,101,26,0.28)"></span>
-              Parcelle tierce impactée
-            </span>
-          </div>
+        <!-- Schéma des équidistances OLD (illustration, fondu sur les bords) -->
+        <div v-reveal>
+          <img :src="asset('/img/pyrold-parcelle-schema.webp')"
+            alt="Schéma des équidistances : plusieurs installations génératrices et leurs zones OLD de 50 m se recouvrant sur les parcelles tierces"
+            loading="lazy" decoding="async" class="w-full pyrold-parc-img" />
+          <p class="mt-1 text-sm text-brand-mid leading-relaxed max-w-md">
+            Chaque installation (en jaune) génère une zone OLD de 50 m ; leurs recouvrements identifient les parcelles tierces impactées.
+          </p>
         </div>
       </div>
     </section>
@@ -222,7 +194,7 @@
           <p class="font-mono text-[11px] uppercase tracking-wider text-brand-mid mb-5">La procédure, pas à pas</p>
           <div class="flex items-stretch gap-2 overflow-x-auto no-scrollbar pb-2">
             <button v-for="i in [0, 1, 2]" :key="i" type="button" @mouseenter="stepIdx = i" @focus="stepIdx = i" @click="stepIdx = i" class="chip" :class="chipCls(i)" :style="chipStyle(i)">
-              <span class="chip-n" :class="stepIdx === i ? 'text-white/75' : 'text-brand-border'">Étape {{ statuts[i].n }}</span>
+              <span class="chip-n" :class="stepIdx === i ? 'text-white/75' : 'text-brand-ink/70'">Étape {{ statuts[i].n }}</span>
               <span class="chip-l" :class="stepIdx === i ? 'text-white' : 'text-brand-dark'">{{ statuts[i].label }}</span>
             </button>
             <div class="arrow">→</div>
@@ -230,26 +202,25 @@
             <div class="flex-none flex flex-col justify-center gap-3 border-l-2 border-brand-dark/15 pl-3">
               <div class="flex items-center gap-2">
                 <button type="button" @mouseenter="stepIdx = 3" @focus="stepIdx = 3" @click="stepIdx = 3" class="chip" :class="chipCls(3)" :style="chipStyle(3)">
-                  <span class="chip-n" :class="stepIdx === 3 ? 'text-white/75' : 'text-brand-border'">Si accord</span>
+                  <span class="chip-n" :class="stepIdx === 3 ? 'text-white/75' : 'text-brand-ink/70'">Si accord</span>
                   <span class="chip-l" :class="stepIdx === 3 ? 'text-white' : 'text-brand-dark'">{{ statuts[3].label }}</span>
                 </button>
-                <div class="arrow ml-auto">→</div>
               </div>
               <div class="flex items-center gap-2">
                 <button type="button" @mouseenter="stepIdx = 4" @focus="stepIdx = 4" @click="stepIdx = 4" class="chip" :class="chipCls(4)" :style="chipStyle(4)">
-                  <span class="chip-n" :class="stepIdx === 4 ? 'text-white/75' : 'text-brand-border'">Si refus / silence</span>
+                  <span class="chip-n" :class="stepIdx === 4 ? 'text-white/75' : 'text-brand-ink/70'">Si refus / silence</span>
                   <span class="chip-l" :class="stepIdx === 4 ? 'text-white' : 'text-brand-dark'">{{ statuts[4].label }}</span>
                 </button>
                 <div class="arrow">→</div>
                 <button type="button" @mouseenter="stepIdx = 5" @focus="stepIdx = 5" @click="stepIdx = 5" class="chip" :class="chipCls(5)" :style="chipStyle(5)">
-                  <span class="chip-n" :class="stepIdx === 5 ? 'text-white/75' : 'text-brand-border'">Étape {{ statuts[5].n }}</span>
+                  <span class="chip-n" :class="stepIdx === 5 ? 'text-white/75' : 'text-brand-ink/70'">Étape {{ statuts[5].n }}</span>
                   <span class="chip-l" :class="stepIdx === 5 ? 'text-white' : 'text-brand-dark'">{{ statuts[5].label }}</span>
                 </button>
-                <div class="arrow ml-auto">→</div>
               </div>
             </div>
+            <div class="arrow self-center">→</div>
             <button type="button" @mouseenter="stepIdx = 6" @focus="stepIdx = 6" @click="stepIdx = 6" class="chip self-center" :class="chipCls(6)" :style="chipStyle(6)">
-              <span class="chip-n" :class="stepIdx === 6 ? 'text-white/75' : 'text-brand-border'">Étape {{ statuts[6].n }}</span>
+              <span class="chip-n" :class="stepIdx === 6 ? 'text-white/75' : 'text-brand-ink/70'">Étape {{ statuts[6].n }}</span>
               <span class="chip-l" :class="stepIdx === 6 ? 'text-white' : 'text-brand-dark'">{{ statuts[6].label }}</span>
             </button>
           </div>
@@ -343,24 +314,6 @@ const courrierSlides = [
   { src: '/img/pyrold-courrier-b.webp', label: 'Dossier : génération des courriers & historique' },
 ]
 
-// Schéma parcelle : trame parcellaire jitterée + 3 génératrices avec équidistance
-const XS = [18, 140, 262, 384, 462]
-const YS = [18, 128, 238, 342]
-const pts = YS.map((y, ri) => XS.map((x, ci) => {
-  const edge = ri === 0 || ri === YS.length - 1 || ci === 0 || ci === XS.length - 1
-  if (edge) return [x, y]
-  return [x + ((ri * 7 + ci * 13) % 11) - 5, y + ((ri * 5 + ci * 17) % 9) - 4]
-}))
-const parcels = []
-for (let r = 0; r < YS.length - 1; r++) for (let c = 0; c < XS.length - 1; c++) {
-  const poly = [pts[r][c], pts[r][c + 1], pts[r + 1][c + 1], pts[r + 1][c]]
-  parcels.push({ d: poly.map(p => p.join(',')).join(' ') })
-}
-const generatrices = [[0, 1], [1, 3], [2, 0]].map(([r, c]) => {
-  const poly = [pts[r][c], pts[r][c + 1], pts[r + 1][c + 1], pts[r + 1][c]]
-  return { cx: (poly[0][0] + poly[1][0] + poly[2][0] + poly[3][0]) / 4, cy: (poly[0][1] + poly[1][1] + poly[2][1] + poly[3][1]) / 4 }
-})
-
 // Frise procédure (bifurcation)
 const statuts = [
   { n: '1', label: 'À traiter', color: '#8a94a3', desc: 'Dossier identifié dans PyrOLD.Fr, aucun courrier encore envoyé.' },
@@ -446,13 +399,14 @@ onBeforeUnmount(() => { io && io.disconnect() })
 .chip-l { display: block; margin-top: .25rem; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: .875rem; line-height: 1.2; }
 .arrow { flex: none; align-self: center; color: rgba(27,42,59,.25); font-family: 'IBM Plex Mono', monospace; }
 
-/* Schéma parcelle */
+/* Schéma parcelle : fondu sur les bords pour se fondre dans la page */
+.pyrold-parc-img {
+  -webkit-mask-image: radial-gradient(78% 78% at 50% 48%, #000 58%, transparent 100%);
+  mask-image: radial-gradient(78% 78% at 50% 48%, #000 58%, transparent 100%);
+}
+
 @media (prefers-reduced-motion: no-preference) {
-  .parc-schema .old-ring { animation: drawRing .9s ease-out both; }
-  .parc-schema .gen-house { transform-box: fill-box; transform-origin: center bottom; animation: popH .5s cubic-bezier(.22,1,.36,1) both; }
   .scroll-hint { animation: bob 1.6s ease-in-out infinite; }
 }
-@keyframes drawRing { from { stroke-dashoffset: 1; stroke-dasharray: 1; } to { stroke-dashoffset: 0; } }
-@keyframes popH { from { opacity: 0; transform: scale(.3); } to { opacity: 1; transform: scale(1); } }
 @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
 </style>
