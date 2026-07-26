@@ -65,11 +65,11 @@
         </div>
         <!-- Schéma des équidistances OLD (illustration, fondu sur les bords) -->
         <div v-reveal>
-          <img :src="asset('/img/pyrold-parcelle-schema.webp')"
+          <img :src="asset('/img/pyrold-parcelle-schema.svg')"
             alt="Schéma des équidistances : plusieurs installations génératrices et leurs zones OLD de 50 m se recouvrant sur les parcelles tierces"
             loading="lazy" decoding="async" class="w-full pyrold-parc-img" />
           <p class="mt-1 text-sm text-brand-mid leading-relaxed max-w-md">
-            Chaque installation (en jaune) génère une zone OLD de 50 m ; leurs recouvrements identifient les parcelles tierces impactées.
+            Les parcelles apparaissent en contours noirs. Chaque installation (en jaune) génère une zone OLD de 50 m ; leurs recouvrements identifient les parcelles tierces impactées.
           </p>
         </div>
       </div>
@@ -123,7 +123,7 @@
           <div class="lg:col-span-2 grid grid-cols-2 sm:grid-cols-3 gap-px bg-white/10 border border-white/10">
             <div v-for="s in velauxStats" :key="s.label" class="bg-brand-dark p-6">
               <p class="font-display font-extrabold text-2xl lg:text-3xl tracking-tight text-brand-orange-bright">{{ s.value }}</p>
-              <p class="mt-1.5 text-sm text-white/60 leading-snug">{{ s.label }}</p>
+              <p class="mt-1.5 text-sm text-white/60 leading-snug whitespace-pre-line">{{ s.label }}</p>
             </div>
           </div>
           <figure class="flex flex-col items-center">
@@ -165,12 +165,50 @@
       </div>
     </section>
 
-    <!-- 05 · MODULE COURRIERS -->
+    <!-- 05 · FICHES PDF -->
+    <section id="fiches" class="section border-t border-brand-dark/10 overflow-hidden">
+      <div class="container-x grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div class="lg:col-span-5" v-reveal>
+          <p class="eyebrow mb-3">05 — Fiches PDF</p>
+          <h3 class="h-section">Une fiche réglementaire pour chaque parcelle</h3>
+          <ul class="mt-7 space-y-3.5">
+            <li v-for="p in fiches.points" :key="p" class="flex items-start gap-3 text-brand-dark leading-relaxed">
+              <span class="mt-2 w-1.5 h-1.5 rounded-full bg-brand-orange flex-none"></span>{{ p }}
+            </li>
+          </ul>
+          <div class="besoin"><p class="besoin-t">Réponse au besoin métier</p><ul class="space-y-2">
+            <li v-for="b in fiches.besoin" :key="b" class="flex gap-2 text-brand-dark leading-relaxed"><span class="text-brand-forest-deep">→</span>{{ b }}</li>
+          </ul></div>
+          <a :href="asset('/docs/fiche-old-exemple.pdf')" target="_blank" rel="noopener" class="btn btn-ghost mt-8 inline-flex items-center gap-2">
+            Ouvrir la fiche exemple (PDF)
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="2" d="M7 17L17 7M17 7H9m8 0v8"/></svg>
+          </a>
+        </div>
+        <div class="lg:col-span-7 lg:-mr-8" v-reveal="100">
+          <div class="rounded-lg overflow-hidden border border-brand-dark/15 shadow-2xl bg-white">
+            <div class="chrome"><span></span><span></span><span></span><span class="ml-3 font-mono text-[10px] text-white/40">Fiche_OLD_83049_AE_0103.pdf</span></div>
+            <div class="relative">
+              <iframe :src="asset('/docs/fiche-old-exemple.pdf') + '#toolbar=0&view=FitH'" title="Fiche OLD — exemple (parcelle de Cuers)"
+                class="w-full h-[460px] sm:h-[560px] block bg-white"></iframe>
+              <div class="pointer-events-none absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-white via-white/85 to-transparent flex items-end justify-center pb-2.5">
+                <span class="font-mono text-[11px] text-brand-mid inline-flex items-center gap-1.5 scroll-hint">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                  faites défiler la fiche (2 pages)
+                </span>
+              </div>
+            </div>
+          </div>
+          <p class="mt-3 text-center font-mono text-[11px] text-brand-mid sm:hidden">Sur mobile : utilisez « Ouvrir la fiche exemple (PDF) ».</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 · MODULE COURRIERS -->
     <section id="courriers" class="section bg-brand-cream/50 border-y border-brand-dark/10 overflow-hidden">
       <div class="container-x">
         <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <div class="lg:col-span-5" v-reveal>
-            <p class="eyebrow mb-3">05 — Module Courriers</p>
+            <p class="eyebrow mb-3">06 — Module Courriers</p>
             <h3 class="h-section">De la génération du courrier au suivi de la procédure</h3>
             <p class="mt-4 text-brand-mid leading-relaxed">
               L'OLD sur les fonds d'autrui impose une procédure écrite formalisée. PyrOLD la génère et la pilote de bout en bout.
@@ -250,7 +288,8 @@ const nav = [
   { id: 'parcelle', num: '02', short: 'Parcelle' },
   { id: 'dashboard', num: '03', short: 'Dashboard' },
   { id: 'terrain', num: '04', short: 'Terrain' },
-  { id: 'courriers', num: '05', short: 'Courriers' },
+  { id: 'fiches', num: '05', short: 'Fiches PDF' },
+  { id: 'courriers', num: '06', short: 'Courriers' },
 ]
 
 const carte = {
@@ -293,6 +332,17 @@ const terrain = {
     'Géo-notes et observations synchronisées dans le cloud en temps réel.',
   ],
   besoin: ['Faire le lien entre le bureau et le terrain — sans aucune ressaisie.'],
+}
+const fiches = {
+  points: [
+    'Identification de la parcelle et synthèse des obligations : surface OLD, parcelles impactées, distance réglementaire, zonage PLU, PPRIF.',
+    'Carte des zones OLD et détail des surfaces à débroussailler, parcelle par parcelle.',
+    'Prête à imprimer et à remettre à l\'administré — export à l\'unité ou en lot pour toute la commune.',
+  ],
+  besoin: [
+    'Donner à chaque propriétaire un document clair et opposable sur ses obligations.',
+    'Conserver une preuve documentée, à l\'échelle de la parcelle comme de la commune.',
+  ],
 }
 const courriers = {
   points: [
@@ -346,7 +396,7 @@ const velauxStats = computed(() => [
   { value: nb2(c.old) + ' ha', label: 'surface OLD totale' },
   { value: nb2(c.routes) + ' ha', label: 'OLD routes' },
   { value: nb2(c.lignes) + ' ha', label: 'OLD lignes élec.' },
-  { value: '+70 %', label: 'de la commune débroussaillée · ↑ défendabilité' },
+  { value: '+70 %', label: 'de la commune débroussaillée ·\naugmentation de la défendabilité' },
 ])
 
 function scrollTo(id) {
