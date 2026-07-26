@@ -4,25 +4,6 @@
       title="Piloter simplement vos Obligations Légales de Débroussaillement"
       intro="Une plateforme qui calcule, cartographie et pilote les OLD de façon reproductible — du territoire communal à la parcelle, jusqu'au terrain." />
 
-    <!-- Aperçu -->
-    <section class="section">
-      <div class="container-x">
-        <div v-reveal class="rounded-lg overflow-hidden border border-brand-dark/15 shadow-2xl max-w-4xl mx-auto">
-          <div class="h-9 bg-brand-dark flex items-center gap-1.5 px-4">
-            <span class="w-2.5 h-2.5 rounded-full bg-white/25"></span>
-            <span class="w-2.5 h-2.5 rounded-full bg-white/25"></span>
-            <span class="w-2.5 h-2.5 rounded-full bg-white/25"></span>
-            <span class="ml-3 font-mono text-[10px] text-white/40">pyrold.fr</span>
-          </div>
-          <img :src="asset('/img/pyrold-carte.webp')" alt="PyrOLD — carte des OLD communales avec couches métier"
-            loading="lazy" decoding="async" class="w-full block" />
-        </div>
-        <div class="text-center mt-8" v-reveal>
-          <a href="https://pyrold.fr/" target="_blank" rel="noopener" class="btn btn-primary">Voir la démonstration</a>
-        </div>
-      </div>
-    </section>
-
     <!-- L'enjeu -->
     <section class="section bg-brand-cream border-y border-brand-dark/10">
       <div class="container-x grid lg:grid-cols-12 gap-10">
