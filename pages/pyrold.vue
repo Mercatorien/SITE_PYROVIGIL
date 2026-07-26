@@ -1,7 +1,7 @@
 <template>
   <div>
     <PageHero eyebrow="PyrOLD.fr — notre plateforme" idx="03"
-      title="Rendre les Obligations Légales de Débroussaillement lisibles"
+      title="Piloter simplement vos Obligations Légales de Débroussaillement"
       intro="Une plateforme qui calcule, cartographie et pilote les OLD de façon reproductible — du territoire communal à la parcelle, jusqu'au terrain." />
 
     <!-- Aperçu -->
