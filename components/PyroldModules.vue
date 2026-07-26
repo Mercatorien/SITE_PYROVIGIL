@@ -231,20 +231,36 @@
         <div class="mt-16" v-reveal>
           <p class="font-mono text-[11px] uppercase tracking-wider text-brand-mid mb-5">La procédure, pas à pas</p>
           <div class="flex items-stretch gap-2 overflow-x-auto no-scrollbar pb-2">
-            <button v-for="i in [0, 1, 2]" :key="i" type="button" @mouseenter="stepIdx = i" @focus="stepIdx = i" @click="stepIdx = i" class="chip" :class="chipCls(i)" :style="chipStyle(i)">
-              <span class="chip-n" :class="stepIdx === i ? 'text-white/75' : 'text-brand-ink/70'">Étape {{ statuts[i].n }}</span>
-              <span class="chip-l" :class="stepIdx === i ? 'text-white' : 'text-brand-dark'">{{ statuts[i].label }}</span>
-            </button>
-            <div class="arrow">→</div>
-            <!-- Bifurcation après le courrier 2 (LRAR) -->
-            <div class="flex-none flex flex-col justify-center gap-3 border-l-2 border-brand-dark/15 pl-3">
+            <!-- Linéaire : 1 → 2 → 3 -->
+            <template v-for="i in [0, 1, 2]" :key="i">
+              <button type="button" @mouseenter="stepIdx = i" @focus="stepIdx = i" @click="stepIdx = i" class="chip self-center" :class="chipCls(i)" :style="chipStyle(i)">
+                <span class="chip-n" :class="stepIdx === i ? 'text-white/75' : 'text-brand-ink/70'">Étape {{ statuts[i].n }}</span>
+                <span class="chip-l" :class="stepIdx === i ? 'text-white' : 'text-brand-dark'">{{ statuts[i].label }}</span>
+              </button>
+              <div v-if="i < 2" class="arrow self-center">→</div>
+            </template>
+            <div class="arrow self-center">→</div>
+
+            <!-- Barre de synchronisation (fork) -->
+            <div class="syncbar" aria-hidden="true"></div>
+
+            <!-- Deux branches entre les barres -->
+            <div class="flex-none flex flex-col justify-center gap-5 py-1">
+              <!-- Haut : → Autorisation ──────────► (flèche longue) -->
               <div class="flex items-center gap-2">
+                <div class="arrow">→</div>
                 <button type="button" @mouseenter="stepIdx = 3" @focus="stepIdx = 3" @click="stepIdx = 3" class="chip" :class="chipCls(3)" :style="chipStyle(3)">
                   <span class="chip-n" :class="stepIdx === 3 ? 'text-white/75' : 'text-brand-ink/70'">Si accord</span>
                   <span class="chip-l" :class="stepIdx === 3 ? 'text-white' : 'text-brand-dark'">{{ statuts[3].label }}</span>
                 </button>
+                <div class="flex-1 flex items-center min-w-[2.5rem]">
+                  <span class="flex-1 h-px bg-brand-dark/35"></span>
+                  <span class="arrow -ml-1">→</span>
+                </div>
               </div>
+              <!-- Bas : → Refus → Saisine préfet → (flèche classique) -->
               <div class="flex items-center gap-2">
+                <div class="arrow">→</div>
                 <button type="button" @mouseenter="stepIdx = 4" @focus="stepIdx = 4" @click="stepIdx = 4" class="chip" :class="chipCls(4)" :style="chipStyle(4)">
                   <span class="chip-n" :class="stepIdx === 4 ? 'text-white/75' : 'text-brand-ink/70'">Si refus / silence</span>
                   <span class="chip-l" :class="stepIdx === 4 ? 'text-white' : 'text-brand-dark'">{{ statuts[4].label }}</span>
@@ -254,8 +270,13 @@
                   <span class="chip-n" :class="stepIdx === 5 ? 'text-white/75' : 'text-brand-ink/70'">Étape {{ statuts[5].n }}</span>
                   <span class="chip-l" :class="stepIdx === 5 ? 'text-white' : 'text-brand-dark'">{{ statuts[5].label }}</span>
                 </button>
+                <div class="arrow">→</div>
               </div>
             </div>
+
+            <!-- Barre de synchronisation (join) -->
+            <div class="syncbar" aria-hidden="true"></div>
+
             <div class="arrow self-center">→</div>
             <button type="button" @mouseenter="stepIdx = 6" @focus="stepIdx = 6" @click="stepIdx = 6" class="chip self-center" :class="chipCls(6)" :style="chipStyle(6)">
               <span class="chip-n" :class="stepIdx === 6 ? 'text-white/75' : 'text-brand-ink/70'">Étape {{ statuts[6].n }}</span>
@@ -447,7 +468,9 @@ onBeforeUnmount(() => { io && io.disconnect() })
 .chip { flex: none; width: 9.5rem; text-align: left; padding: .625rem .75rem; border-radius: .375rem; border-width: 1px; transition: all .2s; }
 .chip-n { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; }
 .chip-l { display: block; margin-top: .25rem; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: .875rem; line-height: 1.2; }
-.arrow { flex: none; align-self: center; color: rgba(27,42,59,.25); font-family: 'IBM Plex Mono', monospace; }
+.arrow { flex: none; align-self: center; color: rgba(27,42,59,.45); font-family: 'IBM Plex Mono', monospace; }
+/* Barres de synchronisation (fork / join) — style diagramme d'activité */
+.syncbar { flex: none; width: 6px; min-height: 2.5rem; align-self: stretch; background: #E8651A; border-radius: 3px; }
 
 /* Schéma parcelle : fondu sur les bords pour se fondre dans la page */
 .pyrold-parc-img {
