@@ -254,8 +254,8 @@
                   <span class="chip-l" :class="stepIdx === 3 ? 'text-white' : 'text-brand-dark'">{{ statuts[3].label }}</span>
                 </button>
                 <div class="flex-1 flex items-center min-w-[2.5rem]">
-                  <span class="flex-1 h-px bg-brand-dark/35"></span>
-                  <span class="arrow -ml-1">→</span>
+                  <span class="flex-1 conn-line"></span>
+                  <span class="conn-head"></span>
                 </div>
               </div>
               <!-- Bas : → Refus → Saisine préfet → (flèche classique) -->
@@ -471,6 +471,9 @@ onBeforeUnmount(() => { io && io.disconnect() })
 .arrow { flex: none; align-self: center; color: rgba(27,42,59,.45); font-family: 'IBM Plex Mono', monospace; }
 /* Barres de synchronisation (fork / join) — style diagramme d'activité */
 .syncbar { flex: none; width: 6px; min-height: 2.5rem; align-self: stretch; background: #E8651A; border-radius: 3px; }
+/* Connecteur long (Autorisation → barre join) : trait + pointe alignés */
+.conn-line { height: 1.5px; background: rgba(27, 42, 59, .35); }
+.conn-head { flex: none; width: 0; height: 0; margin-left: -1px; border-top: 4px solid transparent; border-bottom: 4px solid transparent; border-left: 7px solid rgba(27, 42, 59, .45); }
 
 /* Schéma parcelle : fondu sur les bords pour se fondre dans la page */
 .pyrold-parc-img {
