@@ -188,16 +188,9 @@
             </NuxtLink>
           </div>
         </div>
-        <!-- Fenêtre navigateur stylisée (placeholder capture) -->
-        <div class="rounded-lg overflow-hidden border border-brand-dark/15 shadow-2xl" v-reveal="120">
-          <div class="h-9 bg-brand-dark flex items-center gap-1.5 px-4">
-            <span class="w-2.5 h-2.5 rounded-full bg-white/25"></span>
-            <span class="w-2.5 h-2.5 rounded-full bg-white/25"></span>
-            <span class="w-2.5 h-2.5 rounded-full bg-white/25"></span>
-            <span class="ml-3 font-mono text-[10px] text-white/40">pyrold.fr</span>
-          </div>
-          <img :src="asset('/img/pyrold-dashboard.webp')" alt="PyrOLD — tableau de bord de pilotage du débroussaillement"
-            loading="lazy" decoding="async" class="w-full block bg-white" />
+        <!-- Carrousel des vues produit (desktop) + mockup mobile -->
+        <div v-reveal="120" class="pr-3 sm:pr-5">
+          <PyroldShowcase />
         </div>
       </div>
     </section>
