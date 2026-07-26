@@ -233,7 +233,7 @@
                   <span class="chip-n" :class="stepIdx === 3 ? 'text-white/75' : 'text-brand-border'">Si accord</span>
                   <span class="chip-l" :class="stepIdx === 3 ? 'text-white' : 'text-brand-dark'">{{ statuts[3].label }}</span>
                 </button>
-                <div class="arrow">→</div>
+                <div class="arrow ml-auto">→</div>
               </div>
               <div class="flex items-center gap-2">
                 <button type="button" @mouseenter="stepIdx = 4" @focus="stepIdx = 4" @click="stepIdx = 4" class="chip" :class="chipCls(4)" :style="chipStyle(4)">
@@ -245,7 +245,7 @@
                   <span class="chip-n" :class="stepIdx === 5 ? 'text-white/75' : 'text-brand-border'">Étape {{ statuts[5].n }}</span>
                   <span class="chip-l" :class="stepIdx === 5 ? 'text-white' : 'text-brand-dark'">{{ statuts[5].label }}</span>
                 </button>
-                <div class="arrow">→</div>
+                <div class="arrow ml-auto">→</div>
               </div>
             </div>
             <button type="button" @mouseenter="stepIdx = 6" @focus="stepIdx = 6" @click="stepIdx = 6" class="chip self-center" :class="chipCls(6)" :style="chipStyle(6)">
