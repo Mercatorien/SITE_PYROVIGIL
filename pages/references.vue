@@ -76,7 +76,8 @@ const methode = [
 ]
 const cas = [
   { commune: 'Velaux', dep: 'Bouches-du-Rhône (13)', desc: 'Cartographie complète des OLD et déploiement de PyrOLD pour le suivi communal.', chiffre: '—', chiffreLabel: 'parcelles OLD' },
-  { commune: 'Cuers', dep: 'Var (83)', desc: 'Zonage réglementaire, mode citoyen et accompagnement de la collectivité.', chiffre: '—', chiffreLabel: 'parcelles OLD' },
+  { commune: 'Artigues', dep: 'Var (83)', desc: 'Étude réglementaire et plan de zonage des OLD à l\'échelle communale.', chiffre: '—', chiffreLabel: 'parcelles OLD' },
+  { commune: 'Mallemort', dep: 'Bouches-du-Rhône (13)', desc: 'Zonage réglementaire, mode citoyen et accompagnement de la collectivité.', chiffre: '—', chiffreLabel: 'parcelles OLD' },
 ]
 const garanties = [
   'Organisme de formation certifié Qualiopi',

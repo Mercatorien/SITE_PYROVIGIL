@@ -1,7 +1,7 @@
 <template>
   <div>
     <PageHero eyebrow="Nos prestations" idx="01"
-      title="De la donnée cadastrale au suivi terrain"
+      title="Du diagnostic réglementaire à l'action de terrain"
       intro="PyroVigil couvre toute la chaîne : cartographier les obligations, étudier le risque, accompagner la collectivité et former vos équipes." />
 
     <!-- Domaines alternés -->

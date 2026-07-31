@@ -47,9 +47,14 @@
     </div>
 
     <div class="border-t border-white/10">
-      <div class="container-x py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/50">
-        <span>© {{ new Date().getFullYear() }} PyroVigil — Forest Fire Protect. Tous droits réservés.</span>
-        <span class="font-mono">Certifié Qualiopi · Hébergement France/UE · Conforme RGPD</span>
+      <div class="container-x py-5 flex flex-col gap-2.5 text-xs text-white/50">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+          <span>© {{ new Date().getFullYear() }} PyroVigil — Forest Fire Protect. Tous droits réservés.</span>
+          <span class="font-mono">Certifié Qualiopi — OF n° 93830807483 · Hébergement France/UE · Conforme RGPD</span>
+        </div>
+        <div class="font-mono text-white/40 text-center sm:text-left">
+          SIRET 98765885300013 · RCS Toulon · TVA intracom. FR21987658853
+        </div>
       </div>
     </div>
   </footer>
@@ -62,6 +67,7 @@ const nav = [
   { to: '/pyrold', label: 'PyrOLD' },
   { to: '/reseau', label: 'Le Réseau' },
   { to: '/references', label: 'Expertise & Références' },
+  { to: '/equipe', label: "Le bureau d'études" },
   { to: '/a-propos', label: 'À propos' },
   { to: '/contact', label: 'Contact' },
 ]

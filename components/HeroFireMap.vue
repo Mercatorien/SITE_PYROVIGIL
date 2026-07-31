@@ -20,11 +20,8 @@
       </mask>
     </defs>
 
-    <!-- Relief : courbes de niveau (tracées de l'extérieur vers les sommets) -->
-    <g fill="none" stroke="#2E9E3A" stroke-linejoin="round" stroke-linecap="round">
-      <path v-for="(c, i) in contours" :key="i" :d="c.d" :opacity="c.o" stroke-width="1.4"
-        pathLength="1" class="contour" :style="{ animationDelay: (0.15 + i * 0.05) + 's' }" />
-    </g>
+    <!-- Le relief (courbes de niveau) est désormais une couche de fond à droite
+         (public/img/courbes-niveau.svg), posée derrière ce cône dans index.vue. -->
 
     <!-- Cône de propagation, découpé par la zone débroussaillée -->
     <g mask="url(#protectMask)">
@@ -69,30 +66,14 @@
 </template>
 
 <script setup>
-// Courbes de niveau cohérentes : les courbes basses enferment TOUT le massif,
-// se resserrent en col, puis se scindent en deux boucles (un sommet chacune).
-const contours = [
-  { o: 0.15, d: 'M 62,142 C 58,88 100,50 152,48 C 194,46 224,66 242,92 C 268,72 306,68 338,86 C 380,110 396,164 378,212 C 358,264 302,288 254,272 C 232,296 194,304 160,292 C 106,274 66,204 62,142 Z' },
-  { o: 0.19, d: 'M 80,140 C 77,95 113,66 156,64 C 192,62 218,80 234,102 C 258,86 290,84 316,100 C 350,122 362,166 347,204 C 331,246 286,264 248,251 C 229,271 197,277 169,267 C 124,251 83,192 80,140 Z' },
-  { o: 0.24, d: 'M 98,138 C 96,102 126,80 160,79 C 190,78 211,94 224,113 C 245,101 271,101 292,115 C 319,133 328,168 316,197 C 303,228 268,241 238,230 C 222,246 196,250 173,242 C 138,229 100,178 98,138 Z' },
-  { o: 0.30, d: 'M 232,140 C 246,120 274,114 296,126 C 316,137 324,163 314,186 C 303,211 274,221 250,211 C 229,202 220,176 226,156 C 228,149 230,144 232,140 Z' },
-  { o: 0.30, d: 'M 114,134 C 114,108 138,90 164,92 C 187,94 202,112 200,134 C 198,158 176,173 152,169 C 130,166 114,152 114,134 Z' },
-  { o: 0.38, d: 'M 246,151 C 256,138 276,134 291,143 C 304,151 308,169 301,185 C 293,202 273,208 257,201 C 243,195 238,177 242,163 C 243,158 245,154 246,151 Z' },
-  { o: 0.38, d: 'M 128,133 C 128,115 145,103 163,105 C 179,107 189,119 188,134 C 186,150 171,160 155,157 C 140,155 128,145 128,133 Z' },
-  { o: 0.48, d: 'M 259,163 C 266,155 279,153 288,159 C 296,164 298,175 293,184 C 288,194 275,197 265,192 C 257,188 255,177 257,169 C 258,166 258,164 259,163 Z' },
-  { o: 0.48, d: 'M 141,132 C 141,122 151,115 162,116 C 172,117 178,124 177,133 C 176,143 167,149 157,147 C 148,146 141,140 141,132 Z' },
-]
+// Le relief (courbes de niveau réelles) est intégré en couche de fond dans le
+// hero (index.vue → public/img/courbes-niveau.svg). Ce composant ne dessine plus
+// que le cône de propagation, l'axe, l'éclosion et la réponse PyroVigil.
 </script>
 
 <style scoped>
 /* État final par défaut → en « animations réduites », tout s'affiche directement. */
 @media (prefers-reduced-motion: no-preference) {
-  /* Le relief se dessine (pathLength=1 rend l'animation indépendante de la longueur) */
-  .contour {
-    stroke-dasharray: 1;
-    stroke-dashoffset: 1;
-    animation: drawPath 1s ease-out both;
-  }
   /* Le cône se déploie depuis le point d'éclosion */
   .cone {
     transform-box: view-box;
@@ -128,7 +109,6 @@ const contours = [
 }
 .house { transform-origin: 0px 0px; }
 
-@keyframes drawPath { from { stroke-dashoffset: 1 } to { stroke-dashoffset: 0 } }
 @keyframes drawAxis { from { stroke-dashoffset: 1 } to { stroke-dashoffset: 0 } }
 @keyframes growCone { from { transform: scale(.12); opacity: 0 } to { transform: scale(1) } }
 @keyframes fadeIn   { from { opacity: 0 } to { opacity: .85 } }

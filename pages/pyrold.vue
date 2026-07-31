@@ -88,7 +88,7 @@
 
 <script setup>
 const enjeu = [
-  { value: '~60 000 ha', label: 'brûlés en 2022, année record' },
+  { value: '~116 000 ha', label: 'brûlés en 2026, année record' },
   { value: '47 %', label: 'des départs de feu à l\'interface habitat-forêt' },
 ]
 

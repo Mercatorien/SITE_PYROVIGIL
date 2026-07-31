@@ -230,7 +230,7 @@
         <!-- Frise interactive de la procédure (avec bifurcation) -->
         <div class="mt-16" v-reveal>
           <p class="font-mono text-[11px] uppercase tracking-wider text-brand-mid mb-5">La procédure, pas à pas</p>
-          <div class="flex items-stretch gap-2 overflow-x-auto no-scrollbar pb-2">
+          <div class="frise-scroll flex items-stretch gap-1.5 overflow-x-auto pb-3">
             <!-- Linéaire : 1 → 2 → 3 -->
             <template v-for="i in [0, 1, 2]" :key="i">
               <button type="button" @mouseenter="stepIdx = i" @focus="stepIdx = i" @click="stepIdx = i" class="chip self-center" :class="chipCls(i)" :style="chipStyle(i)">
@@ -258,7 +258,7 @@
                   <span class="conn-head"></span>
                 </div>
               </div>
-              <!-- Bas : → Refus → Saisine préfet → (flèche classique) -->
+              <!-- Bas : → Refus (transfert) → Contrôle → Saisine préfet → -->
               <div class="flex items-center gap-2">
                 <div class="arrow">→</div>
                 <button type="button" @mouseenter="stepIdx = 4" @focus="stepIdx = 4" @click="stepIdx = 4" class="chip" :class="chipCls(4)" :style="chipStyle(4)">
@@ -271,6 +271,11 @@
                   <span class="chip-l" :class="stepIdx === 5 ? 'text-white' : 'text-brand-dark'">{{ statuts[5].label }}</span>
                 </button>
                 <div class="arrow">→</div>
+                <button type="button" @mouseenter="stepIdx = 6" @focus="stepIdx = 6" @click="stepIdx = 6" class="chip" :class="chipCls(6)" :style="chipStyle(6)">
+                  <span class="chip-n" :class="stepIdx === 6 ? 'text-white/75' : 'text-brand-ink/70'">Si non conforme</span>
+                  <span class="chip-l" :class="stepIdx === 6 ? 'text-white' : 'text-brand-dark'">{{ statuts[6].label }}</span>
+                </button>
+                <div class="arrow">→</div>
               </div>
             </div>
 
@@ -278,9 +283,9 @@
             <div class="syncbar" aria-hidden="true"></div>
 
             <div class="arrow self-center">→</div>
-            <button type="button" @mouseenter="stepIdx = 6" @focus="stepIdx = 6" @click="stepIdx = 6" class="chip self-center" :class="chipCls(6)" :style="chipStyle(6)">
-              <span class="chip-n" :class="stepIdx === 6 ? 'text-white/75' : 'text-brand-ink/70'">Étape {{ statuts[6].n }}</span>
-              <span class="chip-l" :class="stepIdx === 6 ? 'text-white' : 'text-brand-dark'">{{ statuts[6].label }}</span>
+            <button type="button" @mouseenter="stepIdx = 7" @focus="stepIdx = 7" @click="stepIdx = 7" class="chip self-center" :class="chipCls(7)" :style="chipStyle(7)">
+              <span class="chip-n" :class="stepIdx === 7 ? 'text-white/75' : 'text-brand-ink/70'">Étape {{ statuts[7].n }}</span>
+              <span class="chip-l" :class="stepIdx === 7 ? 'text-white' : 'text-brand-dark'">{{ statuts[7].label }}</span>
             </button>
           </div>
           <!-- Description de l'étape active -->
@@ -368,7 +373,7 @@ const fiches = {
 const courriers = {
   points: [
     'Génère automatiquement les courriers Word à partir des données SIG (parcelle, surface, axe, PR).',
-    'Suit l\'avancement de chaque dossier via 7 statuts de procédure.',
+    'Suit l\'avancement de chaque dossier via des statuts de procédure horodatés.',
     'Alerte quand un délai est dépassé, et colorise la carte selon l\'avancement.',
     'Export Excel du suivi complet.',
   ],
@@ -390,17 +395,18 @@ const statuts = [
   { n: '1', label: 'À traiter', color: '#8a94a3', desc: 'Dossier identifié dans PyrOLD.Fr, aucun courrier encore envoyé.' },
   { n: '2', label: 'Courrier 1 — Information', color: '#3b82c4', desc: 'Information du propriétaire riverain concerné par l\'OLD.' },
   { n: '3', label: 'Courrier 2 — LRAR', color: '#E8651A', desc: 'Demande d\'autorisation d\'accès au foncier, en lettre recommandée avec accusé de réception.' },
-  { n: '4', label: 'Autorisation', color: '#2E9E3A', desc: 'Le propriétaire autorise l\'accès : le débroussaillement peut être réalisé, puis le projet est clos.' },
-  { n: '4b', label: 'Refus', color: '#c0392b', desc: 'Le propriétaire refuse (ou ne répond pas) : la procédure se poursuit vers la saisine du préfet.' },
-  { n: '5', label: 'Saisine préfet', color: '#7d3c98', desc: 'Saisine du préfet (DDT / DDTM), qui peut ordonner le débroussaillement d\'office.' },
-  { n: '6', label: 'Projet clos', color: '#1B2A3B', desc: 'Procédure terminée et archivée, avec son historique horodaté — preuve de la démarche.' },
+  { n: '4', label: 'Autorisation', color: '#2E9E3A', desc: 'Le propriétaire autorise l\'accès : le débroussaillement est réalisé par la parcelle génératrice, puis le projet est clos.' },
+  { n: '4b', label: 'Transfert de responsabilité', color: '#c0392b', desc: 'Le propriétaire refuse l\'accès (ou ne répond pas) : la responsabilité du débroussaillement lui est transférée — c\'est désormais à lui de débroussailler sa portion, à sa charge.' },
+  { n: '5', label: 'Contrôle sur site', color: '#b8860b', desc: 'Contrôle de terrain : vérification que le propriétaire a bien exécuté le débroussaillement mis à sa charge.' },
+  { n: '6', label: 'Saisine préfet', color: '#7d3c98', desc: 'En cas de non-conformité constatée lors du contrôle, saisine du préfet (DDT / DDTM), qui peut ordonner le débroussaillement d\'office.' },
+  { n: '7', label: 'Projet clos', color: '#1B2A3B', desc: 'Procédure terminée et archivée, avec son historique horodaté — preuve de la démarche.' },
 ]
 const stepIdx = ref(0)
 const chipCls = (i) => stepIdx.value === i ? 'border-transparent text-white shadow-lg' : 'bg-white border-brand-dark/10 hover:border-brand-dark/25'
 const chipStyle = (i) => stepIdx.value === i ? { background: statuts[i].color } : {}
 const alertes = [
   '60 j sans réponse au courrier 1 → relance en LRAR',
-  '30 j sans réponse du propriétaire → saisine du préfet',
+  '30 j sans réponse du propriétaire → refus tacite : transfert de responsabilité',
 ]
 
 const dashScrolled = ref(false)
@@ -465,7 +471,7 @@ onBeforeUnmount(() => { io && io.disconnect() })
 .chrome > span:not(.ml-3) { width: .625rem; height: .625rem; border-radius: 9999px; background: rgba(255,255,255,.25); }
 
 /* Frise procédure — puces */
-.chip { flex: none; width: 9.5rem; text-align: left; padding: .625rem .75rem; border-radius: .375rem; border-width: 1px; transition: all .2s; }
+.chip { flex: none; width: 8rem; text-align: left; padding: .625rem .625rem; border-radius: .375rem; border-width: 1px; transition: all .2s; }
 .chip-n { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; }
 .chip-l { display: block; margin-top: .25rem; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: .875rem; line-height: 1.2; }
 .arrow { flex: none; align-self: center; color: rgba(27,42,59,.45); font-family: 'IBM Plex Mono', monospace; }
@@ -474,6 +480,12 @@ onBeforeUnmount(() => { io && io.disconnect() })
 /* Connecteur long (Autorisation → barre join) : trait + pointe alignés */
 .conn-line { height: 1.5px; background: rgba(27, 42, 59, .35); }
 .conn-head { flex: none; width: 0; height: 0; margin-left: -1px; border-top: 4px solid transparent; border-bottom: 4px solid transparent; border-left: 7px solid rgba(27, 42, 59, .45); }
+/* Frise : barre de défilement fine et discrète (affichée uniquement si la frise
+   déborde sur écran étroit → l'étape finale reste toujours atteignable). */
+.frise-scroll { scrollbar-width: thin; scrollbar-color: rgba(232,101,26,.55) transparent; }
+.frise-scroll::-webkit-scrollbar { height: 6px; }
+.frise-scroll::-webkit-scrollbar-thumb { background: rgba(232,101,26,.55); border-radius: 3px; }
+.frise-scroll::-webkit-scrollbar-track { background: transparent; }
 
 /* Schéma parcelle : fondu sur les bords pour se fondre dans la page */
 .pyrold-parc-img {

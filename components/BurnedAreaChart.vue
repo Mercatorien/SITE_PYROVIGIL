@@ -47,18 +47,19 @@ const data = [
   { year: 2019, v: 11 },
   { year: 2020, v: 17.5 },
   { year: 2021, v: 31 },
-  { year: 2022, v: 60, record: true },
+  { year: 2022, v: 60 },
   { year: 2023, v: 9 },
   { year: 2024, v: 14.5 },
   { year: 2025, v: 29 },
+  { year: 2026, v: 116, record: true },
 ]
 const avg = 15   // moyenne 2006-2021 (en milliers d'ha)
 
 // Géométrie
 const W = 760, H = 360, padL = 46, padR = 16, padT = 18, padB = 34
 const y0 = H - padB
-const yMax = 65
-const yTicks = [0, 10, 20, 30, 40, 50, 60]
+const yMax = 122
+const yTicks = [0, 20, 40, 60, 80, 100, 120]
 const plotW = W - padL - padR
 const slot = plotW / data.length
 const bw = slot * 0.6

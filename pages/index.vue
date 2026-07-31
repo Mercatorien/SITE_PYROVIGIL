@@ -1,8 +1,12 @@
 <template>
   <div>
     <!-- ══ HERO ══ -->
-    <section class="bg-brand-cream border-b border-brand-dark/10">
-      <div class="container-x pt-16 pb-20 sm:pt-24 sm:pb-28 grid lg:grid-cols-12 gap-10 items-center">
+    <section class="relative overflow-hidden bg-brand-cream border-b border-brand-dark/10">
+      <!-- Relief : courbes de niveau réelles, en fond pleine hauteur sur la droite
+           (bord droit/haut/bas), estompées vers la gauche. Derrière le contenu. -->
+      <img :src="asset('/img/courbes-niveau.webp')" alt="" aria-hidden="true"
+        class="hero-contours hidden lg:block pointer-events-none select-none absolute inset-y-0 right-0 z-0 h-full w-[52%] object-cover object-right" />
+      <div class="relative z-10 container-x pt-16 pb-20 sm:pt-24 sm:pb-28 grid lg:grid-cols-12 gap-10 items-center">
         <div class="lg:col-span-7 hero-intro">
           <p class="eyebrow mb-6 fade-up" style="animation-delay:.05s">Experts en défense des forêts contre l'incendie</p>
           <h1 class="font-display font-extrabold text-4xl sm:text-[3.4rem] leading-[1.06] tracking-tight text-brand-dark">
@@ -31,7 +35,9 @@
       </div>
 
       <!-- Bandeau de domaines défilant -->
-      <MarqueeBand :items="motsCles" />
+      <div class="relative z-10">
+        <MarqueeBand :items="motsCles" />
+      </div>
     </section>
 
     <!-- ══ CHIFFRES CLÉS ══ -->
@@ -85,7 +91,7 @@
         <div class="flex items-end justify-between gap-6 mb-10">
           <div>
             <p class="eyebrow mb-3">— Nos prestations</p>
-            <h2 class="h-section max-w-2xl">De la donnée cadastrale au suivi terrain</h2>
+            <h2 class="h-section max-w-2xl">Du diagnostic réglementaire à l'action de terrain</h2>
           </div>
           <NuxtLink to="/prestations" class="link-arrow hidden sm:inline-flex whitespace-nowrap">Tout voir
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="2" d="M5 12h14m0 0l-6-6m6 6l-6 6"/></svg>
@@ -237,7 +243,12 @@
             </div>
             <h3 class="font-display font-bold text-lg text-brand-dark leading-snug">{{ r.title }}</h3>
             <p class="mt-3 text-sm text-brand-mid leading-relaxed flex-1">{{ r.desc }}</p>
-            <p v-if="r.note" class="mt-3 inline-block font-mono text-[10px] uppercase tracking-wider text-brand-orange border border-dashed border-brand-orange/40 bg-brand-orange/5 px-2 py-1">{{ r.note }}</p>
+            <a v-if="r.link" :href="r.link" target="_blank" rel="noopener"
+              class="group mt-3 inline-flex items-center gap-1.5 self-start font-mono text-[11px] uppercase tracking-wider text-brand-orange-deep border border-brand-orange/40 hover:bg-brand-orange/10 transition px-2.5 py-1.5 rounded">
+              {{ r.linkLabel || 'Voir l\'application' }}
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H9m8 0v8"/></svg>
+            </a>
+            <p v-else-if="r.note" class="mt-3 inline-block font-mono text-[10px] uppercase tracking-wider text-brand-orange border border-dashed border-brand-orange/40 bg-brand-orange/5 px-2 py-1">{{ r.note }}</p>
             <div class="mt-5 pt-4 border-t border-brand-dark/10 flex items-center justify-between font-mono text-[11px] text-brand-mid">
               <span>{{ r.type }}</span><span>{{ r.year }}</span>
             </div>
@@ -263,8 +274,8 @@
 <script setup>
 // Titre découpé en mots pour la révélation masquée (le segment orange est signalé)
 const titreMots = [
-  ...'La donnée géographique au service de la protection et de la'.split(' ').map(w => ({ w })),
-  ...'résilience face aux incendies de forêt.'.split(' ').map(w => ({ w, hl: true })),
+  ...'Protéger ce qui compte,'.split(' ').map(w => ({ w })),
+  ...'conformité et sécurité face aux feux de forêt.'.split(' ').map(w => ({ w, hl: true })),
 ]
 
 // Bandeau défilant : domaines d'intervention et savoir-faire
@@ -283,6 +294,8 @@ const motsCles = [
   'Aide à la décision',
   'Spatial machine learning & IA',
   'Géomatique',
+  'Biodiversité',
+  'Ingénierie forestière',
 ]
 
 const stats = [
@@ -305,18 +318,19 @@ const references = [
   { dom: 'Défendabilité', ter: 'Var', type: 'Collectivité', year: '2025–2026', palette: ['#F5EFEC', '#FCC2A6', '#E36C08'],
     title: 'Étude de défendabilité — Commune de Grimaud',
     desc: '97 zones analysées, 55,6 km de voies expertisées, plus de 8 200 logements évalués : cartographie complète de la défendabilité communale et priorisation des mises aux normes.' },
-  { dom: 'Marché public', ter: '6 départements', type: 'État — infrastructures', year: '2026', palette: ['#EBF2F5', '#ABC0D5', '#375F91'],
-    title: 'Diagnostic OLD — DIR Atlantique',
-    desc: 'Diagnostic des obligations légales de débroussaillement sur environ 630 km de réseau routier national, couvrant six départements du grand Sud-Ouest.' },
   { dom: 'Étude OLD', ter: 'Bouches-du-Rhône', type: 'Grand domaine', year: '2025', palette: ['#EDF6ED', '#AFC0AF', '#376436'],
     title: 'Dossier OLD — AFUL de Pont Royal, Mallemort',
     desc: "Étude complète des obligations de débroussaillement d'un domaine résidentiel et de loisirs de 183 hectares : zonage, superpositions, plans parcellaires et correspondances." },
   { dom: 'Outil numérique', ter: 'Var', type: 'Sécurité civile', year: '2026', palette: ['#EBF2F5', '#ABC0D5', '#375F91'],
     title: 'CartOrange — Application des CCFF du Var',
     desc: 'Application de patrouille mise gratuitement à disposition des Comités Communaux Feux de Forêts du Var pour la saison 2026, avec guide opérationnel dédié.',
-    note: '# rajouter le lien du site' },
-  { dom: 'Étude OLD', ter: 'Var', type: 'Collectivités', year: '2025–2026', palette: ['#EDF6ED', '#AFC0AF', '#376436'],
-    title: 'Plans communaux OLD — Artigues & Cuers',
+    link: 'https://ccff.alwaysdata.net/', linkLabel: 'Ouvrir l\'application' },
+  { dom: 'Outil numérique', ter: 'France entière', type: 'Accès public', year: '2026', palette: ['#EBF2F5', '#ABC0D5', '#375F91'],
+    title: 'Météo des massifs forestiers',
+    desc: 'Application de visualisation de la météo des massifs forestiers partout en France, pour anticiper le risque incendie au quotidien.',
+    link: 'https://massifs.pyrovigil.fr/', linkLabel: 'Ouvrir l\'application' },
+  { dom: 'Étude OLD', ter: 'Var · B.-du-Rhône', type: 'Collectivités', year: '2025–2026', palette: ['#EDF6ED', '#AFC0AF', '#376436'],
+    title: 'Plans communaux OLD — Artigues & Mallemort',
     desc: "Études réglementaires et plans de zonage des obligations légales de débroussaillement à l'échelle communale, avec cartographie parcellaire interactive." },
   { dom: 'Défendabilité', ter: 'Var', type: 'Particuliers', year: '2025–2026', palette: ['#F5EFEC', '#FCC2A6', '#E36C08'],
     title: 'Défenses de permis de construire',
@@ -361,3 +375,17 @@ const pyroldFeatures = [
   'Mode citoyen et exports PDF / Excel / KML',
 ]
 </script>
+
+<style scoped>
+/* Relief de fond du hero : courbes de niveau réelles, cantonnées à droite,
+   estompées vers la gauche pour ne pas concurrencer le cône de propagation. */
+.hero-contours {
+  opacity: .4;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 42%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 42%);
+  /* Promotion sur une couche GPU dédiée → les animations du hero ne
+     re-rasterisent plus le SVG (évite le lag). */
+  transform: translateZ(0);
+  will-change: transform;
+}
+</style>
