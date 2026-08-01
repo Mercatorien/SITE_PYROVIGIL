@@ -67,12 +67,7 @@
               <p class="font-mono text-[11px] uppercase tracking-wider text-brand-orange">Adresse</p>
               <p class="mt-1 text-brand-dark">49 Rue des Tournesols<br>83260 La Crau</p>
             </div>
-            <div>
-              <p class="font-mono text-[11px] uppercase tracking-wider text-brand-orange">Zone d'intervention</p>
-              <p class="mt-1 text-brand-mid text-sm">52 départements soumis aux OLD.</p>
-            </div>
           </div>
-          <div class="mt-8 aspect-[4/3] rounded-lg border border-brand-dark/10 bg-brand-cream flex items-center justify-center font-mono text-xs text-brand-mid">/* carte / accès à intégrer */</div>
         </aside>
       </div>
     </section>
