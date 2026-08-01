@@ -67,7 +67,6 @@ const nav = [
   { to: '/pyrold', label: 'PyrOLD' },
   { to: '/reseau', label: 'Le Réseau' },
   { to: '/references', label: 'Expertise & Références' },
-  { to: '/equipe', label: "Le bureau d'études" },
   { to: '/a-propos', label: 'À propos' },
   { to: '/contact', label: 'Contact' },
 ]
