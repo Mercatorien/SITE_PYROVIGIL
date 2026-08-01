@@ -67,7 +67,7 @@ const nav = [
   { to: '/pyrold', label: 'PyrOLD' },
   { to: '/reseau', label: 'Le Réseau' },
   { to: '/references', label: 'Expertise & Références' },
-  { to: '/a-propos', label: 'À propos' },
+  { to: '/a-propos', label: 'Notre équipe' },
   { to: '/contact', label: 'Contact' },
 ]
 </script>

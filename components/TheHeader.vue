@@ -51,7 +51,7 @@ const links = [
   { to: '/pyrold', label: 'PyrOLD' },
   { to: '/reseau', label: 'Le Réseau' },
   { to: '/references', label: 'Références' },
-  { to: '/a-propos', label: 'À propos' },
+  { to: '/a-propos', label: 'Notre équipe' },
 ]
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <PageHero eyebrow="À propos"
+    <PageHero eyebrow="Notre équipe"
       title="Un bureau d'études à taille humaine, spécialiste du feu de forêt"
       intro="PyroVigil met la donnée et l'expertise au service de la protection des territoires et de leurs habitants." />
 

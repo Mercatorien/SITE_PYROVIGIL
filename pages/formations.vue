@@ -6,13 +6,33 @@
 
     <!-- Bandeau Qualiopi -->
     <section class="border-b border-brand-dark/10 bg-brand-cream">
-      <div class="container-x py-10 flex flex-col sm:flex-row items-start gap-6" v-reveal>
-        <div class="w-16 h-16 flex-none rounded-full border-2 border-brand-orange flex items-center justify-center font-display font-extrabold text-brand-orange text-xs text-center leading-tight">QUALI<br>OPI</div>
+      <div class="container-x py-10 flex flex-col sm:flex-row items-center sm:items-start gap-6" v-reveal>
+        <div class="bg-white rounded-lg p-4 border border-brand-dark/10 flex-none">
+          <img :src="asset('/img/qualiopi-logo.png')" alt="Certification Qualiopi — actions de formation" class="h-16 w-auto" />
+        </div>
         <div>
           <p class="font-display font-bold text-brand-dark text-lg">Organisme certifié Qualiopi</p>
           <p class="text-sm text-brand-mid mt-1 leading-relaxed">PyroVigil est certifié Qualiopi — certificat I.Cert n° CPS RNCQ 7259, délivré le 10 juin 2026, valable jusqu'au 9 juin 2029. Organisme de formation n° 93830807483.</p>
           <p class="text-sm text-brand-dark/70 italic mt-2">« La certification qualité a été délivrée au titre de la catégorie d'action suivante : actions de formation. »</p>
         </div>
+      </div>
+    </section>
+
+    <!-- Bandeau photo terrain -->
+    <section class="pt-12 sm:pt-16">
+      <div class="container-x" v-reveal>
+        <figure class="relative aspect-[16/9] sm:aspect-[5/2] rounded-xl overflow-hidden bg-brand-cream border border-brand-dark/10">
+          <img v-if="!photoError" :src="asset('/img/formations-terrain.jpg')"
+            alt="Formation PyroVigil — mise en situation sur le terrain"
+            class="absolute inset-0 w-full h-full object-cover" @error="photoError = true" />
+          <figcaption v-if="!photoError" class="absolute bottom-0 inset-x-0 p-5 sm:p-6 bg-gradient-to-t from-brand-dark/70 to-transparent">
+            <span class="text-white text-sm sm:text-base font-display font-semibold">Des formations ancrées dans le terrain, animées par des praticiens du feu de forêt.</span>
+          </figcaption>
+          <div v-else class="absolute inset-0 flex flex-col items-center justify-center gap-3 text-brand-mid text-center px-4">
+            <svg class="w-10 h-10 opacity-40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 5h16a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V6a1 1 0 011-1z"/><path stroke-linecap="round" stroke-linejoin="round" d="M3 16l5-5 4 4 3-3 6 6"/><circle cx="9" cy="9" r="1.4"/></svg>
+            <span class="font-mono text-[11px] uppercase tracking-wider">Photo terrain à venir — public/img/formations-terrain.jpg</span>
+          </div>
+        </figure>
       </div>
     </section>
 
@@ -104,6 +124,8 @@
 </template>
 
 <script setup>
+const photoError = ref(false)
+
 const formations = [
   {
     prix: '700 € HT', duree: '/ personne · 1 journée',
