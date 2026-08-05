@@ -27,11 +27,9 @@
         <h3 class="font-display font-semibold text-white text-sm mb-4">Ressources &amp; légal</h3>
         <ul class="space-y-2.5 text-sm">
           <li><NuxtLink to="/faq" class="hover:text-brand-orange-bright transition">FAQ — Questions fréquentes</NuxtLink></li>
-          <li><NuxtLink to="/ressources" class="hover:text-brand-orange-bright transition">Ressources &amp; actualités</NuxtLink></li>
           <li><NuxtLink to="/mentions-legales" class="hover:text-brand-orange-bright transition">Mentions légales</NuxtLink></li>
           <li><NuxtLink to="/confidentialite" class="hover:text-brand-orange-bright transition">Confidentialité (RGPD)</NuxtLink></li>
           <li><NuxtLink to="/cgv" class="hover:text-brand-orange-bright transition">CGV</NuxtLink></li>
-          <li><NuxtLink to="/accessibilite" class="hover:text-brand-orange-bright transition">Accessibilité (RGAA)</NuxtLink></li>
         </ul>
       </div>
 

@@ -15,7 +15,7 @@
           <p class="text-xl sm:text-2xl leading-relaxed text-brand-dark font-display font-medium">
             Rendre la gestion du risque incendie et des Obligations Légales de Débroussaillement claire, fiable et accessible à tous les acteurs d'un territoire.
           </p>
-          <p class="mt-6 prose-py">PLACEHOLDER — histoire et mission de PyroVigil à compléter (fondation, parcours, ancrage dans le Var).</p>
+          <p class="mt-6 text-brand-mid leading-relaxed">PYROVIGIL est un bureau d'études spécialisé dans la défense des forêts contre l'incendie (DFCI) et les obligations légales de débroussaillement (OLD), et un organisme de formation certifié Qualiopi. Fondée en 2024 et basée à La Crau (Var), la société associe une expertise de terrain rare à une maîtrise complète des outils géomatiques et informatiques.</p>
         </div>
       </div>
     </section>
@@ -58,7 +58,7 @@
                 </ul>
                 <p v-else class="mt-5 text-brand-mid leading-relaxed">{{ m.bio[0] }}</p>
 
-                <blockquote class="mt-6 border-l-2 border-brand-dark/15 pl-4 text-brand-dark/70 italic">
+                <blockquote v-if="m.citation" class="mt-6 border-l-2 border-brand-dark/15 pl-4 text-brand-dark/70 italic">
                   « {{ m.citation }} »
                 </blockquote>
               </div>
@@ -71,7 +71,8 @@
     <!-- Autour du noyau : réseau & partenaires -->
     <section class="section">
       <div class="container-x">
-        <SectionHeader eyebrow="Autour du noyau" title="Le réseau et les partenaires" />
+        <SectionHeader eyebrow="Le réseau PyroVigil" title="Faites-vous accompagner"
+          intro="Un réseau de professionnels vérifiés, présenté et tenu à jour sur le site. La liste complète et actualisée (coordonnées) est publiée dans l'espace partenaires." />
         <div class="grid md:grid-cols-3 gap-px bg-brand-dark/10 border border-brand-dark/10">
           <div v-for="(r, i) in reseau" :key="r.titre" v-reveal="i * 70" class="bg-white p-7 flex flex-col">
             <h3 class="font-display font-bold text-lg text-brand-dark">{{ r.titre }}</h3>
@@ -117,12 +118,12 @@ const groupes = reactive([
       {
         slug: 'patrick-jeannot',
         nom: 'Patrick Jeannot',
-        role: 'Expert DFCI · Directeur Général',
+        role: 'Directeur Général · Expert DFCI',
         bio: [
-          '+ 40 ans de terrain forestier, dont 25 ans dédiés à la DFCI.',
-          'Ex-Cadre Technique ONF Var (catégorie A), ex-coordonnateur DFCI du Var et chef du pôle DFCI/APFM — 72 agents encadrés.',
-          "Cellule d'expertise tactique COS/COZ ; formateur FDF3/5, RCCI, habilité réseau.",
-          "Représentant ONF au sein de l'interservices Var (préfecture, SDIS, DREAL, Région…).",
+          "Ancien cadre technique forestier et officier assermenté de l'ONF (1980-2024).",
+          'Coordonnateur DFCI du Var et responsable des Agents de Protection de la Forêt Méditerranéenne.',
+          "Environ 2 000 ha d'ouvrages de lutte débroussaillés ; expertise biomécanique et phytosanitaire des arbres.",
+          'Formateur FDF, RCCI, RTI, AIPR. 44 ans de terrain forestier, dont 25 dédiés à la DFCI.',
         ],
         citation: 'Citation à venir.',
         imgError: false,
@@ -130,20 +131,22 @@ const groupes = reactive([
       {
         slug: 'diana-jeannot',
         nom: 'Diana Jeannot',
-        role: '— Fonction à préciser —',
-        bio: ['Présentation à compléter.'],
+        role: 'Présidente fondatrice',
+        bio: [
+          "Direction de la société, études SIG (QGIS, ArcGIS), développement commercial et clientèle internationale. Référente du centre de formation et de la qualité Qualiopi. Trilingue.",
+        ],
         citation: 'Citation à venir.',
         imgError: false,
       },
     ],
   },
   {
-    titre: 'Les associés experts',
+    titre: 'Associés & conseillers techniques',
     membres: [
       {
         slug: 'nicolas-massot',
         nom: 'Nicolas Massot',
-        role: 'Géomaticien · Directeur R&D',
+        role: 'Directeur R&D · Géomaticien',
         bio: [
           "Architecte de la suite d'outils PyroVigil et de la méthode de calcul et de priorisation des OLD.",
           'Traitement LiDAR massif : hauteur des arbres, segmentation des houppiers, biomasse, défendabilité.',
@@ -157,7 +160,7 @@ const groupes = reactive([
       {
         slug: 'jean-labadie',
         nom: 'Jean Labadie',
-        role: 'Ingénieur forestier spécialisé DFCI — conseiller technique',
+        role: 'Ingénieur forestier spécialisé DFCI · chef de projet des études complexes',
         bio: [
           "Ingénieur forestier de formation, il débute comme cadre de l'Office National des Forêts dans l'Est de la France, puis se spécialise dès 1987 dans la défense des forêts contre l'incendie (brevet feux de forêt de la Sécurité civile). Devenu chef du service DFCI du département du Var, spécialiste de la protection des zones urbanisées, il a formé forestiers-sapeurs et personnels de la Sécurité civile jusqu'en 2020, et signe de nombreuses publications de référence sur le feu, l'urbanisme et la forêt méditerranéenne. Associé de PyroVigil, il est conseiller technique et chef de projet sur les études complexes.",
         ],
@@ -167,19 +170,24 @@ const groupes = reactive([
       {
         slug: 'richard-ciappara',
         nom: 'Richard Ciappara',
-        role: 'Technicien forestier principal honoraire ONF — formation',
+        role: 'Technicien forestier principal honoraire ONF · formation & contrôle',
         bio: [
           "Ancien agent assermenté de l'ONF du Var, fort de 43 années d'expérience : gestionnaire de patrimoine spécialisé DFCI et police de l'environnement, chef de projet responsable de formations internes et externes dans plusieurs départements. Associé de PyroVigil, il pilote la formation et le volet contrôle des OLD — et forme toujours bénévolement les comités communaux feux de forêts du Var.",
         ],
         citation: 'Citation à venir.',
         imgError: false,
       },
+    ],
+  },
+  {
+    titre: 'Partenaires',
+    membres: [
       {
         slug: 'harry-botbol',
         nom: 'Harry Botbol',
-        role: 'Architecte — conseil aux architectes et constructeurs',
+        role: 'Architecte · conseil aux architectes et constructeurs',
         bio: [
-          "Architecte diplômé (DAA, Londres) et titulaire d'un DESS en aménagement du territoire et gestion de l'espace (IAR, Aix-en-Provence). Associé de PyroVigil, il conseille les architectes, les maîtres d'œuvre et les constructeurs pour intégrer le risque feu dès la conception des projets.",
+          "Architecte diplômé (DAA, Londres) et titulaire d'un DESS en aménagement du territoire et gestion de l'espace (IAR, Aix-en-Provence). Partenaire de PyroVigil, il conseille les architectes, les maîtres d'œuvre et les constructeurs pour intégrer le risque feu dès la conception des projets.",
         ],
         citation: 'Citation à venir.',
         imgError: false,
@@ -188,21 +196,11 @@ const groupes = reactive([
   },
 ])
 const reseau = [
-  {
-    titre: 'Les référents départementaux',
-    desc: "Techniciens forestiers confirmés et professionnels du feu, ils portent la méthodologie PyroVigil sur leur territoire, avec l'appui permanent du bureau d'études central.",
-    lien: '/reseau', lienLabel: 'Découvrir les référents',
-  },
-  {
-    titre: 'Les partenaires techniques',
-    desc: "Développeurs de nos applications cartographiques, écologues et spécialistes associés selon les besoins des missions : PyroVigil s'entoure de compétences éprouvées, sous sa responsabilité et son contrôle qualité.",
-    lien: null,
-  },
-  {
-    titre: 'Les entreprises certifiées',
-    desc: 'Les entreprises de travaux formées et certifiées ProCertif prolongent nos études sur le terrain, pour des chantiers de débroussaillement conformes.',
-    lien: '/reseau', lienLabel: "Voir l'annuaire",
-  },
+  { titre: 'Opérateurs certifiés ProCertif', desc: 'Entreprises vérifiées pour la réalisation des travaux OLD.', lien: '/reseau', lienLabel: "Voir l'annuaire" },
+  { titre: 'Prestataires travaux OLD', desc: 'Paysagistes, forestiers, élagueurs.', lien: null },
+  { titre: 'Spécialistes partenaires', desc: 'Désignation des arbres surnuméraires et marquage sur site.', lien: null },
+  { titre: 'Agences immobilières', desc: 'Diagnostic pré-vente OLD.', lien: null },
+  { titre: "Associations d'insertion", desc: 'Chantiers solidaires de débroussaillement.', lien: null },
 ]
 const valeurs = [
   { title: 'Le terrain d\'abord', desc: 'Aucune étude sans aller voir. La carte renseigne, le terrain décide — c\'est là que se jugent la végétation réelle, les accès et la défendabilité.' },

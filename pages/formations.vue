@@ -4,6 +4,19 @@
       title="Formations professionnelles"
       intro="Des formations courtes, denses et certifiantes, conçues par des praticiens du feu de forêt — pour les professionnels des espaces verts, de l'immobilier et les agents des collectivités." />
 
+    <!-- Bandeau chiffres -->
+    <section class="border-b border-brand-dark/10">
+      <div class="container-x grid grid-cols-2 lg:grid-cols-4 divide-x divide-brand-dark/10">
+        <div v-for="c in chiffresFormation" :key="c.label" class="py-8 px-6 first:pl-0">
+          <p class="font-display font-extrabold text-3xl lg:text-4xl text-brand-dark tracking-tight">{{ c.value }}</p>
+          <p class="mt-1 text-sm text-brand-mid leading-snug">{{ c.label }}</p>
+        </div>
+      </div>
+      <div class="container-x pb-8 -mt-2">
+        <p class="font-display font-medium text-brand-dark">Une seule méthode. Une réglementation maîtrisée. Des formations adaptées à chaque métier.</p>
+      </div>
+    </section>
+
     <!-- Bandeau Qualiopi -->
     <section class="border-b border-brand-dark/10 bg-brand-cream">
       <div class="container-x py-10 flex flex-col sm:flex-row items-center sm:items-start gap-6" v-reveal>
@@ -126,6 +139,13 @@
 <script setup>
 const photoError = ref(false)
 
+const chiffresFormation = [
+  { value: '52', label: 'départements soumis aux OLD' },
+  { value: '48', label: 'arrêtés préfectoraux analysés' },
+  { value: '175', label: 'règles techniques' },
+  { value: '1', label: 'méthode nationale unique' },
+]
+
 const formations = [
   {
     prix: '700 € HT', duree: '/ personne · 1 journée',
@@ -136,6 +156,16 @@ const formations = [
       "Évaluation finale par QCM (75 % de bonnes réponses requis) ; les compétences validées sont certifiées numériquement sur la plateforme sécurisée PROCERTIF — infalsifiable, valorisable en un clic sur les réseaux professionnels, et visible dans l'annuaire des entreprises certifiées.",
     ],
     cta: "S'inscrire ou demander une session",
+  },
+  {
+    prix: 'Sur devis', duree: 'e-learning ≈ 14 h + 2 journées présentiel',
+    public: 'Agents des collectivités, contrôleurs OLD, élus',
+    titre: 'Contrôleur OLD · Agents · Élus',
+    desc: [
+      "Destinée aux agents des collectivités, contrôleurs et élus qui exercent la police spéciale des OLD : maîtriser le cadre réglementaire, réaliser et sécuriser les contrôles, et piloter la procédure de mise en demeure jusqu'à la saisine du préfet.",
+      "Format mixte : environ 14 h d'e-learning suivies de 2 journées en présentiel, avec des travaux pratiques sur des cas réels de vos communes et la prise en main de l'application PyrOLD.",
+    ],
+    cta: 'Demander une session dédiée',
   },
   {
     prix: '350 € HT', duree: '/ personne · ½ journée',

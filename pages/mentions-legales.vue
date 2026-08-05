@@ -19,9 +19,13 @@
     <p>Le site est hébergé par <strong>Hostinger International Ltd</strong> — 61 Lordou Vironos Street, 6023 Larnaca, Chypre. Le traitement des données par l'hébergeur est encadré par son <a href="https://www.hostinger.com/legal/dpa" target="_blank" rel="noopener">accord de traitement des données (DPA)</a>, conforme au RGPD.</p>
 
     <h2>Propriété intellectuelle</h2>
-    <p>L'ensemble des contenus de ce site (textes, visuels, cartes et marque PYROVIGIL) est protégé au titre de la propriété intellectuelle. Toute reproduction, représentation ou réutilisation, totale ou partielle, sans autorisation écrite préalable, est interdite.</p>
+    <p>Ce site est une œuvre de l'esprit originale, protégée au titre de la propriété intellectuelle par la législation française et internationale. L'ensemble de ses contenus (textes, visuels, cartes, marque PYROVIGIL) est la propriété exclusive de la SAS PYROVIGIL. Sont seuls autorisés la reproduction à usage privé et l'établissement de liens hypertextes vers le site, sous réserve de l'accord préalable de PYROVIGIL. Toute autre reproduction, représentation ou réutilisation, totale ou partielle, sans autorisation écrite préalable, est interdite.</p>
 
-    <h2>Données personnelles</h2>
-    <p>Les traitements de données personnelles réalisés via ce site sont décrits dans notre <NuxtLink to="/confidentialite">politique de confidentialité</NuxtLink>. Conformément au RGPD, vous disposez d'un droit d'accès, de rectification, d'effacement et d'opposition, exerçable à l'adresse contact@pyrovigil.fr.</p>
+    <h2>Données personnelles (RGPD)</h2>
+    <p>Les données personnelles éventuellement collectées via ce site (notamment via le formulaire de contact) sont strictement nécessaires à la gestion de votre demande et ne sont en aucun cas communiquées à des tiers. Le détail des traitements figure dans notre <NuxtLink to="/confidentialite">politique de confidentialité</NuxtLink>.</p>
+    <p>Conformément au Règlement général sur la protection des données (RGPD) et à la loi « Informatique et libertés », vous disposez d'un droit d'accès, de rectification, d'effacement (« droit à l'oubli »), de limitation, de portabilité et d'opposition sur vos données. Ces droits s'exercent, sur justification de votre identité, à l'adresse contact@pyrovigil.fr. Vous pouvez également introduire une réclamation auprès de la CNIL (www.cnil.fr).</p>
+
+    <h2>Cookies</h2>
+    <p>Ce site peut déposer des cookies destinés à mesurer l'audience et à améliorer la navigation. Vous pouvez à tout moment configurer ou désactiver les cookies depuis les paramètres de votre navigateur.</p>
   </LegalPage>
 </template>
