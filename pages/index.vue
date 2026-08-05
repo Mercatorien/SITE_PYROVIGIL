@@ -20,7 +20,7 @@
           </p>
           <div class="mt-9 flex flex-wrap items-center gap-6 fade-up" style="animation-delay:.76s">
             <NuxtLink to="/contact" class="btn btn-primary">Demander une démonstration</NuxtLink>
-            <NuxtLink to="/pyrold" class="link-arrow">Découvrir PyrOLD
+            <NuxtLink to="/prestations" class="link-arrow">Découvrir nos prestations
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="2" d="M5 12h14m0 0l-6-6m6 6l-6 6"/></svg>
             </NuxtLink>
           </div>
@@ -81,6 +81,25 @@
               Toutes nos préconisations intègrent la <span class="font-semibold">protection de l'environnement et des paysages</span> : nous protégeons aussi votre cadre de vie et sa biodiversité.
             </p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ NOS OUTILS EN LIGNE ══ -->
+    <section class="section">
+      <div class="container-x">
+        <p class="eyebrow mb-3">— Nos outils en ligne</p>
+        <h2 class="h-section max-w-2xl">Des applications métier, accessibles directement</h2>
+        <div class="grid sm:grid-cols-2 gap-px bg-brand-dark/10 border border-brand-dark/10 mt-8">
+          <a v-for="o in outils" :key="o.nom" :href="o.url" target="_blank" rel="noopener"
+            class="group bg-white p-8 hover:bg-brand-cream/50 transition">
+            <div class="flex items-center justify-between gap-4">
+              <h3 class="font-display font-bold text-xl text-brand-dark group-hover:text-brand-orange transition">{{ o.nom }}</h3>
+              <svg class="w-4 h-4 text-brand-mid group-hover:text-brand-orange transition flex-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H9m8 0v8"/></svg>
+            </div>
+            <p class="mt-3 text-brand-mid leading-relaxed">{{ o.desc }}</p>
+            <span class="mt-4 inline-block font-mono text-[11px] uppercase tracking-wider text-brand-orange">{{ o.lien }}</span>
+          </a>
         </div>
       </div>
     </section>
@@ -299,11 +318,19 @@ const motsCles = [
 ]
 
 const stats = [
-  { value: '40+', label: 'ans d\'expérience terrain en DFCI' },
-  { value: '52', label: 'départements couverts' },
-  { value: '400+', label: 'expertises de bâtiments incendiés' },
-  { value: '200 km', label: 'de servitudes DFCI créées' },
+  { value: '44', label: 'ans de terrain forestier, dont 25 dédiés à la DFCI' },
+  { value: '52', label: 'départements soumis aux OLD couverts' },
+  { value: '+400', label: 'expertises de bâtiments incendiés' },
+  { value: '+200 km', label: 'de servitudes DFCI traitées' },
   { value: 'Qualiopi', label: 'organisme de formation certifié', label2: true },
+]
+
+// Outils en ligne (liens externes) mis en avant sur l'accueil
+const outils = [
+  { nom: 'PyrOLD', url: 'https://pyrold.fr', lien: 'pyrold.fr',
+    desc: "Cartographie, calcul et suivi des OLD à l'échelle communale — jusqu'à la parcelle." },
+  { nom: 'CartOrange CCFF', url: 'https://ccff.alwaysdata.net', lien: 'ccff.alwaysdata.net',
+    desc: 'Suivi en temps réel des patrouilles des Comités Communaux Feux de Forêts du Var.' },
 ]
 
 const prestations = [
