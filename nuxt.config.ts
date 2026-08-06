@@ -55,9 +55,12 @@ export default defineNuxtConfig({
         { property: 'og:type', content: 'website' },
         { property: 'og:title', content: 'PyroVigil — Experts DFCI & OLD' },
         { property: 'og:description', content: 'Bureau d\'études DFCI/OLD et organisme de formation Qualiopi. Cartographie, études de défendabilité, servitudes DFCI et l\'outil PyrOLD.' },
-        { property: 'og:image', content: '/logo-pyrovigil.png' },
+        { property: 'og:image', content: '/img/og-image.png' },
+        { property: 'og:image:width', content: '1200' },
+        { property: 'og:image:height', content: '630' },
         { property: 'og:locale', content: 'fr_FR' },
         { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:image', content: '/img/og-image.png' },
       ],
       // favicon défini dans app.vue via asset() pour respecter le baseURL
     },
