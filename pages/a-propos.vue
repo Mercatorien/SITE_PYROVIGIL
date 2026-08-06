@@ -154,7 +154,7 @@ const groupes = reactive([
           'Spatial machine learning (U-Net, Random Forest, MaxEnt) et télédétection THRS (GEOBIA, indices spectraux).',
           'R, Python, QGIS, PostgreSQL/PostGIS, web-SIG. Master Géomatique (major) ; Université Laval, Québec.',
         ],
-        citation: 'Citation à venir.',
+        citation: "J'apporte mon expertise en traitement de données géographiques pour répondre à vos besoins de manière innovante.",
         imgError: false,
       },
       {

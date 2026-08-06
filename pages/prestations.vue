@@ -15,7 +15,13 @@
             <!-- Illustration : viewer LiDAR / image / placeholder carte à intégrer -->
             <div class="lg:col-span-5" :class="i % 2 === 1 ? 'lg:order-2' : ''">
               <div class="relative aspect-[4/3] rounded-lg overflow-hidden bg-brand-cream border border-brand-dark/10">
-                <iframe v-if="f.iframe" :src="asset(f.iframe)" :title="f.titre" loading="lazy"
+                <ClientOnly v-if="f.map">
+                  <PyroldMiniMap />
+                  <template #fallback>
+                    <div class="absolute inset-0 flex items-center justify-center font-mono text-[11px] text-brand-mid">carte…</div>
+                  </template>
+                </ClientOnly>
+                <iframe v-else-if="f.iframe" :src="asset(f.iframe)" :title="f.titre" loading="lazy"
                   class="absolute inset-0 w-full h-full border-0"></iframe>
                 <img v-else-if="f.img && !f.imgError" :src="asset(f.img)" :alt="f.titre"
                   class="absolute inset-0 w-full h-full object-cover" @error="f.imgError = true" />
@@ -120,7 +126,7 @@ const fiches = reactive([
     livrable: "Cartographie OLD géolocalisée, rapport de priorisation, application PyrOLD, exports PDF / Excel / KML, modèles de courriers automatisés.",
     atout: "l'aide de la Région PACA (50 %, plafonds 8 000 € en phase 1 / 18 000 € en phase 2), et notre transparence : le contrôle OLD n'est pas délégable à un prestataire privé — il relève du maire.",
     illustration: 'Aléa de superposition des OLD colorié par enjeu, avec fiches parcellaires',
-    img: '/img/old-cuers.webp', imgError: false,
+    img: '/img/alea-priorisation.webp', imgError: false,
   },
   {
     titre: 'Servitudes DFCI (collectivités)',
@@ -149,6 +155,7 @@ const fiches = reactive([
     livrable: "CCTP, rapport d'analyse des offres, plan de phasage.",
     atout: null,
     illustration: 'Planning croisé des fenêtres réglementaires de travaux (accès massif + espèces protégées)',
+    img: '/img/pyrold-showcase-4.webp', imgError: false,
   },
   {
     titre: 'Cartographie, SIG & LiDAR HD',
@@ -177,7 +184,7 @@ const fiches = reactive([
     livrable: "Plan de défendabilité, plan d'évacuation et cartographie opérationnelle.",
     atout: "l'articulation DFCI + biodiversité (Natura 2000, espèces protégées), démontrée sur le Domaine de Pont Royal.",
     illustration: 'Plan d\'évacuation d\'un domaine (voies, points de rassemblement, hydrants)',
-    img: '/img/prestation-08.png', imgError: false,
+    map: true,
   },
 ])
 
