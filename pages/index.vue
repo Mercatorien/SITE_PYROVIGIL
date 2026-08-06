@@ -291,6 +291,13 @@
 </template>
 
 <script setup>
+useSeoMeta({
+  title: 'PyroVigil — Protéger ce qui compte face aux feux de forêt',
+  ogTitle: 'PyroVigil — Experts DFCI & OLD',
+  description: "Bureau d'études spécialisé en défense des forêts contre l'incendie : Obligations Légales de Débroussaillement (OLD), études de défendabilité, servitudes DFCI, formations Qualiopi et l'outil PyrOLD.",
+  ogDescription: "Bureau d'études DFCI/OLD et organisme de formation Qualiopi. Cartographie, défendabilité, servitudes DFCI et l'outil PyrOLD.",
+})
+
 // Titre découpé en mots pour la révélation masquée (le segment orange est signalé)
 const titreMots = [
   ...'Protéger ce qui compte,'.split(' ').map(w => ({ w })),

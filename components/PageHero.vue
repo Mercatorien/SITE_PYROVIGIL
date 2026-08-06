@@ -15,5 +15,13 @@
 
 <script setup>
 const props = defineProps({ eyebrow: String, title: String, intro: String, idx: String })
-useHead({ title: `${props.title} — PyroVigil` })
+
+// Métadonnées par page dérivées du titre + intro (déjà fournis par chaque page).
+// La description/OG tombe sur les défauts de nuxt.config si l'intro est absente.
+useSeoMeta({
+  title: `${props.title} — PyroVigil`,
+  ogTitle: `${props.title} — PyroVigil`,
+  description: props.intro,
+  ogDescription: props.intro,
+})
 </script>

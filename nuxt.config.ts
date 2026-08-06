@@ -47,8 +47,17 @@ export default defineNuxtConfig({
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        // Description par défaut (chaque page la surcharge via useSeoMeta / PageHero)
         { name: 'description', content: 'PyroVigil, bureau d\'études spécialisé en protection contre les feux de forêt : cartographie et gestion des Obligations Légales de Débroussaillement (OLD), études DFCI, formations certifiées Qualiopi, et l\'outil PyrOLD.' },
         { name: 'theme-color', content: '#E8651A' },
+        // Open Graph / réseaux sociaux (défauts — surchargés par page)
+        { property: 'og:site_name', content: 'PyroVigil' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:title', content: 'PyroVigil — Experts DFCI & OLD' },
+        { property: 'og:description', content: 'Bureau d\'études DFCI/OLD et organisme de formation Qualiopi. Cartographie, études de défendabilité, servitudes DFCI et l\'outil PyrOLD.' },
+        { property: 'og:image', content: '/logo-pyrovigil.png' },
+        { property: 'og:locale', content: 'fr_FR' },
+        { name: 'twitter:card', content: 'summary_large_image' },
       ],
       // favicon défini dans app.vue via asset() pour respecter le baseURL
     },
