@@ -146,7 +146,7 @@ const groupes = reactive([
       {
         slug: 'nicolas-massot',
         nom: 'Nicolas Massot',
-        role: 'Directeur R&D · Géomaticien',
+        role: 'Directeur R&D · Ingénieur géomaticien',
         bio: [
           "Architecte de la suite d'outils PyroVigil et de la méthode de calcul et de priorisation des OLD.",
           'Traitement LiDAR massif : hauteur des arbres, segmentation des houppiers, biomasse, défendabilité.',
