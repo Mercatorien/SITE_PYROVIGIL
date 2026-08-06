@@ -423,7 +423,7 @@ const velauxStats = computed(() => [
   { value: nb2(c.old) + ' ha', label: 'surface OLD totale' },
   { value: nb2(c.routes) + ' ha', label: 'OLD routes' },
   { value: nb2(c.lignes) + ' ha', label: 'OLD lignes élec.' },
-  { value: '+70 %', label: 'de la commune débroussaillée ·\naugmentation de la défendabilité' },
+  { value: '+70 %', label: 'de la commune débroussaillée ·\naugmentation de la « Défendabilité »' },
 ])
 
 function scrollTo(id) {

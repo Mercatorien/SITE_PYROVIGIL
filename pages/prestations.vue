@@ -110,11 +110,11 @@
 <script setup>
 const fiches = reactive([
   {
-    titre: 'Études de défendabilité & permis de construire',
+    titre: 'Études de « Défendabilité » & permis de construire',
     desc: "Nous accompagnons acheteurs, constructeurs et pétitionnaires pour démontrer qu'un projet est défendable face au feu et obtenir, sauver ou débloquer une autorisation d'urbanisme.",
     probleme: "100 % des communes varoises sont concernées par le risque incendie. À l'achat comme à l'instruction, un refus ou retrait de permis (R.111-2), un avis défavorable DDTM/SDIS ou des OLD non conformes sur les accès peuvent coûter de plusieurs dizaines à plusieurs centaines de milliers d'euros.",
     methode: "Analyse d'aléa (subi/induit, méthode CEMAGREF), LiDAR HD (houppiers, combustible), vérification OLD, pyrorésistance des constructions, accès des engins et giration, DECI (dimensionnement citerne/PEI), mobilisation de la jurisprudence R.111-2.",
-    livrable: "Du diagnostic de faisabilité en amont au dossier de défendabilité complet : étude de danger, avis motivé, prescriptions à intégrer au dossier d'urbanisme.",
+    livrable: "Du diagnostic de faisabilité en amont au dossier de « Défendabilité » complet : étude de danger, avis motivé, prescriptions à intégrer au dossier d'urbanisme.",
     atout: "la jurisprudence de la CAA de Marseille (2026) : un zonage d'aléa ne vaut pas présomption irréfragable ; une démonstration technique quantifiée renverse la charge de la preuve.",
     illustration: 'Carte d\'aléa avant / après travaux (Parc de Cavalaire, « fort à très fort » → « modéré »)',
   },
@@ -177,11 +177,11 @@ const fiches = reactive([
     illustration: 'Superposition « avis de l\'administration vs relevé PyroVigil »',
   },
   {
-    titre: 'Défendabilité & plans d\'évacuation — domaines, ERP & sites professionnels',
+    titre: '« Défendabilité » & plans d\'évacuation — domaines, ERP & sites professionnels',
     desc: "Nous sécurisons les grands domaines résidentiels, copropriétés, ERP et sites professionnels exposés au feu : golfs, campings, PRL, parcs photovoltaïques, ICPE, ASA/ASL, domaines.",
     probleme: "Voies uniques, mise à l'abri des populations, obligations renforcées des ERP et hébergements touristiques, responsabilité du gestionnaire, imbrication habitat-forêt.",
-    methode: "Étude de défendabilité, cartographie des voies d'évacuation réelles, points de rassemblement, conformité des PEI, priorisation des travaux (QGIS).",
-    livrable: "Plan de défendabilité, plan d'évacuation et cartographie opérationnelle.",
+    methode: "Étude de « Défendabilité », cartographie des voies d'évacuation réelles, points de rassemblement, conformité des PEI, priorisation des travaux (QGIS).",
+    livrable: "Plan de « Défendabilité », plan d'évacuation et cartographie opérationnelle.",
     atout: "l'articulation DFCI + biodiversité (Natura 2000, espèces protégées), démontrée sur le Domaine de Pont Royal.",
     illustration: 'Plan d\'évacuation d\'un domaine (voies, points de rassemblement, hydrants)',
     map: true,

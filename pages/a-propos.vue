@@ -149,7 +149,7 @@ const groupes = reactive([
         role: 'Directeur R&D · Ingénieur géomaticien',
         bio: [
           "Architecte de la suite d'outils PyroVigil et de la méthode de calcul et de priorisation des OLD.",
-          'Traitement LiDAR massif : hauteur des arbres, segmentation des houppiers, biomasse, défendabilité.',
+          'Traitement LiDAR massif : hauteur des arbres, segmentation des houppiers, biomasse, « Défendabilité ».',
           "Modélisation de l'aléa feu de forêt (morphologie, météo, occupation du sol, structure du combustible).",
           'Spatial machine learning (U-Net, Random Forest, MaxEnt) et télédétection THRS (GEOBIA, indices spectraux).',
           'R, Python, QGIS, PostgreSQL/PostGIS, web-SIG. Master Géomatique (major) ; Université Laval, Québec.',
@@ -168,26 +168,11 @@ const groupes = reactive([
         imgError: false,
       },
       {
-        slug: 'richard-ciappara',
-        nom: 'Richard Ciappara',
-        role: 'Technicien forestier principal honoraire ONF · formation & contrôle',
+        slug: 'frederic-plain',
+        nom: 'Frédéric Plain',
+        role: 'Expert IA & développement',
         bio: [
-          "Ancien agent assermenté de l'ONF du Var, fort de 43 années d'expérience : gestionnaire de patrimoine spécialisé DFCI et police de l'environnement, chef de projet responsable de formations internes et externes dans plusieurs départements. Associé de PyroVigil, il pilote la formation et le volet contrôle des OLD — et forme toujours bénévolement les comités communaux feux de forêts du Var.",
-        ],
-        citation: 'Citation à venir.',
-        imgError: false,
-      },
-    ],
-  },
-  {
-    titre: 'Partenaires',
-    membres: [
-      {
-        slug: 'harry-botbol',
-        nom: 'Harry Botbol',
-        role: 'Architecte · conseil aux architectes et constructeurs',
-        bio: [
-          "Architecte diplômé (DAA, Londres) et titulaire d'un DESS en aménagement du territoire et gestion de l'espace (IAR, Aix-en-Provence). Partenaire de PyroVigil, il conseille les architectes, les maîtres d'œuvre et les constructeurs pour intégrer le risque feu dès la conception des projets.",
+          "Expert en intelligence artificielle et développement : traitement d'images et de données LiDAR, automatisation des chaînes de production de la donnée.",
         ],
         citation: 'Citation à venir.',
         imgError: false,
@@ -203,7 +188,7 @@ const reseau = [
   { titre: "Associations d'insertion", desc: 'Chantiers solidaires de débroussaillement.', lien: null },
 ]
 const valeurs = [
-  { title: 'Le terrain d\'abord', desc: 'Aucune étude sans aller voir. La carte renseigne, le terrain décide — c\'est là que se jugent la végétation réelle, les accès et la défendabilité.' },
+  { title: 'Le terrain d\'abord', desc: 'Aucune étude sans aller voir. La carte renseigne, le terrain décide — c\'est là que se jugent la végétation réelle, les accès et la « Défendabilité ».' },
   { title: 'La rigueur réglementaire', desc: 'Des livrables opposables, des références textuelles exactes, des préconisations dimensionnées à l\'obligation réelle — ni plus, ni moins.' },
   { title: 'La transmission', desc: 'Former les entreprises, les agents des collectivités et les référents du réseau : la protection contre le feu progresse quand la compétence se diffuse.' },
 ]

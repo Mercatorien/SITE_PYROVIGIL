@@ -294,8 +294,8 @@
 useSeoMeta({
   title: 'PyroVigil — Protéger ce qui compte face aux feux de forêt',
   ogTitle: 'PyroVigil — Experts DFCI & OLD',
-  description: "Bureau d'études spécialisé en défense des forêts contre l'incendie : Obligations Légales de Débroussaillement (OLD), études de défendabilité, servitudes DFCI, formations Qualiopi et l'outil PyrOLD.",
-  ogDescription: "Bureau d'études DFCI/OLD et organisme de formation Qualiopi. Cartographie, défendabilité, servitudes DFCI et l'outil PyrOLD.",
+  description: "Bureau d'études spécialisé en défense des forêts contre l'incendie : Obligations Légales de Débroussaillement (OLD), études de « Défendabilité », servitudes DFCI, formations Qualiopi et l'outil PyrOLD.",
+  ogDescription: "Bureau d'études DFCI/OLD et organisme de formation Qualiopi. Cartographie, « Défendabilité », servitudes DFCI et l'outil PyrOLD.",
 })
 
 // Titre découpé en mots pour la révélation masquée (le segment orange est signalé)
@@ -313,7 +313,7 @@ const motsCles = [
   'Formations Qualiopi',
   'CCFF',
   'RCSC',
-  'Défendabilité',
+  '« Défendabilité »',
   'Concertation',
   'Conseil',
   'Volume de biomasse',
@@ -342,16 +342,16 @@ const outils = [
 
 const prestations = [
   { title: 'Cartographie & calcul des OLD', desc: 'Zonage réglementaire précis parcelle par parcelle, calcul des équidistances, exports exploitables.' },
-  { title: 'Études DFCI & risque incendie', desc: 'Diagnostics de défendabilité, appui PPRIF, aménagement des interfaces habitat-forêt.' },
+  { title: 'Études DFCI & risque incendie', desc: 'Diagnostics de « Défendabilité », appui PPRIF, aménagement des interfaces habitat-forêt.' },
   { title: 'Accompagnement des collectivités', desc: 'Contrôles, courriers et mises en demeure, procédure préfectorale historisée.' },
   { title: 'Formations — certifiées Qualiopi', desc: 'Montée en compétence de vos équipes sur les OLD et la DFCI, finançable.' },
 ]
 
 // Références (réalisations) — reprises de la maquette v21 ; palette = motif discret de la carte
 const references = [
-  { dom: 'Défendabilité', ter: 'Var', type: 'Collectivité', year: '2025–2026', palette: ['#F5EFEC', '#FCC2A6', '#E36C08'],
-    title: 'Étude de défendabilité — Commune de Grimaud',
-    desc: '97 zones analysées, 55,6 km de voies expertisées, plus de 8 200 logements évalués : cartographie complète de la défendabilité communale et priorisation des mises aux normes.' },
+  { dom: '« Défendabilité »', ter: 'Var', type: 'Collectivité', year: '2025–2026', palette: ['#F5EFEC', '#FCC2A6', '#E36C08'],
+    title: 'Étude de « Défendabilité » — Commune de Grimaud',
+    desc: '97 zones analysées, 55,6 km de voies expertisées, plus de 8 200 logements évalués : cartographie complète de la « Défendabilité » communale et priorisation des mises aux normes.' },
   { dom: 'Étude OLD', ter: 'Bouches-du-Rhône', type: 'Grand domaine', year: '2025', palette: ['#EDF6ED', '#AFC0AF', '#376436'],
     title: 'Dossier OLD — AFUL de Pont Royal, Mallemort',
     desc: "Étude complète des obligations de débroussaillement d'un domaine résidentiel et de loisirs de 183 hectares : zonage, superpositions, plans parcellaires et correspondances." },
@@ -366,23 +366,23 @@ const references = [
   { dom: 'Étude OLD', ter: 'Var · B.-du-Rhône', type: 'Collectivités', year: '2025–2026', palette: ['#EDF6ED', '#AFC0AF', '#376436'],
     title: 'Plans communaux OLD — Artigues & Mallemort',
     desc: "Études réglementaires et plans de zonage des obligations légales de débroussaillement à l'échelle communale, avec cartographie parcellaire interactive." },
-  { dom: 'Défendabilité', ter: 'Var', type: 'Particuliers', year: '2025–2026', palette: ['#F5EFEC', '#FCC2A6', '#E36C08'],
+  { dom: '« Défendabilité »', ter: 'Var', type: 'Particuliers', year: '2025–2026', palette: ['#F5EFEC', '#FCC2A6', '#E36C08'],
     title: 'Défenses de permis de construire',
-    desc: "Notes techniques et analyses contradictoires (défendabilité, PPRIF, accès DECI) à l'appui de dossiers de permis de construire de particuliers en zone exposée." },
+    desc: "Notes techniques et analyses contradictoires (« Défendabilité », PPRIF, accès DECI) à l'appui de dossiers de permis de construire de particuliers en zone exposée." },
 ]
 
 const publics = [
   {
     cat: 'Collectivités',
     sub: 'Communes, EPCI & services',
-    desc: "Pilotez OLD, PIDAF, PAC, PPRIF, RDDECI et défendabilité à l'échelle de votre territoire. Anticipez la mise aux normes des voies d'accès et formez vos équipes techniques, urbanisme et police municipale.",
+    desc: "Pilotez OLD, PIDAF, PAC, PPRIF, RDDECI et « Défendabilité » à l'échelle de votre territoire. Anticipez la mise aux normes des voies d'accès et formez vos équipes techniques, urbanisme et police municipale.",
     tags: 'Plan communal OLD · formation',
     img: 'Garrigue provençale',
   },
   {
     cat: 'Professionnels',
     sub: 'Gestionnaires de sites complexes',
-    desc: 'Syndics, ASL, ASA, AFUL, campings, PRL, parcs de loisirs, bailleurs sociaux, exploitants de towercos, parcs photovoltaïques ou éoliens : sécurisez vos sites avec une approche multi-volets — OLD, défendabilité, environnement, paysage.',
+    desc: 'Syndics, ASL, ASA, AFUL, campings, PRL, parcs de loisirs, bailleurs sociaux, exploitants de towercos, parcs photovoltaïques ou éoliens : sécurisez vos sites avec une approche multi-volets — OLD, « Défendabilité », environnement, paysage.',
     tags: 'Études complexes · DFCI · appui MOA',
     img: "Panache de fumée d'un feu de forêt",
   },
@@ -396,7 +396,7 @@ const publics = [
   {
     cat: 'Particuliers',
     sub: 'Propriétaires & porteurs de projet',
-    desc: "L'OLD protège les personnes, les biens — et la valeur de votre patrimoine : un bien en zonage rouge d'un PPRIF peut perdre une part très importante de sa valeur et se voir interdire extension ou reconstruction, sauf à satisfaire à sa défendabilité réglementaire.",
+    desc: "L'OLD protège les personnes, les biens — et la valeur de votre patrimoine : un bien en zonage rouge d'un PPRIF peut perdre une part très importante de sa valeur et se voir interdire extension ou reconstruction, sauf à satisfaire à sa « Défendabilité » réglementaire.",
     tags: 'Étude OLD · diagnostic avant achat',
     img: "Boisement en lisière d'habitations",
   },

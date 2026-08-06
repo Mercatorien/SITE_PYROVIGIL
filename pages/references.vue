@@ -2,7 +2,7 @@
   <div>
     <PageHero eyebrow="Expertise & Références"
       title="Une expertise du feu, exigeante et de terrain"
-      intro="Des réalisations réelles, des collectivités aux grands domaines : servitudes DFCI intercommunales, plans communaux OLD, défendabilité et permis de construire." />
+      intro="Des réalisations réelles, des collectivités aux grands domaines : servitudes DFCI intercommunales, plans communaux OLD, « Défendabilité » et permis de construire." />
 
     <!-- Méthode -->
     <section class="section">
@@ -101,18 +101,18 @@ const categories = [
   {
     eyebrow: 'Études communales & domaines', titre: 'Collectivités & grands domaines',
     items: [
-      { titre: 'Domaine de Pont Royal — Mallemort', dep: 'Bouches-du-Rhône', sub: 'AFUL Générale de Pont Royal', desc: "Défendabilité sur 198,3 ha et 1 424 parcelles : ~150 ha d'OLD cartographiés au LiDAR HD, une conformité initiale < 10 %, un déficit de points d'eau et 67 virages non conformes, puis un plan d'action et un plan d'évacuation exploitables. L'étude articule défense contre le feu et biodiversité (ZPS Natura 2000 à 74 %, habitat de l'Outarde canepetière)." },
+      { titre: 'Domaine de Pont Royal — Mallemort', dep: 'Bouches-du-Rhône', sub: 'AFUL Générale de Pont Royal', desc: "« Défendabilité » sur 198,3 ha et 1 424 parcelles : ~150 ha d'OLD cartographiés au LiDAR HD, une conformité initiale < 10 %, un déficit de points d'eau et 67 virages non conformes, puis un plan d'action et un plan d'évacuation exploitables. L'étude articule défense contre le feu et biodiversité (ZPS Natura 2000 à 74 %, habitat de l'Outarde canepetière)." },
       { titre: 'Grimaud', dep: 'Var', desc: "Diagnostic d'accessibilité des voies de desserte au titre du porter à connaissance risque incendie, intégrant PLU, règlement DECI et PPRIF pour rationaliser les accès et organiser les interfaces habitat-forêt." },
       { titre: 'Artigues', dep: 'Var', desc: "Plan OLD communal et données géospatiales exploitables, remises aux services de la commune sous forme de couches SIG prêtes à l'emploi." },
     ],
     note: 'Également : Velaux et Manosque (SIG réglementaire communal) · GÉOSEL / GÉOMÉTHANE (Alpes-de-Haute-Provence, sites industriels sensibles) · un gestionnaire national de l\'eau (OLD des citernes et réservoirs).',
   },
   {
-    eyebrow: 'Permis de construire & défendabilité', titre: 'Dossiers de particuliers (anonymisés)',
-    intro: 'Analyses contradictoires et diagnostics de défendabilité pour débloquer, sauver ou obtenir une autorisation d\'urbanisme.',
+    eyebrow: 'Permis de construire & « Défendabilité »', titre: 'Dossiers de particuliers (anonymisés)',
+    intro: 'Analyses contradictoires et diagnostics de « Défendabilité » pour débloquer, sauver ou obtenir une autorisation d\'urbanisme.',
     cols2: true,
     items: [
-      { titre: 'Maison en interface forêt', dep: 'Cavalaire-sur-Mer (83)', desc: "Après deux refus de permis modificatif en zone d'aléa très fort, un diagnostic de synthèse de la défendabilité a posé les bases d'un dossier renégocié avec l'administration, pour ramener le projet dans le cadre de l'article R.111-2 et rouvrir l'instruction." },
+      { titre: 'Maison en interface forêt', dep: 'Cavalaire-sur-Mer (83)', desc: "Après deux refus de permis modificatif en zone d'aléa très fort, un diagnostic de synthèse de la « Défendabilité » a posé les bases d'un dossier renégocié avec l'administration, pour ramener le projet dans le cadre de l'article R.111-2 et rouvrir l'instruction." },
       { titre: 'Division parcellaire (3 villas)', dep: 'Six-Fours-les-Plages (83)', desc: "Pré-analyse de faisabilité chiffrant la probabilité d'obtention du permis au regard du risque incendie (R.111-2), appuyée sur l'analyse LiDAR HD des houppiers et la jurisprudence récente de la CAA de Marseille." },
       { titre: 'Villa individuelle', dep: 'Saint-Mandrier-sur-Mer (83)', desc: "Face à une procédure de retrait de permis après avis défavorable du SDIS, réponse point par point aux six motifs et dimensionnement d'une citerne DFCI de 120 m³ : avis motivé favorable, sans extension du linéaire à défendre." },
       { titre: 'Permis d\'aménager « Parc de Cavalaire »', dep: 'Cavalaire-sur-Mer (83)', desc: "Étude de danger incendie avec calcul fin de l'aléa projeté (méthode CEMAGREF), faisant passer le secteur de « fort à très fort » à « modéré » après travaux et OLD. Voirie, DECI et mesures constructives dimensionnées pour un avis favorable." },

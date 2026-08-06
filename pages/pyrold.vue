@@ -3,6 +3,12 @@
     <PageHero eyebrow="PyrOLD.fr — notre plateforme" idx="03"
       title="Piloter simplement vos Obligations Légales de Débroussaillement"
       intro="Une plateforme qui calcule, cartographie et pilote les OLD de façon reproductible — du territoire communal à la parcelle, jusqu'au terrain." />
+    <div class="container-x pt-8 flex flex-wrap gap-3">
+      <a href="https://pyrold.fr" target="_blank" rel="noopener" class="btn btn-primary inline-flex items-center gap-2">
+        Accéder à PyrOLD
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H9m8 0v8"/></svg>
+      </a>
+    </div>
 
     <!-- L'enjeu -->
     <section class="section bg-brand-cream border-y border-brand-dark/10">

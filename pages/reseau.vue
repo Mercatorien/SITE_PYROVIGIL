@@ -146,7 +146,7 @@ const departements = [
   {
     code: '13', dep: 'Bouches-du-Rhône',
     referent: '[Nom du référent · Titre ou spécialité · Secteur]',
-    bio: "[Texte de présentation du référent : parcours, spécialités — OLD, défendabilité, DFCI —, secteur d'intervention et références locales. Trois à quatre lignes suffisent.]",
+    bio: "[Texte de présentation du référent : parcours, spécialités — OLD, « Défendabilité », DFCI —, secteur d'intervention et références locales. Trois à quatre lignes suffisent.]",
   },
   {
     code: '06', dep: 'Alpes-Maritimes',
@@ -166,7 +166,7 @@ const departements = [
 ]
 
 const avantages = [
-  { titre: 'Formation & montée en compétence', desc: "Formation initiale complète puis formation continue par PyroVigil, organisme certifié Qualiopi au titre des actions de formation : réglementation OLD, défendabilité, DFCI, méthodologie d'étude et relation client." },
+  { titre: 'Formation & montée en compétence', desc: "Formation initiale complète puis formation continue par PyroVigil, organisme certifié Qualiopi au titre des actions de formation : réglementation OLD, « Défendabilité », DFCI, méthodologie d'étude et relation client." },
   { titre: 'Outils cartographiques exclusifs', desc: 'Accès aux outils professionnels du réseau : application PyrOLD de gestion des OLD à la parcelle, Programme OLD couvrant 48 départements, Kit OLD et modèles de livrables éprouvés.' },
   { titre: 'Appui technique & juridique permanent', desc: "Le bureau d'études central répond à vos questions, relit vos livrables sensibles et prend en charge les études complexes : vous vous concentrez sur le terrain, PyroVigil sécurise le réglementaire." },
   { titre: 'Une marque et une crédibilité', desc: "Vous intervenez sous la marque PyroVigil, portée par 44 ans d'expertise ONF/DFCI, des références nationales et une présence documentée auprès des collectivités et des professionnels." },
