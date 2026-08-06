@@ -55,12 +55,18 @@ export default defineNuxtConfig({
         { property: 'og:type', content: 'website' },
         { property: 'og:title', content: 'PyroVigil — Experts DFCI & OLD' },
         { property: 'og:description', content: 'Bureau d\'études DFCI/OLD et organisme de formation Qualiopi. Cartographie, études de défendabilité, servitudes DFCI et l\'outil PyrOLD.' },
-        { property: 'og:image', content: '/img/og-image.png' },
+        // URL ABSOLUE obligatoire pour les réseaux (LinkedIn/Facebook ne résolvent
+        // pas les chemins relatifs). Sur GitHub Pages le site est sous /SITE_PYROVIGIL/.
+        // À remplacer par https://www.pyrovigil.fr/img/og-image.png au passage sur Hostinger.
+        { property: 'og:image', content: 'https://mercatorien.github.io/SITE_PYROVIGIL/img/og-image.png' },
+        { property: 'og:image:secure_url', content: 'https://mercatorien.github.io/SITE_PYROVIGIL/img/og-image.png' },
+        { property: 'og:image:type', content: 'image/png' },
         { property: 'og:image:width', content: '1200' },
         { property: 'og:image:height', content: '630' },
+        { property: 'og:image:alt', content: 'PyroVigil — Bureau d\'études DFCI & OLD' },
         { property: 'og:locale', content: 'fr_FR' },
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:image', content: '/img/og-image.png' },
+        { name: 'twitter:image', content: 'https://mercatorien.github.io/SITE_PYROVIGIL/img/og-image.png' },
       ],
       // favicon défini dans app.vue via asset() pour respecter le baseURL
     },
