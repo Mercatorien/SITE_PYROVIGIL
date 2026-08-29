@@ -5,6 +5,9 @@
         <p class="eyebrow mb-5">{{ eyebrow }}</p>
         <h1 class="font-display font-extrabold text-4xl sm:text-6xl leading-[1.05] tracking-tight text-brand-dark">{{ title }}</h1>
         <p v-if="intro" class="mt-6 text-lg text-brand-mid max-w-2xl leading-relaxed">{{ intro }}</p>
+        <div v-if="$slots.cta" class="mt-8 flex flex-wrap gap-3">
+          <slot name="cta" />
+        </div>
       </div>
       <div v-if="idx" class="lg:col-span-4 hidden lg:flex justify-end">
         <span class="font-mono font-extrabold leading-none text-brand-orange/15" style="font-size:9rem">{{ idx }}</span>
