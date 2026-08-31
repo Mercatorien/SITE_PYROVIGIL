@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" role="img" aria-label="Expertise réglementaire">
+  <title>Expertise réglementaire</title>
+
+  <!-- cercle pointillé -->
+  <circle cx="250" cy="215" r="182" fill="none" stroke="#2E9E3A" stroke-width="4" stroke-linecap="round" stroke-dasharray="9 15"/>
+
+  <!-- Traits verts principaux -->
+  <g fill="none" stroke="#2E9E3A" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- Panneau CODE FORESTIER -->
+    <rect x="150" y="62" width="122" height="86" rx="14"/>
+
+    <!-- Main ouverte tenant le panneau -->
+    <path d="M110 205 C106 194 107 185 112 183 C112 174 111 163 116 161 C121 160 122 167 122 173 C124 171 126 171 128 173 C128 163 128 154 133 153 C138 152 138 160 139 167 C141 165 143 165 145 167 C145 160 147 154 151 154 C156 154 156 161 156 168 C158 167 160 167 162 169 C162 164 165 160 169 161 C173 162 172 169 171 175 C176 185 177 196 171 203 C160 209 124 210 110 205 Z"/>
+    <path d="M112 186 C103 181 98 187 100 193 C102 198 108 199 113 196"/>
+
+    <!-- Balance : colonne + socle -->
+    <line x1="340" y1="150" x2="340" y2="236"/>
+    <path d="M330 236 h20"/>
+    <path d="M328 236 L352 236 L360 252 L320 252 Z"/>
+    <line x1="304" y1="252" x2="376" y2="252"/>
+    <!-- fléau -->
+    <line x1="284" y1="160" x2="396" y2="160"/>
+    <!-- lien fléau -> cercle § -->
+    <line x1="340" y1="160" x2="340" y2="141"/>
+    <!-- plateau gauche -->
+    <path d="M284 160 L271 190 M284 160 L297 190"/>
+    <path d="M266 189 a18 12 0 0 0 36 0"/>
+    <!-- plateau droit -->
+    <path d="M396 160 L383 190 M396 160 L409 190"/>
+    <path d="M378 189 a18 12 0 0 0 36 0"/>
+
+    <!-- Parchemin / liste -->
+    <rect x="168" y="246" width="114" height="106" rx="11"/>
+    <line x1="168" y1="266" x2="282" y2="266"/>
+    <line x1="168" y1="334" x2="282" y2="334"/>
+
+  </g>
+
+  <!-- Lignes de texte de la liste (vert) -->
+  <g fill="none" stroke="#2E9E3A" stroke-width="6" stroke-linecap="round">
+    <line x1="214" y1="288" x2="258" y2="288"/>
+    <line x1="214" y1="308" x2="258" y2="308"/>
+    <line x1="214" y1="328" x2="256" y2="328"/>
+  </g>
+
+  <!-- Coches oranges de la liste -->
+  <g fill="none" stroke="#E8651A" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M184 286 l7 8 l13 -16"/>
+    <path d="M184 306 l7 8 l13 -16"/>
+    <path d="M184 326 l7 8 l13 -16"/>
+  </g>
+
+  <!-- Bouclier (par-dessus le parchemin) -->
+  <path d="M262 306 L290 315 L290 334 C290 352 278 361 262 368 C246 361 234 352 234 334 L234 315 Z"
+        fill="#ffffff" stroke="#E8651A" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M250 335 l9 9 l16 -19" fill="none" stroke="#E8651A" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Cercle § -->
+  <circle cx="340" cy="117" r="25" fill="#ffffff" stroke="#E8651A" stroke-width="7"/>
+  <text x="340" y="130" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700" fill="#E8651A">§</text>
+
+  <!-- Flamme (dans le panneau) -->
+  <path d="M210 116 C205 124 198 127 198 135 a12 12 0 0 0 24 0 c0 -7 -5 -10 -7 -15 c-2 5 -3 7 -5 6 c2 -6 0 -11 -5 -12 z"
+        fill="#E8651A"/>
+
+  <!-- Texte du panneau -->
+  <text x="211" y="94" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="17" font-weight="700" fill="#2E9E3A">CODE</text>
+  <text x="211" y="112" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="17" font-weight="700" fill="#2E9E3A">FORESTIER</text>
+
+  <!-- Titre -->
+  <text x="250" y="438" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="38" font-weight="800" letter-spacing="2" fill="#2E9E3A">EXPERTISE</text>
+  <text x="250" y="480" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="38" font-weight="800" letter-spacing="2" fill="#E8651A">RÉGLEMENTAIRE</text>
+</svg>

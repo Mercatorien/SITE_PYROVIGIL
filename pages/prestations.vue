@@ -179,7 +179,7 @@ const fiches = reactive([
     livrable: "Rapport d'analyse contradictoire, note d'expertise mobilisable en instruction ou en recours.",
     atout: null,
     illustration: 'Superposition « avis de l\'administration vs relevé PyroVigil »',
-    img: '/img/prestations-07-expertise-reglementaire.png', imgError: false, imgContain: true,
+    img: '/img/prestations-07-expertise-reglementaire.svg', imgError: false, imgContain: true,
   },
   {
     titre: '« Défendabilité » & plans d\'évacuation — domaines, ERP & sites professionnels',
