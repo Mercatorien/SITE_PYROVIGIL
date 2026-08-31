@@ -117,6 +117,7 @@ const fiches = reactive([
     livrable: "Du diagnostic de faisabilité en amont au dossier de « Défendabilité » complet : étude de danger, avis motivé, prescriptions à intégrer au dossier d'urbanisme.",
     atout: "la jurisprudence de la CAA de Marseille (2026) : un zonage d'aléa ne vaut pas présomption irréfragable ; une démonstration technique quantifiée renverse la charge de la preuve.",
     illustration: 'Carte d\'aléa avant / après travaux (Parc de Cavalaire, « fort à très fort » → « modéré »)',
+    img: '/img/prestations-01-defendabilite.jpg', imgError: false,
   },
   {
     titre: 'Plan communal de gestion des OLD (+ PyrOLD)',
@@ -136,6 +137,7 @@ const fiches = reactive([
     livrable: "Atlas des servitudes, inventaire des ouvrages (pistes, citernes, aires), dossiers de servitude prêts pour l'arrêté préfectoral.",
     atout: "la chaîne complète — analyse DFCI + montage foncier + notice environnementale — que peu d'acteurs réunissent.",
     illustration: 'Tracé d\'un ouvrage DFCI avec citernes et aires de retournement (E706 « Les Brugassières »)',
+    img: '/img/prestations-03-servitudes-dfci.jpg', imgError: false,
   },
   {
     titre: 'OLD des opérateurs de réseaux & grands comptes',
@@ -175,6 +177,7 @@ const fiches = reactive([
     livrable: "Rapport d'analyse contradictoire, note d'expertise mobilisable en instruction ou en recours.",
     atout: null,
     illustration: 'Superposition « avis de l\'administration vs relevé PyroVigil »',
+    img: '/img/prestations-07-expertise-reglementaire.png', imgError: false,
   },
   {
     titre: '« Défendabilité » & plans d\'évacuation — domaines, ERP & sites professionnels',

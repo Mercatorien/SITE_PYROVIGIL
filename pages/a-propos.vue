@@ -61,6 +61,12 @@
                 <blockquote v-if="m.citation" class="mt-6 border-l-2 border-brand-dark/15 pl-4 text-brand-dark/70 italic">
                   « {{ m.citation }} »
                 </blockquote>
+
+                <a v-if="m.cv" :href="asset(m.cv)" target="_blank" rel="noopener"
+                  class="btn btn-ghost mt-6 text-sm">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
+                  Télécharger le CV
+                </a>
               </div>
             </article>
           </div>
@@ -117,6 +123,7 @@ const groupes = reactive([
     membres: [
       {
         slug: 'patrick-jeannot',
+        cv: '/cv/patrick-jeannot.pdf',
         nom: 'Patrick Jeannot',
         role: 'Directeur Général · Expert DFCI',
         bio: [
@@ -130,6 +137,7 @@ const groupes = reactive([
       },
       {
         slug: 'diana-jeannot',
+        cv: '/cv/diana-jeannot.pdf',
         nom: 'Diana Jeannot',
         role: 'Présidente fondatrice',
         bio: [
@@ -145,6 +153,7 @@ const groupes = reactive([
     membres: [
       {
         slug: 'nicolas-massot',
+        cv: '/cv/nicolas-massot.pdf',
         nom: 'Nicolas Massot',
         role: 'Directeur R&D · Ingénieur géomaticien',
         bio: [
@@ -159,6 +168,7 @@ const groupes = reactive([
       },
       {
         slug: 'jean-labadie',
+        cv: '/cv/jean-labadie.pdf',
         nom: 'Jean Labadie',
         role: 'Ingénieur forestier spécialisé DFCI · chef de projet des études complexes',
         bio: [
@@ -169,6 +179,7 @@ const groupes = reactive([
       },
       {
         slug: 'frederic-plain',
+        cv: '/cv/frederic-plain.pdf',
         nom: 'Frédéric Plain',
         role: 'Expert IA & développement',
         bio: [
