@@ -14,7 +14,9 @@
 
             <!-- Illustration : viewer LiDAR / image / placeholder carte à intégrer -->
             <div class="lg:col-span-5" :class="i % 2 === 1 ? 'lg:order-2' : ''">
-              <div class="relative aspect-[4/3] rounded-lg overflow-hidden bg-brand-cream border border-brand-dark/10">
+              <img v-if="f.imgContain && f.img && !f.imgError" :src="asset(f.img)" :alt="f.titre"
+                class="w-full h-auto" @error="f.imgError = true" />
+              <div v-else class="relative aspect-[4/3] rounded-lg overflow-hidden bg-brand-cream border border-brand-dark/10">
                 <ClientOnly v-if="f.map">
                   <PyroldMiniMap />
                   <template #fallback>
@@ -24,7 +26,7 @@
                 <iframe v-else-if="f.iframe" :src="asset(f.iframe)" :title="f.titre" loading="lazy"
                   class="absolute inset-0 w-full h-full border-0"></iframe>
                 <img v-else-if="f.img && !f.imgError" :src="asset(f.img)" :alt="f.titre"
-                  class="absolute inset-0 w-full h-full" :class="f.imgContain ? 'object-contain p-4' : 'object-cover'" @error="f.imgError = true" />
+                  class="absolute inset-0 w-full h-full object-cover" @error="f.imgError = true" />
                 <div v-else class="absolute inset-0 flex flex-col items-center justify-center gap-2 p-6 text-center">
                   <span class="text-2xl opacity-50">🗺</span>
                   <span class="font-mono text-[11px] uppercase tracking-wider text-brand-mid/70 leading-relaxed">{{ f.illustration }}</span>
