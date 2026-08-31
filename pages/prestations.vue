@@ -24,7 +24,7 @@
                 <iframe v-else-if="f.iframe" :src="asset(f.iframe)" :title="f.titre" loading="lazy"
                   class="absolute inset-0 w-full h-full border-0"></iframe>
                 <img v-else-if="f.img && !f.imgError" :src="asset(f.img)" :alt="f.titre"
-                  class="absolute inset-0 w-full h-full object-cover" @error="f.imgError = true" />
+                  class="absolute inset-0 w-full h-full" :class="f.imgContain ? 'object-contain p-4' : 'object-cover'" @error="f.imgError = true" />
                 <div v-else class="absolute inset-0 flex flex-col items-center justify-center gap-2 p-6 text-center">
                   <span class="text-2xl opacity-50">🗺</span>
                   <span class="font-mono text-[11px] uppercase tracking-wider text-brand-mid/70 leading-relaxed">{{ f.illustration }}</span>
@@ -177,7 +177,7 @@ const fiches = reactive([
     livrable: "Rapport d'analyse contradictoire, note d'expertise mobilisable en instruction ou en recours.",
     atout: null,
     illustration: 'Superposition « avis de l\'administration vs relevé PyroVigil »',
-    img: '/img/prestations-07-expertise-reglementaire.png', imgError: false,
+    img: '/img/prestations-07-expertise-reglementaire.png', imgError: false, imgContain: true,
   },
   {
     titre: '« Défendabilité » & plans d\'évacuation — domaines, ERP & sites professionnels',
